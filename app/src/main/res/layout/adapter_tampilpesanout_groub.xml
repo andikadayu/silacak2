@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layoutGroub"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/message_layoutGroub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="#5089fa"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/namaGroub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:maxWidth="250dp"
+            android:minWidth="120dp"
+            android:text="Nama"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/message_textGroub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/namaGroub"
+            android:layout_alignParentLeft="true"
+            android:maxWidth="250dp"
+            android:minWidth="120dp"
+            android:text="Hi"
+            android:textColor="@android:color/white"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/dateTGroub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/message_textGroub"
+            android:layout_alignRight="@+id/message_textGroub"
+            android:textColor="@android:color/white"
+            android:textSize="11sp"
+            tools:text="11:34" />
+
+        <TextView
+            android:id="@+id/date_textGroub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/dateTGroub"
+            android:layout_alignRight="@+id/message_textGroub"
+            android:textColor="#b3b3b3"
+            android:textSize="11sp"
+            tools:text="18-10-2020" />
+
+    </RelativeLayout>
+</RelativeLayout>

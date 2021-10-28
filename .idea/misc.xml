@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/drawable/ic_baseline_info.xml" value="0.20260416666666667" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/drawable/ic_baseline_local_airport_24.xml" value="0.21197916666666666" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/drawable/ic_baseline_person.xml" value="0.20260416666666667" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/drawable/ic_baseline_person_pin_24.xml" value="0.20260416666666667" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/drawable/ic_baseline_place_24.xml" value="0.20677083333333332" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/drawable/ic_baseline_settings_24.xml" value="0.20260416666666667" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/drawable/rounded_mode.xml" value="0.20677083333333332" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/drawable/selector.xml" value="0.20260416666666667" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/drawable/vector.xml" value="0.20260416666666667" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/activity_admin_about.xml" value="0.18645833333333334" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/activity_admin_list_anggota.xml" value="0.18697916666666667" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/activity_admin_list_user.xml" value="0.19583333333333333" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/activity_admin_lokasi_all.xml" value="0.19583333333333333" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/activity_admin_page.xml" value="0.190625" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/activity_admin_pesan.xml" value="0.22" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/activity_admin_pesan_groub.xml" value="0.22" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/activity_admin_pesan_tampil.xml" value="0.22" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/activity_admin_user_new.xml" value="0.19583333333333333" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/activity_anggota_lokasi.xml" value="0.19583333333333333" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/activity_anggota_page.xml" value="0.19583333333333333" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/activity_anggota_pesan.xml" value="0.18229166666666666" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/activity_anggota_pesan_groub.xml" value="0.18697916666666667" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/activity_anggota_pesan_tampil.xml" value="0.19583333333333333" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/activity_confrim_anggota.xml" value="0.184375" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/activity_confrim_user.xml" value="0.19583333333333333" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/activity_detail_feature.xml" value="0.190625" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/activity_halaman_admin.xml" value="0.18854166666666666" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/activity_not_confirm_page.xml" value="0.184375" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/activity_profil_user.xml" value="0.2" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/activity_profile_admin.xml" value="0.18645833333333334" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/activity_profile_anggota.xml" value="0.184375" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/activity_read_user.xml" value="0.19583333333333333" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/activity_register_page.xml" value="0.190625" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/activity_user_page.xml" value="0.18854166666666666" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/activity_user_pesan.xml" value="0.25" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/activity_user_pesan_tampil.xml" value="0.18697916666666667" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/adapter_anggota.xml" value="0.184375" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/adapter_pesan_admin.xml" value="0.184375" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/adapter_pesan_anggota.xml" value="0.18229166666666666" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/adapter_pesan_anggota2.xml" value="0.18229166666666666" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/adapter_pesan_user.xml" value="0.46599131693198265" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/adapter_pesan_user2.xml" value="0.18229166666666666" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/adapter_tampilpesan_admin.xml" value="0.33" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/adapter_tampilpesan_anggota.xml" value="0.5" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/adapter_tampilpesan_groub.xml" value="0.33" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/adapter_tampilpesan_user.xml" value="0.18229166666666666" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/adapter_tampilpesanout_admin.xml" value="0.25" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/adapter_tampilpesanout_anggota.xml" value="0.5" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/adapter_tampilpesanout_groub.xml" value="0.33" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/adapter_tampilpesanout_user.xml" value="0.18229166666666666" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/adapter_user.xml" value="0.33" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/adapter_user_baru.xml" value="0.5" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/app_bar_halaman_admin.xml" value="0.18854166666666666" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/content_halaman_admin.xml" value="0.18854166666666666" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/dialog_perintah.xml" value="0.184375" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/fragment_blank.xml" value="0.18854166666666666" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/fragment_gallery.xml" value="0.18854166666666666" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/fragment_home.xml" value="0.18854166666666666" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/lokasi_admin.xml" value="0.18854166666666666" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/menu_drawer_admin.xml" value="0.18854166666666666" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/nav_head_admin.xml" value="0.18854166666666666" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/nav_header_halaman_admin.xml" value="0.18854166666666666" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/read_user.xml" value="0.184375" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/row_list_user.xml" value="0.25" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/set_tugas.xml" value="0.18229166666666666" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/layout/view_user.xml" value="0.33" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/menu/activity_main_drawer.xml" value="0.18854166666666666" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/menu/halaman_admin.xml" value="0.18854166666666666" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/menu/menu_admin.xml" value="0.18645833333333334" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/menu/menu_admin_atas.xml" value="0.19583333333333333" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/menu/menu_anggota.xml" value="0.184375" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/menu/menu_anggota_atas.xml" value="0.22" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/menu/menu_drawer_admin.xml" value="0.18854166666666666" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/menu/menu_user.xml" value="0.19583333333333333" />
+        <entry key="..\:/M.A.R.F.S/Projek/Benny Ady Prabowo/aplikasi/app2/app/src/main/res/menu/optionmenu_admin.xml" value="0.19583333333333333" />
+        <entry key="..\:/test/Android Project/app2/app/src/main/res/layout/activity_admin_pesan.xml" value="0.26856884057971014" />
+        <entry key="..\:/test/Android Project/app2/app/src/main/res/layout/activity_admin_pesan_groub.xml" value="0.26856884057971014" />
+        <entry key="..\:/test/Android Project/app2/app/src/main/res/layout/activity_admin_pesan_tampil.xml" value="0.26856884057971014" />
+        <entry key="..\:/test/Android Project/app2/app/src/main/res/layout/activity_anggota_pesan_groub.xml" value="0.26856884057971014" />
+        <entry key="..\:/test/Android Project/app2/app/src/main/res/layout/activity_main.xml" value="0.14270833333333333" />
+        <entry key="..\:/test/Android Project/app2/app/src/main/res/layout/activity_register_page.xml" value="0.27291666666666664" />
+        <entry key="..\:/test/Android Project/app2/app/src/main/res/menu/optionmenu_admin.xml" value="0.27291666666666664" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".detail_of_perintah">
+
+
+    <TextView
+        android:id="@+id/tengerPerintah"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="Detail Perintah"
+        android:textFontWeight="900"
+        android:textSize="@dimen/_14sdp" />
+
+    <EditText
+        android:id="@+id/editDetailPerintah"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tengerPerintah"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:height="@dimen/_30sdp"
+        android:inputType="text"
+        android:textSize="@dimen/_14sdp" />
+
+    <TextView
+        android:id="@+id/tengerListAnggota"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editDetailPerintah"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="Pilih Personil"
+        android:textFontWeight="900"
+        android:textSize="@dimen/_14sdp" />
+
+    <TextView
+        android:id="@+id/clearlist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/editDetailPerintah"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:text="Clear All"
+        android:textColor="@color/mapbox_blue"
+        android:textFontWeight="900"
+        android:textSize="@dimen/_14sdp" />
+
+    <ListView
+        android:id="@+id/lvListAnggota"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnOKPerintah"
+        android:layout_below="@id/tengerListAnggota"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:textSize="@dimen/_14sdp" />
+
+    <Button
+        android:id="@+id/btnOKPerintah"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_20sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:height="@dimen/_21sdp"
+        android:background="@drawable/rounded_mode"
+        android:text="Kirim Perintah" />
+
+
+</RelativeLayout>

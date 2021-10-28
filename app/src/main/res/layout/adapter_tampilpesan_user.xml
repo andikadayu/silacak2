@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_layoutUser"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/message_layoutUser"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:background="@color/mapbox_blue"
+        android:padding="10dp">
+
+        <TextView
+            android:id="@+id/message_textUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:maxWidth="250dp"
+            android:minWidth="120dp"
+            android:text="Hi"
+            android:textColor="@android:color/black"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/date_textUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/message_textUser"
+            android:layout_alignRight="@+id/message_textUser"
+            android:textColor="#b3b3b3"
+            android:textSize="11sp"
+            tools:text="11:34" />
+
+        <TextView
+            android:id="@+id/dateTUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/date_textUser"
+            android:layout_alignRight="@+id/message_textUser"
+            android:textColor="#b3b3b3"
+            android:textSize="11sp"
+            tools:text="18-10-2020" />
+
+    </RelativeLayout>
+</RelativeLayout>

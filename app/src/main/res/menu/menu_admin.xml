@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/homes"
+        android:icon="@drawable/ic_location_on_24"
+        android:title="Lokasi" />
+    <item
+        android:id="@+id/pesan"
+        android:icon="@drawable/ic_message"
+        android:title="Pesan" />
+    <item
+        android:id="@+id/newUser"
+        android:icon="@drawable/ic_new"
+        android:title="Pengguna Baru" />
+    <item
+        android:id="@+id/listuser"
+        android:icon="@drawable/ic_list"
+        android:title="List User" />
+    <item
+        android:id="@+id/listanggota"
+        android:icon="@drawable/ic_accessbility"
+        android:title="List Anggota" />
+
+</menu>

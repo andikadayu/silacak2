@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">SMART TRACKING BRIMOB PAPUA</string>
+    <string name="jelas">To use this app please allow the app to Access To your current device location</string>
+    <string name="backgrounds">Also,this App use location in background to show other user on map</string>
+    <string name="title_activity_halaman_admin">HalamanAdmin</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="access_token">pk.eyJ1IjoibW9oYW1hZGFyaWYiLCJhIjoiY2sxaXdndnJiMG1jYjNob2Nrc3RlenMxaiJ9.9kzVbPnv15BqCLV8NUWK9Q</string>
+</resources>

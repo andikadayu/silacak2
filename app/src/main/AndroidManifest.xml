@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.silacak2">
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission
+        android:name="android.permission.READ_PHONE_STATE"
+        android:maxSdkVersion="31" />
+    <uses-permission android:name="android.permission.READ_PHONE_NUMBERS" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_presisi"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Silacak2">
+        <activity
+            android:name=".adminLokasiAll"
+            android:exported="true" />
+        <activity
+            android:name=".anggotaPesanGroub"
+            android:exported="true" />
+        <activity
+            android:name=".adminPesanGroub"
+            android:exported="true" />
+        <activity
+            android:name=".userPesanTampil"
+            android:exported="true" />
+        <activity
+            android:name=".userPesan"
+            android:exported="true" />
+        <activity
+            android:name=".anggotaPesanTampil"
+            android:exported="true" />
+        <activity
+            android:name=".anggotaPesan"
+            android:exported="true" />
+        <activity
+            android:name=".adminPesanTampil"
+            android:exported="true" />
+        <activity
+            android:name=".adminPesan"
+            android:exported="true" />
+        <activity
+            android:name=".profilUser"
+            android:exported="true" />
+        <activity
+            android:name=".anggotaLokasi"
+            android:exported="true" />
+        <activity
+            android:name=".notConfirmPage"
+            android:exported="true" />
+        <activity
+            android:name=".ConfrimUser"
+            android:exported="true" />
+        <activity
+            android:name=".adminUserNew"
+            android:exported="true" />
+        <activity
+            android:name=".adminListAnggota"
+            android:exported="true" />
+        <activity
+            android:name=".ConfrimAnggota"
+            android:exported="true" />
+        <activity
+            android:name=".read_user"
+            android:exported="true" />
+        <activity
+            android:name=".adminListUser"
+            android:exported="true" />
+        <activity
+            android:name=".profileAnggota"
+            android:exported="true" />
+        <activity
+            android:name=".profileAdmin"
+            android:exported="true" />
+        <activity
+            android:name=".adminAbout"
+            android:exported="true" />
+        <activity
+            android:name=".detail_feature"
+            android:exported="true" />
+        <activity
+            android:name=".registerPage"
+            android:exported="true" />
+        <activity
+            android:name=".userPage"
+            android:exported="true" />
+        <activity
+            android:name=".anggotaPage"
+            android:exported="true" />
+        <activity
+            android:name=".adminPage"
+            android:exported="true" />
+        <activity
+            android:name=".adminListPerintah"
+            android:exported="false" />
+        <activity
+            android:name=".detail_of_perintah"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity> <!-- <service -->
+        <!-- android:name=".LocationService" -->
+        <!-- android:enabled="true" -->
+        <!-- android:exported="false" /> -->
+        <service
+            android:name=".LocationServer"
+            android:enabled="true"
+            android:exported="false" />
+    </application>
+
+</manifest>
