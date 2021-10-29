@@ -142,7 +142,7 @@ public class MainActivity extends AppCompatActivity {
                                 Constants.setRoleUser(sessionManager.getUserDetail().get(SessionManager.ROLE));
                                 if (role.equalsIgnoreCase("admin")) {
 //                                    Constants.setIdGps("0");
-                                    Intent intent = new Intent(MainActivity.this, adminPage.class);
+                                    Intent intent = new Intent(MainActivity.this, adminPageNew.class);
                                     startActivity(intent);
                                     finish();
                                 } else if (role.equalsIgnoreCase("anggota")) {

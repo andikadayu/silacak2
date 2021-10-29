@@ -62,13 +62,13 @@ public class NotificationBerkumpul extends Service {
         String channelid = "berkumpul_notification_channel";
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         Intent resultIntent = new Intent(getApplicationContext(),adminPageNew.class);
+        resultIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         resultIntent.putExtra("latitude",lat);
         resultIntent.putExtra("longitude",lng);
-
-        PendingIntent pendingIntent = PendingIntent.getActivities(
+        PendingIntent pendingIntent = PendingIntent.getActivity(
                 getApplicationContext(),
                 0,
-                new Intent[]{resultIntent},
+                resultIntent,
                 PendingIntent.FLAG_UPDATE_CURRENT
         );
 
@@ -81,8 +81,9 @@ public class NotificationBerkumpul extends Service {
         builder.setDefaults(NotificationCompat.DEFAULT_ALL);
         builder.setContentText("Terdapat "+jumlah+" anggota yang sedang berkumpul di "+lat+","+lng);
         builder.setAutoCancel(true);
-        builder.setPriority(NotificationCompat.PRIORITY_HIGH);
+        builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
         builder.setContentIntent(pendingIntent);
+        builder.addAction(R.drawable.direction_arrive,"Go To Map",pendingIntent);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             if (notificationManager != null && notificationManager.getNotificationChannel(channelid) == null) {
