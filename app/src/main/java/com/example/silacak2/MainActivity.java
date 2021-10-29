@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         if (sessionManager.isLoggedIn()) {
             String role = sessionManager.getUserDetail().get(SessionManager.ROLE);
             if (role.equalsIgnoreCase("admin")) {
-                Intent intent = new Intent(MainActivity.this, adminPage.class);
+                Intent intent = new Intent(MainActivity.this, adminPageNew.class);
                 startActivity(intent);
                 finish();
             } else if (role.equalsIgnoreCase("anggota")) {

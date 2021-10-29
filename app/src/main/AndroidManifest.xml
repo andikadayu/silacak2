@@ -20,6 +20,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Silacak2">
         <activity
+            android:name=".adminPageNew"
+            android:exported="false" />
+        <activity
             android:name=".adminLokasiAll"
             android:exported="true" />
         <activity
@@ -119,6 +122,10 @@
             android:name=".LocationServer"
             android:enabled="true"
             android:exported="false" />
+
+        <service android:name=".NotificationBerkumpul"
+            android:enabled="true"
+            android:exported="false"/>
     </application>
 
 </manifest>

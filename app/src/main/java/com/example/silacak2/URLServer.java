@@ -134,4 +134,8 @@ public class URLServer {
     public String setPerintahSelesai() {
         return server + "/setPerintahSelesai.php";
     }
+
+    public String getNotifBerkumpul(){
+        return  server + "/distance/notify.php";
+    }
 }
