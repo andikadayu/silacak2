@@ -42,49 +42,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="horizontal">
-
-                <LinearLayout
+                <com.google.android.material.bottomnavigation.BottomNavigationView
+                    android:id="@+id/userNav"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginRight="5dp"
-                    android:layout_marginBottom="5dp"
-                    android:layout_weight="1"
-                    android:background="@android:color/white"
-                    android:gravity="center_vertical"
-                    android:orientation="vertical"
-                    android:padding="10dp">
-
-                    <EditText
-                        android:id="@+id/tulisPesan"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@android:color/transparent"
-                        android:ems="10"
-                        android:hint="Tulis pesan"
-                        android:inputType="textPersonName"
-                        android:textSize="14sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/send"
-                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="5dp"
+                    android:layout_alignParentBottom="true"
                     android:layout_marginBottom="5dp"
-                    android:background="@color/mapbox_blue"
-                    android:orientation="vertical"
-                    android:padding="20dp">
-
-                    <ImageView
-                        android:id="@+id/imageView4"
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:adjustViewBounds="true"
-                        app:srcCompat="@drawable/ic_send"
-                        app:tint="@android:color/white"
-                        tools:ignore="VectorDrawableCompat" />
-                </LinearLayout>
+                    app:menu="@menu/menu_anggota" />
             </LinearLayout>
         </LinearLayout>
     </LinearLayout>
@@ -98,14 +62,6 @@
         android:paddingLeft="20dp"
         android:paddingRight="20dp">
 
-        <ImageView
-            android:id="@+id/back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            app:srcCompat="@drawable/ic_back"
-            app:tint="@android:color/white"
-            tools:ignore="VectorDrawableCompat" />
 
         <ImageView
             android:id="@+id/imageView3"
@@ -120,7 +76,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
-            android:text="Nama Kontak"
+            android:text="Admin"
             android:textColor="@android:color/white"
             android:textStyle="bold" />
     </LinearLayout>

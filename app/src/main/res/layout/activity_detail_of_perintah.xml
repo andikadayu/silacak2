@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/_10sdp"
         android:layout_marginTop="@dimen/_10sdp"
-        android:text="Detail Perintah"
+        android:text="Kirim Pesan"
         android:textFontWeight="900"
         android:textSize="@dimen/_14sdp" />
 
@@ -75,7 +75,7 @@
         android:layout_marginBottom="@dimen/_10sdp"
         android:height="@dimen/_21sdp"
         android:background="@drawable/rounded_mode"
-        android:text="Kirim Perintah" />
+        android:text="Kirim Pesan" />
 
 
 </RelativeLayout>

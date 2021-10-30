@@ -3,6 +3,7 @@ package com.example.silacak2;
 import android.app.AlertDialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -61,6 +62,11 @@ public class anggotaPage extends AppCompatActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_anggota_page);
 
+        sessionManager = new SessionManager(anggotaPage.this);
+        if (!sessionManager.isLoggedIn()) {
+            movetoLogin();
+        }
+
         Mapbox.getInstance(this, getString(R.string.access_token));
         mapView = findViewById(R.id.mapUser);
 
@@ -86,7 +92,7 @@ public class anggotaPage extends AppCompatActivity implements OnMapReadyCallback
                         overridePendingTransition(0, 0);
                         finish();
                     case R.id.pesanAnggota:
-                        startActivity(new Intent(anggotaPage.this, anggotaPesan.class));
+                        startActivity(new Intent(anggotaPage.this, anggotaPesanTampil.class));
                         overridePendingTransition(0, 0);
                         finish();
                         return true;
@@ -96,11 +102,6 @@ public class anggotaPage extends AppCompatActivity implements OnMapReadyCallback
                 return false;
             }
         });
-
-        sessionManager = new SessionManager(anggotaPage.this);
-        if (!sessionManager.isLoggedIn()) {
-            movetoLogin();
-        }
 
         Constants.setIdGps(sessionManager.getUserDetail().get(SessionManager.ID_GPS));
         startService(new Intent(getApplicationContext(), LocationServer.class));
@@ -370,6 +371,16 @@ public class anggotaPage extends AppCompatActivity implements OnMapReadyCallback
 
     private void showNotificationPesan(String title, String contents) {
         String channel_id = "my-pesan-notification";
+        String nama = sessionManager.getUserDetail().get(SessionManager.NAMA);
+        Intent resultIntent = new Intent(getApplicationContext(),anggotaPesanTampil.class);
+        resultIntent.putExtra("nama", nama);
+        resultIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        PendingIntent pendingIntent = PendingIntent.getActivity(
+                getApplicationContext(),
+                0,
+                resultIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT
+        );
 
         // Create Custom Notification
         NotificationCompat.Builder builder = new NotificationCompat.Builder(anggotaPage.this, channel_id);
@@ -378,6 +389,7 @@ public class anggotaPage extends AppCompatActivity implements OnMapReadyCallback
         builder.setDefaults(NotificationCompat.DEFAULT_ALL);
         builder.setSmallIcon(R.mipmap.ic_presisi);
         builder.setPriority(NotificationCompat.PRIORITY_HIGH);
+        builder.setContentIntent(pendingIntent);
         builder.setAutoCancel(true);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {

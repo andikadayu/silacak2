@@ -24,6 +24,7 @@ import android.widget.Toast;
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
+import com.example.silacak2.model.perintahModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mapbox.geojson.Point;
@@ -203,10 +204,25 @@ public class adminPageNew extends AppCompatActivity implements OnMapReadyCallbac
     public void onMapReady(MapboxMap mapboxMap) {
         map = mapboxMap;
         if(getIntent().hasExtra("latitude")){
-            map.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(getIntent().getDoubleExtra("latitude",-7.983908), getIntent().getDoubleExtra("longitude",112.621391)),13));
+            map.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(getIntent().getDoubleExtra("latitude",-7.983908), getIntent().getDoubleExtra("longitude",112.621391)),15));
+            fab.setVisibility(View.VISIBLE);
+            fab.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    openDialog();
+                }
+            });
+
         }else{
             map.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(-7.983908, 112.621391),13));
         }
+    }
+
+    private void openDialog() {
+        perintahModel perintahmodel = new perintahModel();
+        perintahmodel.setLatitudePerintah(getIntent().getDoubleExtra("latitude",0));
+        perintahmodel.setLongitudePerintah(getIntent().getDoubleExtra("longitude", 0));
+        startActivity(new Intent(this, detail_of_perintah.class));
     }
 
     private void addMarkers(LatLng point, String name, String role, String tugas, String detail) {
@@ -222,20 +238,20 @@ public class adminPageNew extends AppCompatActivity implements OnMapReadyCallbac
         markers.setPosition(point);
         markers.setIcon(icon);
         markers.setTitle("Nama : " + name);
-        String tugs;
-
-        if (!tugas.equals("null")) {
-            tugs = tugas;
-        } else {
-            tugs = "Tidak Ada Tugas";
-        }
-
-
-        if (!detail.equals("null")) {
-            markers.setSnippet("Tugas Sekarang:\n" + detail + "\n\nTugas Harian: \n" + tugs);
-        } else {
-            markers.setSnippet("Tugas Harian:\n" + tugs);
-        }
+//        String tugs;
+//
+//        if (!tugas.equals("null")) {
+//            tugs = tugas;
+//        } else {
+//            tugs = "Tidak Ada Tugas";
+//        }
+//
+//
+//        if (!detail.equals("null")) {
+//            markers.setSnippet("Tugas Sekarang:\n" + detail + "\n\nTugas Harian: \n" + tugs);
+//        } else {
+//            markers.setSnippet("Tugas Harian:\n" + tugs);
+//        }
     }
 
     private void clearAllMarkers() {

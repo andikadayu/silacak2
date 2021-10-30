@@ -24,7 +24,9 @@ import com.example.silacak2.model.perintahModel;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class detail_of_perintah extends AppCompatActivity {
 
@@ -95,8 +97,11 @@ public class detail_of_perintah extends AppCompatActivity {
     }
 
     private void initListViewData() {
-
+        String lat = String.valueOf(perintahModel.getLatitudePerintah());
+        String lng = String.valueOf(perintahModel.getLongitudePerintah());
         AndroidNetworking.post(serv.getAllListAnggota())
+                .addBodyParameter("latitude", lat)
+                .addBodyParameter("longitude", lng)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
@@ -108,7 +113,7 @@ public class detail_of_perintah extends AppCompatActivity {
                             for (int i = 0; i < ja.length(); i++) {
                                 JSONObject jo = ja.getJSONObject(i);
                                 String name = jo.getString("nama");
-                                String ids = jo.getString("id_lokasi");
+                                String ids = jo.getString("id_user");
 
                                 ListAnggotaModel userss = new ListAnggotaModel(name, ids);
 
@@ -119,7 +124,6 @@ public class detail_of_perintah extends AppCompatActivity {
                             arrayAdapter = new ArrayAdapter<ListAnggotaModel>(detail_of_perintah.this, android.R.layout.simple_list_item_checked, userList);
 
                             lvlistanggota.setAdapter(arrayAdapter);
-
 
                             lvlistanggota.setItemChecked(0,true);
                             for (int a = 0; a < userList.size(); a++) {
@@ -158,7 +162,8 @@ public class detail_of_perintah extends AppCompatActivity {
                 String ids = aah.toString();
                 String id_lokasi = ids.replace("[", "").replace("]", "");
             if (!detail_perintah.equals("") && !id_lokasi.isEmpty()) {
-                sendToServer(lat, lng, id_lokasi, detail_perintah);
+//                sendToServer(lat, lng, id_lokasi, detail_perintah);
+                sendToServer(id_lokasi, detail_perintah);
             } else {
 
                 Toast.makeText(detail_of_perintah.this, "Complete the form", Toast.LENGTH_SHORT).show();
@@ -170,12 +175,18 @@ public class detail_of_perintah extends AppCompatActivity {
         }
     }
 
-    private void sendToServer(String lat, String lng, String id_lokasi, String detail_perintah) {
-        AndroidNetworking.post(serv.setPerintahNew())
-                .addBodyParameter("lat", lat)
-                .addBodyParameter("lng", lng)
-                .addBodyParameter("id_lokasi", id_lokasi)
-                .addBodyParameter("detail_perintah", detail_perintah)
+    private void sendToServer(String id_user, String pesan) {
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat ftgl = new SimpleDateFormat("yyyy-MM-dd");
+        SimpleDateFormat fjam = new SimpleDateFormat("HH:mm:ss");
+        String tgl = ftgl.format(cal.getTime());
+        String jam = fjam.format(cal.getTime());
+        AndroidNetworking.post(serv.setPesan())
+                .addBodyParameter("id_user", id_user)
+                .addBodyParameter("pesan", pesan)
+                .addBodyParameter("tgl", tgl)
+                .addBodyParameter("jam", jam)
+                .addBodyParameter("action", "pesankirim")
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
@@ -183,9 +194,9 @@ public class detail_of_perintah extends AppCompatActivity {
                         try {
                             boolean status = response.getBoolean("status");
                             if (status) {
-                                Toast.makeText(detail_of_perintah.this, "Menambah Perintah Berhasil", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(detail_of_perintah.this, "Pesan Terkirim !!!", Toast.LENGTH_SHORT).show();
                                 perintahModel.clearPosPerintah();
-                                startActivity(new Intent(detail_of_perintah.this, adminPage.class));
+                                startActivity(new Intent(detail_of_perintah.this, adminPageNew.class));
                                 finish();
                             } else {
                                 Toast.makeText(detail_of_perintah.this, "Terjadi Kesalahan", Toast.LENGTH_SHORT).show();
@@ -201,4 +212,36 @@ public class detail_of_perintah extends AppCompatActivity {
                     }
                 });
     }
+
+//    private void sendToServer(String lat, String lng, String id_lokasi, String detail_perintah) {
+//        AndroidNetworking.post(serv.setPerintahNew())
+//                .addBodyParameter("lat", lat)
+//                .addBodyParameter("lng", lng)
+//                .addBodyParameter("id_lokasi", id_lokasi)
+//                .addBodyParameter("detail_perintah", detail_perintah)
+//                .build()
+//                .getAsJSONObject(new JSONObjectRequestListener() {
+//                    @Override
+//                    public void onResponse(JSONObject response) {
+//                        try {
+//                            boolean status = response.getBoolean("status");
+//                            if (status) {
+//                                Toast.makeText(detail_of_perintah.this, "Menambah Perintah Berhasil", Toast.LENGTH_SHORT).show();
+//                                perintahModel.clearPosPerintah();
+//                                startActivity(new Intent(detail_of_perintah.this, adminPageNew.class));
+//                                finish();
+//                            } else {
+//                                Toast.makeText(detail_of_perintah.this, "Terjadi Kesalahan", Toast.LENGTH_SHORT).show();
+//                            }
+//                        } catch (Exception e) {
+//                            e.printStackTrace();
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onError(ANError anError) {
+//                        anError.printStackTrace();
+//                    }
+//                });
+//    }
 }

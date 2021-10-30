@@ -107,7 +107,7 @@ public class adminPesanGroub extends AppCompatActivity {
                         finish();
                         return true;
                     case R.id.homes:
-                        startActivity(new Intent(adminPesanGroub.this, adminPage.class));
+                        startActivity(new Intent(adminPesanGroub.this, adminPageNew.class));
                         overridePendingTransition(0, 0);
                         finish();
                         return true;

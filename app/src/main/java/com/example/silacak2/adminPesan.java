@@ -90,7 +90,7 @@ public class adminPesan extends AppCompatActivity {
                         finish();
                         return true;
                     case R.id.homes:
-                        startActivity(new Intent(adminPesan.this, adminPage.class));
+                        startActivity(new Intent(adminPesan.this, adminPageNew.class));
                         overridePendingTransition(0, 0);
                         finish();
                         return true;

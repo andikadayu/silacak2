@@ -71,7 +71,7 @@ public class adminLokasiAll extends AppCompatActivity implements OnMapReadyCallb
             public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.homes:
-                        startActivity(new Intent(adminLokasiAll.this, adminPage.class));
+                        startActivity(new Intent(adminLokasiAll.this, adminPageNew.class));
                         overridePendingTransition(0, 0);
                         finish();
                         return true;

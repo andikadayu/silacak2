@@ -124,11 +124,15 @@ public class URLServer {
     }
 
     public String getAllListAnggota() {
-        return server + "/getListAllAnggota.php";
+        return server + "/distance/getListAnggota.php";
     }
 
     public String setPerintahNew() {
         return server + "/setPerintahNew.php";
+    }
+
+    public String setPesan() {
+        return server + "/setPesan.php";
     }
 
     public String setPerintahSelesai() {
@@ -137,5 +141,9 @@ public class URLServer {
 
     public String getNotifBerkumpul(){
         return  server + "/distance/notify.php";
+    }
+
+    public String setNotifAnggota(){
+        return  server + "/setNotifAnggota.php";
     }
 }

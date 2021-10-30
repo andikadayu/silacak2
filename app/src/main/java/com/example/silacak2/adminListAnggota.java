@@ -83,7 +83,7 @@ public class adminListAnggota extends AppCompatActivity {
                         finish();
                         return true;
                     case R.id.homes:
-                        startActivity(new Intent(adminListAnggota.this, adminPage.class));
+                        startActivity(new Intent(adminListAnggota.this, adminPageNew.class));
                         overridePendingTransition(0, 0);
                         finish();
                         return true;

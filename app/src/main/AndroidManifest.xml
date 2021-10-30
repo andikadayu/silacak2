@@ -98,9 +98,6 @@
             android:name=".anggotaPage"
             android:exported="true" />
         <activity
-            android:name=".adminPage"
-            android:exported="true" />
-        <activity
             android:name=".adminListPerintah"
             android:exported="false" />
         <activity

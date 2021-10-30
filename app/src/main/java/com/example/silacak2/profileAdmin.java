@@ -37,7 +37,7 @@ public class profileAdmin extends AppCompatActivity {
 //                    case R.id.profiles:
 //                        return true;
                     case R.id.homes:
-                        startActivity(new Intent(profileAdmin.this, adminPage.class));
+                        startActivity(new Intent(profileAdmin.this, adminPageNew.class));
                         overridePendingTransition(0, 0);
                         finish();
                         return true;

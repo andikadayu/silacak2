@@ -81,7 +81,7 @@ public class anggotaLokasi extends AppCompatActivity implements OnMapReadyCallba
                         overridePendingTransition(0, 0);
                         finish();
                     case R.id.pesanAnggota:
-                        startActivity(new Intent(anggotaLokasi.this, anggotaPesan.class));
+                        startActivity(new Intent(anggotaLokasi.this, anggotaPesanTampil.class));
                         overridePendingTransition(0, 0);
                         finish();
                         return true;
