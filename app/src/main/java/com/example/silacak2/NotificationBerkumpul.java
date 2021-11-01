@@ -96,6 +96,8 @@ public class NotificationBerkumpul extends Service {
                 notificationManager.createNotificationChannel(notificationChannel);
             }
         }
+
+
         notificationManager.notify(count, builder.build());
         count++;
     }

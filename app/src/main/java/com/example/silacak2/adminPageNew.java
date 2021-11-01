@@ -129,9 +129,6 @@ public class adminPageNew extends AppCompatActivity implements OnMapReadyCallbac
         mapView.getMapAsync(this);
 
         getAllData();
-
-        Toast.makeText(adminPageNew.this, "Ini New Version", Toast.LENGTH_SHORT).show();
-
     }
 
     @Override
@@ -238,20 +235,20 @@ public class adminPageNew extends AppCompatActivity implements OnMapReadyCallbac
         markers.setPosition(point);
         markers.setIcon(icon);
         markers.setTitle("Nama : " + name);
-//        String tugs;
-//
-//        if (!tugas.equals("null")) {
-//            tugs = tugas;
-//        } else {
-//            tugs = "Tidak Ada Tugas";
-//        }
-//
-//
-//        if (!detail.equals("null")) {
-//            markers.setSnippet("Tugas Sekarang:\n" + detail + "\n\nTugas Harian: \n" + tugs);
-//        } else {
-//            markers.setSnippet("Tugas Harian:\n" + tugs);
-//        }
+        String tugs;
+        if (!tugas.equals("null")) {
+            tugs = tugas;
+        } else {
+            tugs = "Tidak Ada Tugas";
+        }
+
+
+        if (!detail.equals("null")) {
+            markers.setSnippet("Tugas Sekarang:\n" + detail + "\n\nTugas Harian: \n" + tugs);
+        } else {
+            markers.setSnippet("Tugas Harian:\n" + tugs);
+
+        }
     }
 
     private void clearAllMarkers() {
@@ -269,6 +266,7 @@ public class adminPageNew extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     protected void onResume() {
         super.onResume();
+        mapView.onResume();
         handler.postDelayed(runnable = new Runnable() {
             @Override
             public void run() {
@@ -277,7 +275,6 @@ public class adminPageNew extends AppCompatActivity implements OnMapReadyCallbac
                 getAllData();
             }
         }, delay);
-        mapView.onResume();
     }
 
     @Override

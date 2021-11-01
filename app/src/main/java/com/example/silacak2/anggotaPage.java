@@ -512,6 +512,7 @@ public class anggotaPage extends AppCompatActivity implements OnMapReadyCallback
     protected void onPause() {
         super.onPause();
         handler.removeCallbacks(runnable);
+        handler.removeCallbacks(runnables);
         mapView.onPause();
     }
 
