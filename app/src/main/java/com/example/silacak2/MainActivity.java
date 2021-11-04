@@ -27,8 +27,8 @@ import org.json.JSONObject;
 public class MainActivity extends AppCompatActivity {
     private static final int REQUEST_CODE_LOCATION_PERMISSION = 1;
     EditText txtUsername, txtPassword, txtOTP;
-    Button buttonLogin, buttonRegister, buttonOTP;
-    TextView tvLink, tvLinks;
+    Button buttonLogin, buttonOTP;
+    TextView tvLink, tvLinks, buttonRegister;
     ProgressBar progBar;
     URLServer serv;
     String api_keys = "wco5wkEiVpZumrSru50vZ1imk6knrgMh";
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         txtPassword = (EditText) findViewById(R.id.textPassword);
         txtOTP = (EditText) findViewById(R.id.textOTP);
         buttonLogin = (Button) findViewById(R.id.buttonLogin);
-        buttonRegister = (Button) findViewById(R.id.buttonRegister);
+        buttonRegister = (TextView) findViewById(R.id.buttonRegister);
         buttonOTP = (Button) findViewById(R.id.btnSendOTP);
         progBar = (ProgressBar) findViewById(R.id.progBar);
         serv = new URLServer();

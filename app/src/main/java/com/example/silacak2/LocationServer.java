@@ -121,7 +121,6 @@ public class LocationServer extends Service {
                 .requestLocationUpdates(locationRequest, locationCallback, Looper.getMainLooper());
 
         startForeground(Constants.LOCATION_SERVICE_ID, builder.build());
-
     }
 
     private void stopLocationService() {

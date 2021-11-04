@@ -51,7 +51,7 @@ public class adminPageNew extends AppCompatActivity implements OnMapReadyCallbac
     URLServer serv;
     Handler handler = new Handler();
     Runnable runnable;
-    int delay = 5000;
+    int delay = 3000;
     FloatingActionButton fab;
     EditText ePerintah;
     boolean isRequest = true;
@@ -128,10 +128,7 @@ public class adminPageNew extends AppCompatActivity implements OnMapReadyCallbac
 
         mapView.getMapAsync(this);
 
-        getAllData();
-
-        Toast.makeText(adminPageNew.this, "Ini New Version", Toast.LENGTH_SHORT).show();
-
+        //getAllData();
     }
 
     @Override
@@ -145,9 +142,9 @@ public class adminPageNew extends AppCompatActivity implements OnMapReadyCallbac
         if (item.getItemId() == R.id.oProfileAdmin) {
             startActivity(new Intent(this, profileAdmin.class));
         }
-        if (item.getItemId() == R.id.oListPerintah) {
-            startActivity(new Intent(this, adminListPerintah.class));
-        }
+//        if (item.getItemId() == R.id.oListPerintah) {
+//            startActivity(new Intent(this, adminListPerintah.class));
+//        }
         if (item.getItemId() == R.id.oLokasiUser) {
             startActivity(new Intent(this, adminLokasiAll.class));
         }
@@ -199,10 +196,10 @@ public class adminPageNew extends AppCompatActivity implements OnMapReadyCallbac
                 });
     }
 
-
     @Override
     public void onMapReady(MapboxMap mapboxMap) {
         map = mapboxMap;
+        getAllData();
         if(getIntent().hasExtra("latitude")){
             map.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(getIntent().getDoubleExtra("latitude",-7.983908), getIntent().getDoubleExtra("longitude",112.621391)),15));
             fab.setVisibility(View.VISIBLE);
@@ -238,6 +235,7 @@ public class adminPageNew extends AppCompatActivity implements OnMapReadyCallbac
         markers.setPosition(point);
         markers.setIcon(icon);
         markers.setTitle("Nama : " + name);
+
 //        String tugs;
 //
 //        if (!tugas.equals("null")) {
@@ -256,7 +254,7 @@ public class adminPageNew extends AppCompatActivity implements OnMapReadyCallbac
 
     private void clearAllMarkers() {
         if (markers != null) {
-            map.removeMarker(markers);
+            map.clear();
         }
     }
 
@@ -273,8 +271,8 @@ public class adminPageNew extends AppCompatActivity implements OnMapReadyCallbac
             @Override
             public void run() {
                 handler.postDelayed(runnable, delay);
-                clearAllMarkers();
                 getAllData();
+                clearAllMarkers();
             }
         }, delay);
         mapView.onResume();

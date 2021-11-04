@@ -1,17 +1,21 @@
 package com.example.silacak2;
 
+import android.app.AlarmManager;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.media.RingtoneManager;
 import android.os.Build;
-import android.os.Handler;
 import android.os.IBinder;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
@@ -20,51 +24,72 @@ import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class NotificationBerkumpul extends Service {
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
-    URLServer serv = new URLServer();
-    private static int count = 0;
-    Handler handler = new Handler();
-    Runnable runnable;
+public class AppReceiver extends Service {
+    private static final int NOTIF_ID = 1;
+    private static final String NOTIF_CHANNEL_ID = "Channel_Id";
+    SessionManager sessionManager;
+
+    @Nullable
+    @Override
+    public IBinder onBind(Intent intent) {
+        throw new UnsupportedOperationException("Not Yet Implemented");
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId){
+        // do your jobs here
+        getBerkumpul();
+        return super.onStartCommand(intent, flags, startId);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
 
     private void getBerkumpul(){
-        AndroidNetworking.post(serv.getNotifBerkumpul())
+        sessionManager = new SessionManager(AppReceiver.this);
+        AndroidNetworking.post("https://silacak.pt-ckit.com/getNotifikasiNew.php")
+                .addBodyParameter("purpose", "notify")
+                .addBodyParameter("id_user", sessionManager.getUserDetail().get(SessionManager.ID_USER))
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
                         try{
                             boolean status = response.getBoolean("status");
-                            if(status){
-                                JSONArray ja = response.getJSONArray("notify");
-                                for (int i=0;i<ja.length();i++){
-                                    JSONObject jo = ja.getJSONObject(i);
-                                    String jumlah = jo.getString("jumlah");
-                                    double lat = Double.parseDouble(jo.getString("latitude"));
-                                    double lng = Double.parseDouble(jo.getString("longitude"));
-                                    create_notif(jumlah,lat,lng);
-                                }
+                            if (status) {
+                                create_notif();
+                            } else {
+                                return;
+
                             }
                         }catch (Exception e){
                             e.printStackTrace();
+                            Toast.makeText(getApplicationContext(), "salah API", Toast.LENGTH_SHORT).show();
                         }
                     }
 
                     @Override
                     public void onError(ANError anError) {
                         anError.printStackTrace();
+                        Toast.makeText(getApplicationContext(), "error", Toast.LENGTH_SHORT).show();
                     }
                 });
     }
 
-    private void create_notif(String jumlah,double lat,double lng){
+    private void create_notif(){
 
         String channelid = "berkumpul_notification_channel";
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        Intent resultIntent = new Intent(getApplicationContext(),adminPageNew.class);
+        String nama = sessionManager.getUserDetail().get(SessionManager.NAMA);
+        Intent resultIntent = new Intent(getApplicationContext(),anggotaPesanTampil.class);
+        resultIntent.putExtra("nama", nama);
         resultIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        resultIntent.putExtra("latitude",lat);
-        resultIntent.putExtra("longitude",lng);
         PendingIntent pendingIntent = PendingIntent.getActivity(
                 getApplicationContext(),
                 0,
@@ -77,13 +102,13 @@ public class NotificationBerkumpul extends Service {
                 channelid
         );
         builder.setSmallIcon(R.mipmap.ic_presisi);
-        builder.setContentTitle("Warning");
+        builder.setContentTitle("Pesan Baru");
         builder.setDefaults(NotificationCompat.DEFAULT_ALL);
-        builder.setContentText("Terdapat "+jumlah+" anggota yang sedang berkumpul di "+lat+","+lng);
+        builder.setContentText("Ada Pesan Dari Admin");
         builder.setAutoCancel(true);
         builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
         builder.setContentIntent(pendingIntent);
-        builder.addAction(R.drawable.direction_arrive,"Go To Map",pendingIntent);
+        builder.addAction(R.drawable.direction_arrive,"Pesan",pendingIntent);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             if (notificationManager != null && notificationManager.getNotificationChannel(channelid) == null) {
@@ -96,26 +121,6 @@ public class NotificationBerkumpul extends Service {
                 notificationManager.createNotificationChannel(notificationChannel);
             }
         }
-        notificationManager.notify(count, builder.build());
-        count++;
+        notificationManager.notify(123, builder.build());
     }
-
-
-    @Nullable
-    @Override
-    public IBinder onBind(Intent intent) {
-        throw new UnsupportedOperationException("Not Yet Implemented");
-    }
-
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
-        getBerkumpul();
-        return super.onStartCommand(intent, flags, startId);
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-    }
-
 }

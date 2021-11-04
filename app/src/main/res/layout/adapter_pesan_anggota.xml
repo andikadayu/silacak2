@@ -23,7 +23,7 @@
             android:layout_alignParentTop="true"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
-            android:src="@drawable/map" />
+            android:src="@drawable/policeman" />
 
         <TextView
             android:id="@+id/namaAnggotaPesanAnggota"
