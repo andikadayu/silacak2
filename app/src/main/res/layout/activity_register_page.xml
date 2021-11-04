@@ -6,124 +6,119 @@
     android:gravity="center"
     tools:context=".registerPage">
 
+    <TextView
+        android:id="@+id/nameAppss"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/_30sdp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:gravity="center"
+        android:text="@string/app_name"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_23sdp"
+        android:textStyle="bold" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@color/black"
+        android:layout_below="@id/nameAppss">
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearcamera"
+        android:layout_marginBottom="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginTop="10dp"
         android:orientation="vertical">
 
-        <LinearLayout
-            android:id="@+id/give_us_a_review_landmine_main_layout"
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/map"
+            android:layout_marginBottom="10dp"
+            android:id="@+id/imgregister"
+            android:layout_gravity="center" />
+
+        <EditText
+            android:id="@+id/rg_nama"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/edit_text_style"
+            android:drawableLeft="@drawable/ic_person"
+            android:drawablePadding="@dimen/_5sdp"
+            android:singleLine="true"
+            android:hint="Nama"
+            android:inputType="textEmailAddress"
+            android:textSize="@dimen/_10sdp"/>
+
+        <EditText
+            android:layout_marginTop="8dp"
+            android:id="@+id/rg_email"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:drawableLeft="@drawable/ic_email"
+            android:drawablePadding="5dp"
+            android:singleLine="true"
+            android:hint="Email"
+            android:background="@drawable/edit_text_style"
+            android:inputType="textEmailAddress"
+            android:textSize="@dimen/_10sdp"/>
+
+        <EditText
+            android:layout_marginTop="8dp"
+            android:id="@+id/rg_username"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:drawableLeft="@drawable/ic_person"
+            android:drawablePadding="5dp"
+            android:singleLine="true"
+            android:hint="Username"
+            android:background="@drawable/edit_text_style"
+            android:inputType="text"
+            android:textSize="@dimen/_10sdp"/>
+
+        <EditText
+            android:layout_marginTop="8dp"
+            android:id="@+id/rg_password"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:drawableLeft="@drawable/ic_key"
+            android:drawablePadding="5dp"
+            android:singleLine="true"
+            android:hint="Password"
+            android:background="@drawable/edit_text_style"
+            android:inputType="textPassword"
+            android:textSize="@dimen/_10sdp"/>
+
+        <Button
+            android:layout_width="190dp"
+            android:layout_height="50dp"
+            android:id="@+id/buttonDaftar"
+            android:background="@drawable/edit_text_style"
+            android:text="Daftar"
+            android:layout_gravity="center"
+            android:textAllCaps="false"
+            android:textColor="@android:color/white"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:id="@+id/log"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/_10sdp"
             android:gravity="center"
-            android:orientation="vertical">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/nameAppss"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="@dimen/_2sdp"
-                    android:fontFamily="sans-serif-condensed-medium"
-                    android:gravity="center"
-                    android:text="Daftar Akun"
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_23sdp"
-                    android:textStyle="bold" />
-
-                <EditText
-                    android:id="@+id/rg_nama"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_40sdp"
-                    android:layout_below="@id/nameAppss"
-                    android:layout_marginLeft="@dimen/_40sdp"
-                    android:layout_marginTop="@dimen/_15sdp"
-                    android:layout_marginRight="@dimen/_40sdp"
-                    android:background="@drawable/rounded_mode"
-                    android:ems="10"
-                    android:gravity="center"
-                    android:hint="Nama"
-                    android:inputType="text"
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_13sdp" />
-
-                <EditText
-                    android:id="@+id/rg_email"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_40sdp"
-                    android:layout_below="@id/rg_nama"
-                    android:layout_marginLeft="@dimen/_40sdp"
-                    android:layout_marginTop="@dimen/_15sdp"
-                    android:layout_marginRight="@dimen/_40sdp"
-                    android:background="@drawable/rounded_mode"
-                    android:ems="10"
-                    android:gravity="center"
-                    android:hint="Email"
-                    android:inputType="text"
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_13sdp" />
-
-                <EditText
-                    android:id="@+id/rg_username"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_40sdp"
-                    android:layout_below="@id/rg_email"
-                    android:layout_marginLeft="@dimen/_40sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_marginRight="@dimen/_40sdp"
-                    android:background="@drawable/rounded_mode"
-                    android:ems="10"
-                    android:gravity="center"
-                    android:hint="Username"
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_13sdp" />
-
-                <EditText
-                    android:id="@+id/rg_password"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_40sdp"
-                    android:layout_below="@id/rg_username"
-                    android:layout_marginLeft="@dimen/_40sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_marginRight="@dimen/_40sdp"
-                    android:background="@drawable/rounded_mode"
-                    android:ems="10"
-                    android:gravity="center"
-                    android:hint="Password"
-                    android:inputType="textPassword"
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_13sdp" />
-
-                <Button
-                    android:id="@+id/buttonDaftar"
-                    android:layout_width="144dp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/rg_password"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginLeft="@dimen/_40sdp"
-                    android:layout_marginTop="30dp"
-                    android:layout_marginRight="@dimen/_40sdp"
-                    android:background="@drawable/rounded_mode"
-                    android:gravity="center"
-                    android:text="Daftar"
-                    android:textSize="@dimen/_15sdp" />
-
-
-            </RelativeLayout>
-
-        </LinearLayout>
+            android:text="Login ?"
+            android:textColor="#6495ED"
+            android:textSize="@dimen/_15sdp" />
 
     </LinearLayout>
-
+    </androidx.cardview.widget.CardView>
 </RelativeLayout>

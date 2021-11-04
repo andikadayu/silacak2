@@ -4,123 +4,108 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    tools:context=".MainActivity">
+    tools:context=".ConfrimUser">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/nameAppss"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:gravity="center"
+        android:text="Data Pengguna Baru"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_23sdp"
+        android:textStyle="bold"
+        android:layout_marginBottom="@dimen/_30sdp"/>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="@color/black"
+        android:layout_below="@id/nameAppss">
 
         <LinearLayout
-            android:id="@+id/give_us_a_review_landmine_main_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:id="@+id/linearcamera"
+            android:layout_marginBottom="25dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginTop="10dp"
             android:orientation="vertical">
 
-            <RelativeLayout
+            <ImageView
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:src="@drawable/user1"
+                android:layout_marginBottom="10dp"
+                android:id="@+id/imgregister"
+                android:layout_gravity="center" />
+
+            <EditText
+                android:id="@+id/cfrm_idBaru"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:layout_height="45dp"
+                android:background="@drawable/edit_text_style"
+                android:drawableLeft="@drawable/ic_123"
+                android:drawablePadding="@dimen/_5sdp"
+                android:singleLine="true"
+                android:inputType="text"
+                android:hint="ID"
+                android:textSize="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp" />
 
-                <TextView
-                    android:id="@+id/nameAppss"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="@dimen/_2sdp"
-                    android:fontFamily="sans-serif-condensed-medium"
-                    android:gravity="center"
-                    android:text="Data Pengguna Baru"
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_23sdp"
-                    android:textStyle="bold" />
+            <EditText
+                android:id="@+id/cfrm_namaBaru"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="@drawable/edit_text_style"
+                android:drawableLeft="@drawable/ic_person"
+                android:drawablePadding="@dimen/_5sdp"
+                android:singleLine="true"
+                android:inputType="text"
+                android:hint="Nama"
+                android:textSize="@dimen/_13sdp"
+                android:layout_marginBottom="@dimen/_10sdp" />
 
-                <EditText
-                    android:id="@+id/cfrm_idBaru"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_40sdp"
-                    android:layout_below="@id/nameAppss"
-                    android:layout_marginLeft="@dimen/_40sdp"
-                    android:layout_marginTop="@dimen/_15sdp"
-                    android:layout_marginRight="@dimen/_40sdp"
-                    android:background="@drawable/rounded_mode"
-                    android:ems="10"
-                    android:gravity="center"
-                    android:hint="ID"
-                    android:inputType="text"
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_13sdp" />
-
-                <EditText
-                    android:id="@+id/cfrm_namaBaru"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_40sdp"
-                    android:layout_below="@id/cfrm_idBaru"
-                    android:layout_marginLeft="@dimen/_40sdp"
-                    android:layout_marginTop="@dimen/_15sdp"
-                    android:layout_marginRight="@dimen/_40sdp"
-                    android:background="@drawable/rounded_mode"
-                    android:ems="10"
-                    android:gravity="center"
-                    android:hint="Nama"
-                    android:inputType="text"
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_13sdp" />
-
-                <EditText
-                    android:id="@+id/cfrm_emailBaru"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_40sdp"
-                    android:layout_below="@id/cfrm_namaBaru"
-                    android:layout_marginLeft="@dimen/_40sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_marginRight="@dimen/_40sdp"
-                    android:background="@drawable/rounded_mode"
-                    android:ems="10"
-                    android:gravity="center"
-                    android:hint="E-Mail"
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_13sdp" />
-
-                <Button
-                    android:id="@+id/buttonConfirmBaru"
-                    android:layout_width="161dp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/cfrm_emailBaru"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginLeft="@dimen/_40sdp"
-                    android:layout_marginTop="53dp"
-                    android:layout_marginRight="@dimen/_40sdp"
-                    android:background="@drawable/rounded_mode"
-                    android:gravity="center"
-                    android:text="Confirm Anggota"
-                    android:textSize="@dimen/_15sdp" />
-
-                <Button
-                    android:id="@+id/buttonBukaBlokir"
-                    android:layout_width="161dp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/buttonConfirmBaru"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginLeft="@dimen/_40sdp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginRight="@dimen/_40sdp"
-                    android:background="@drawable/rounded_mode"
-                    android:gravity="center"
-                    android:text="Buka Blokir"
-                    android:textSize="@dimen/_15sdp" />
-
-
-            </RelativeLayout>
+            <EditText
+                android:id="@+id/cfrm_emailBaru"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="@drawable/edit_text_style"
+                android:drawableLeft="@drawable/ic_email"
+                android:drawablePadding="@dimen/_5sdp"
+                android:singleLine="true"
+                android:inputType="text"
+                android:hint="Email"
+                android:textSize="@dimen/_13sdp"
+                android:layout_marginBottom="@dimen/_10sdp" />
+            <Button
+                android:layout_width="190dp"
+                android:layout_height="50dp"
+                android:id="@+id/buttonConfirmBaru"
+                android:background="@drawable/edit_text_style"
+                android:text="Konfirmasi Akun"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"/>
+            <Button
+                android:layout_width="190dp"
+                android:layout_height="50dp"
+                android:id="@+id/buttonBukaBlokir"
+                android:background="@drawable/edit_text_style"
+                android:text="Buka Blokir"
+                android:layout_gravity="center"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:layout_marginTop="10dp"/>
 
         </LinearLayout>
 
-    </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
 </RelativeLayout>

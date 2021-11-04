@@ -120,9 +120,9 @@ public class adminLokasiAll extends AppCompatActivity implements OnMapReadyCallb
         if (item.getItemId() == R.id.oProfileAdmin) {
             startActivity(new Intent(this, profileAdmin.class));
         }
-        if (item.getItemId() == R.id.oListPerintah) {
-            startActivity(new Intent(this, adminListPerintah.class));
-        }
+//        if (item.getItemId() == R.id.oListPerintah) {
+//            startActivity(new Intent(this, adminListPerintah.class));
+//        }
         if (item.getItemId() == R.id.oLokasiUser) {
             startActivity(new Intent(this, adminLokasiAll.class));
         }
@@ -204,7 +204,7 @@ public class adminLokasiAll extends AppCompatActivity implements OnMapReadyCallb
 
     private void clearAllMarkers() {
         if (markers != null) {
-            map.removeMarker(markers);
+            map.clear();
         }
     }
 

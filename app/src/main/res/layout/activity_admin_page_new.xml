@@ -33,7 +33,6 @@
                     mapbox:mapbox_cameraZoom="12"
                     mapbox:mapbox_styleUrl="mapbox://styles/mapbox/streets-v10" />
 
-
                 <com.google.android.material.bottomnavigation.BottomNavigationView
                     android:id="@+id/adminNav"
                     android:layout_width="match_parent"
@@ -48,7 +47,8 @@
                     android:layout_above="@id/adminNav"
                     android:layout_alignParentEnd="true"
                     android:layout_marginBottom="@dimen/_10sdp"
-                    android:src="@drawable/ic_assigment" />
+                    android:src="@drawable/ic_message"
+                    android:backgroundTint="@color/purple_500"/>
             </RelativeLayout>
 
         </LinearLayout>

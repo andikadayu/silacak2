@@ -93,9 +93,9 @@ public class profileAdmin extends AppCompatActivity {
         if (item.getItemId()==R.id.oProfileAdmin){
             startActivity(new Intent(this, profileAdmin.class));
         }
-        if(item.getItemId()==R.id.oListPerintah){
-            startActivity(new Intent(this,adminListPerintah.class));
-        }
+//        if(item.getItemId()==R.id.oListPerintah){
+//            startActivity(new Intent(this,adminListPerintah.class));
+//        }
         if(item.getItemId()==R.id.oLokasiUser){
             startActivity(new Intent(this,adminLokasiAll.class));
         }

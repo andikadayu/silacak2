@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
@@ -17,10 +18,12 @@ import com.androidnetworking.interfaces.JSONObjectRequestListener;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 public class registerPage extends AppCompatActivity {
     EditText txtnama_daftar, txtemail_daftar, txtusername_daftar, txtpassword_daftar;
     Button buttonDaftar;
+    TextView txtAppname;
     private ProgressDialog progressDialog;
     URLServer serv;
     @Override
@@ -33,6 +36,15 @@ public class registerPage extends AppCompatActivity {
         txtusername_daftar = (EditText) findViewById(R.id.rg_username);
         txtpassword_daftar = (EditText) findViewById(R.id.rg_password);
         buttonDaftar = (Button) findViewById(R.id.buttonDaftar);
+        txtAppname = (TextView) findViewById(R.id.log);
+
+        txtAppname.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        });
 
         buttonDaftar.setOnClickListener(new View.OnClickListener() {
             @Override

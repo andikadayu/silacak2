@@ -6,11 +6,11 @@
         android:icon="@drawable/ic_location_on_24"
         android:title="Lokasi Semua User"
         app:showAsAction="never" />
-    <item
-        android:id="@+id/oListPerintah"
-        android:icon="@drawable/ic_baseline_assignment_24"
-        android:title="List Perintah"
-        app:showAsAction="never" />
+<!--    <item-->
+<!--        android:id="@+id/oListPerintah"-->
+<!--        android:icon="@drawable/ic_baseline_assignment_24"-->
+<!--        android:title="List Perintah"-->
+<!--        app:showAsAction="never" />-->
     <item
         android:id="@+id/oProfileAdmin"
         android:icon="@drawable/ic_person"

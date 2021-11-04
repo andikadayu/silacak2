@@ -99,24 +99,6 @@ public class adminPesan extends AppCompatActivity {
             }
         });
 
-        BottomNavigationView bottomNavigationView2 = findViewById(R.id.adminNav2);
-        bottomNavigationView2.setSelectedItemId(R.id.person);
-        bottomNavigationView2.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.person:
-                        return true;
-                    case R.id.groub:
-                        startActivity(new Intent(adminPesan.this, adminPesanGroub.class));
-                        overridePendingTransition(0, 0);
-                        finish();
-                        return true;
-                }
-                return false;
-            }
-        });
-
         sessionManager = new SessionManager(adminPesan.this);
         if (!sessionManager.isLoggedIn()) {
             movetoLogin();
@@ -134,9 +116,9 @@ public class adminPesan extends AppCompatActivity {
         if (item.getItemId() == R.id.oProfileAdmin) {
             startActivity(new Intent(this, profileAdmin.class));
         }
-        if (item.getItemId() == R.id.oListPerintah) {
-            startActivity(new Intent(this, adminListPerintah.class));
-        }
+//        if (item.getItemId() == R.id.oListPerintah) {
+//            startActivity(new Intent(this, adminListPerintah.class));
+//        }
         if (item.getItemId() == R.id.oLokasiUser) {
             startActivity(new Intent(this, adminLokasiAll.class));
         }

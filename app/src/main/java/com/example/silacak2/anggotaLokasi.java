@@ -49,7 +49,7 @@ public class anggotaLokasi extends AppCompatActivity implements OnMapReadyCallba
     URLServer serv;
     Handler handler = new Handler();
     Runnable runnable;
-    int delay = 7500;
+    int delay = 3000;
     private MapView mapView;
     private MapboxMap map;
     private Marker markers;
@@ -165,24 +165,25 @@ public class anggotaLokasi extends AppCompatActivity implements OnMapReadyCallba
         markers = map.addMarker(new MarkerOptions().position(point));
         markers.setIcon(icon);
         markers.setTitle("Nama : "+name);
-        String tugs;
+        //String tugs;
 
-        if(!tugas.equals("null")){
-            tugs = tugas;
-        }else{
-            tugs = "Tidak Ada Tugas";
-        }
-
-
-        if(!detail.equals("null")){
-            markers.setSnippet("Tugas Sekarang:\n"+detail+"\n\nTugas Harian: \n"+tugs);
-        }else{
-            markers.setSnippet("Tugas Harian:\n"+tugs);
-        }
+//        if(!tugas.equals("null")){
+//            tugs = tugas;
+//        }else{
+//            tugs = "Tidak Ada Tugas";
+//        }
+//
+//
+//        if(!detail.equals("null")){
+//            markers.setSnippet("Tugas Sekarang:\n"+detail+"\n\nTugas Harian: \n"+tugs);
+//        }else{
+//            markers.setSnippet("Tugas Harian:\n"+tugs);
+//        }
     }
     private void clearAllMarkers() {
         if (markers != null) {
-            map.removeMarker(markers);
+            //map.removeMarker(markers);
+            map.clear();
         }
     }
 

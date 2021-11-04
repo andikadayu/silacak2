@@ -15,6 +15,8 @@ public class SessionManager {
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
 
+    AppReceiver appReceivers;
+
     public SessionManager(Context context) {
         this.contexts = context;
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(contexts);

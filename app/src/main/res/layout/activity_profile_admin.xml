@@ -30,27 +30,15 @@
                     android:layout_alignParentBottom="true"
                     app:menu="@menu/menu_admin" />
 
-                <TextView
-                    android:id="@+id/nameMenu"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="@dimen/_14sdp"
-                    android:gravity="center"
-                    android:text="PROFILE"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_28sdp"
-                    android:textStyle="italic" />
 
                 <ImageView
                     android:id="@+id/imgviews"
                     android:layout_width="@dimen/_150sdp"
                     android:layout_height="@dimen/_150sdp"
-                    android:layout_below="@id/nameMenu"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="@dimen/_85sdp"
-                    android:background="@mipmap/ic_launcher"
-                    android:gravity="center" />
+                    android:layout_marginTop="@dimen/_150sdp"
+                    android:gravity="center"
+                    android:src="@drawable/user1" />
 
 
                 <TextView
