@@ -48,7 +48,7 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginBottom="@dimen/_10sdp"
                     android:src="@drawable/ic_message"
-                    android:backgroundTint="@color/purple_500"/>
+                    android:backgroundTint="@color/green"/>
             </RelativeLayout>
 
         </LinearLayout>

@@ -51,7 +51,7 @@
                     android:layout_alignParentEnd="true"
                     android:layout_marginRight="@dimen/_10sdp"
                     android:layout_marginBottom="@dimen/_10sdp"
-                    android:backgroundTint="@color/purple_500"
+                    android:backgroundTint="@color/green"
                     android:src="@drawable/ic_baseline_assignment_24" />
 
 
