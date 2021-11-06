@@ -25,6 +25,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="Hapus"
+                android:drawableLeft="@drawable/ic_baseline_delete_24"
                 android:textColor="@color/white" />
         </LinearLayout>
 
@@ -41,6 +42,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="Confirm Akun"
+                android:drawableLeft="@drawable/ic_baseline_fact_check_24"
                 android:textColor="@color/white" />
         </LinearLayout>
 
