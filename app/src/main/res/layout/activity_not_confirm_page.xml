@@ -36,12 +36,12 @@
 
                 <ImageView
                     android:id="@+id/imgviews"
-                    android:layout_width="@dimen/_150sdp"
-                    android:layout_height="@dimen/_150sdp"
+                    android:layout_width="@dimen/_100sdp"
+                    android:layout_height="@dimen/_100sdp"
                     android:layout_below="@id/nameMenu"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginTop="@dimen/_85sdp"
-                    android:background="@mipmap/ic_launcher"
+                    android:layout_marginTop="@dimen/_60sdp"
+                    android:background="@mipmap/ic_presisi"
                     android:gravity="center" />
 
 
@@ -67,7 +67,9 @@
                     android:layout_marginTop="@dimen/_25sdp"
                     android:background="@drawable/rounded_mode"
                     android:gravity="center"
-                    android:text="Logout" />
+                    android:text="Logout"
+                    android:drawableLeft="@drawable/ic_baseline_power_settings_new_24"
+                    android:drawablePadding="5dp"/>
 
             </RelativeLayout>
 

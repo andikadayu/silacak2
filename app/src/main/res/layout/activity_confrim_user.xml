@@ -84,7 +84,7 @@
                 android:textSize="@dimen/_13sdp"
                 android:layout_marginBottom="@dimen/_10sdp" />
             <Button
-                android:layout_width="190dp"
+                android:layout_width="220dp"
                 android:layout_height="50dp"
                 android:id="@+id/buttonConfirmBaru"
                 android:background="@drawable/edit_text_style"
@@ -92,9 +92,11 @@
                 android:textAllCaps="false"
                 android:textColor="@android:color/white"
                 android:layout_marginTop="10dp"
+                android:drawableLeft="@drawable/ic_baseline_fact_check_24"
+                android:drawablePadding="5dp"
                 android:layout_gravity="center"/>
             <Button
-                android:layout_width="190dp"
+                android:layout_width="220dp"
                 android:layout_height="50dp"
                 android:id="@+id/buttonBukaBlokir"
                 android:background="@drawable/edit_text_style"
@@ -102,6 +104,8 @@
                 android:layout_gravity="center"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white"
+                android:drawableLeft="@drawable/ic_baseline_lock_open_24"
+                android:drawablePadding="5dp"
                 android:layout_marginTop="10dp"/>
 
         </LinearLayout>

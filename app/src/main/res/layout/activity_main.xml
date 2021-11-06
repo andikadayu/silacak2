@@ -12,14 +12,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/_30sdp"
         android:fontFamily="sans-serif-condensed-medium"
         android:gravity="center"
         android:text="@string/app_name"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="@dimen/_23sdp"
-        android:textStyle="bold"
-        android:layout_marginBottom="@dimen/_30sdp"/>
+        android:textStyle="bold" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -49,89 +49,93 @@
 
                 <ImageView
                     android:id="@+id/logo"
-                    android:layout_width="@dimen/_150sdp"
-                    android:layout_height="@dimen/_150sdp"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
                     android:layout_alignParentTop="true"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:gravity="center"
-                    android:src="@drawable/map" />
+                    android:src="@mipmap/ic_presisi" />
 
                 <EditText
                     android:id="@+id/textUsername"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_40sdp"
+                    android:layout_height="@dimen/_28sdp"
                     android:layout_below="@id/logo"
-                    android:layout_marginLeft="@dimen/_40sdp"
+                    android:layout_marginLeft="@dimen/_20sdp"
                     android:layout_marginTop="@dimen/_15sdp"
-                    android:layout_marginRight="@dimen/_40sdp"
-                    android:background="@drawable/rounded_mode"
-                    android:ems="10"
-                    android:gravity="center"
+                    android:layout_marginRight="@dimen/_20sdp"
+                    android:background="@drawable/edit_text_style"
+                    android:drawableLeft="@drawable/ic_person"
+                    android:drawablePadding="5dp"
                     android:hint="Username"
                     android:inputType="text"
-                    android:textAlignment="center"
+                    android:singleLine="true"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/_13sdp" />
+                    android:textSize="@dimen/_7sdp" />
 
                 <EditText
                     android:id="@+id/textPassword"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_40sdp"
+                    android:layout_height="@dimen/_28sdp"
                     android:layout_below="@id/textUsername"
-                    android:layout_marginLeft="@dimen/_40sdp"
+                    android:layout_marginLeft="@dimen/_20sdp"
                     android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_marginRight="@dimen/_40sdp"
-                    android:background="@drawable/rounded_mode"
-                    android:ems="10"
-                    android:gravity="center"
+                    android:layout_marginRight="@dimen/_20sdp"
+                    android:background="@drawable/edit_text_style"
+                    android:drawableLeft="@drawable/ic_key"
+                    android:drawablePadding="5dp"
                     android:hint="Password"
                     android:inputType="textPassword"
-                    android:textAlignment="center"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/_13sdp" />
+                    android:textSize="@dimen/_7sdp" />
 
                 <EditText
                     android:id="@+id/textOTP"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/_40sdp"
+                    android:layout_height="@dimen/_28sdp"
                     android:layout_below="@id/textPassword"
-                    android:layout_marginLeft="@dimen/_40sdp"
+                    android:layout_marginLeft="@dimen/_20sdp"
                     android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_marginRight="@dimen/_120sdp"
-                    android:background="@drawable/rounded_mode"
+                    android:layout_marginRight="@dimen/_105sdp"
+                    android:background="@drawable/edit_text_style"
                     android:ems="10"
-                    android:gravity="center"
-                    android:hint="OTP"
+                    android:hint="Kode OTP"
+                    android:drawableLeft="@drawable/ic_baseline_otp_lock"
+                    android:drawablePadding="5dp"
                     android:inputType="number"
-                    android:textAlignment="center"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/_13sdp" />
+                    android:textSize="@dimen/_7sdp" />
 
                 <Button
                     android:id="@+id/btnSendOTP"
                     android:layout_width="wrap_content"
-                    android:layout_height="@dimen/_40sdp"
+                    android:layout_height="@dimen/_28sdp"
                     android:layout_below="@id/textPassword"
                     android:layout_alignParentEnd="true"
                     android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_marginRight="@dimen/_40sdp"
-                    android:inputType="number"
+                    android:layout_marginRight="@dimen/_20sdp"
+                    android:drawableLeft="@drawable/ic_email"
+                    android:drawablePadding="5dp"
+                    android:background="@drawable/edit_text_style"
                     android:text="Send" />
 
                 <Button
                     android:id="@+id/buttonLogin"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_width="190dp"
+                    android:layout_height="50dp"
                     android:layout_below="@id/textOTP"
                     android:layout_centerHorizontal="true"
-                    android:layout_marginLeft="@dimen/_40sdp"
+                    android:layout_marginLeft="@dimen/_20sdp"
                     android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_marginRight="@dimen/_40sdp"
-                    android:background="@drawable/rounded_mode"
-                    android:gravity="center"
+                    android:layout_marginRight="@dimen/_20sdp"
+                    android:background="@drawable/edit_text_style"
+                    android:drawableLeft="@drawable/ic_baseline_login_24"
+                    android:drawablePadding="5dp"
                     android:text="Login"
-                    android:textSize="@dimen/_15sdp" />
+                    android:textAlignment="center"
+                    android:textAllCaps="false"
+                    android:textSize="@dimen/_12sdp" />
 
                 <TextView
                     android:id="@+id/buttonRegister"

@@ -40,7 +40,7 @@
         <ImageView
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/map"
+            android:src="@mipmap/ic_presisi"
             android:layout_marginBottom="10dp"
             android:id="@+id/imgregister"
             android:layout_gravity="center" />
@@ -48,53 +48,53 @@
         <EditText
             android:id="@+id/rg_nama"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="@dimen/_28sdp"
             android:background="@drawable/edit_text_style"
             android:drawableLeft="@drawable/ic_person"
             android:drawablePadding="@dimen/_5sdp"
             android:singleLine="true"
             android:hint="Nama"
             android:inputType="textEmailAddress"
-            android:textSize="@dimen/_10sdp"/>
+            android:textSize="@dimen/_7sdp"/>
 
         <EditText
             android:layout_marginTop="8dp"
             android:id="@+id/rg_email"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="@dimen/_28sdp"
             android:drawableLeft="@drawable/ic_email"
             android:drawablePadding="5dp"
             android:singleLine="true"
             android:hint="Email"
             android:background="@drawable/edit_text_style"
             android:inputType="textEmailAddress"
-            android:textSize="@dimen/_10sdp"/>
+            android:textSize="@dimen/_7sdp"/>
 
         <EditText
             android:layout_marginTop="8dp"
             android:id="@+id/rg_username"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="@dimen/_28sdp"
             android:drawableLeft="@drawable/ic_person"
             android:drawablePadding="5dp"
             android:singleLine="true"
             android:hint="Username"
             android:background="@drawable/edit_text_style"
             android:inputType="text"
-            android:textSize="@dimen/_10sdp"/>
+            android:textSize="@dimen/_7sdp"/>
 
         <EditText
             android:layout_marginTop="8dp"
             android:id="@+id/rg_password"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="@dimen/_28sdp"
             android:drawableLeft="@drawable/ic_key"
             android:drawablePadding="5dp"
             android:singleLine="true"
             android:hint="Password"
             android:background="@drawable/edit_text_style"
             android:inputType="textPassword"
-            android:textSize="@dimen/_10sdp"/>
+            android:textSize="@dimen/_7sdp"/>
 
         <Button
             android:layout_width="190dp"
@@ -105,7 +105,9 @@
             android:layout_gravity="center"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:drawableLeft="@drawable/ic_baseline_app_registration_24"
+            />
 
         <TextView
             android:id="@+id/log"

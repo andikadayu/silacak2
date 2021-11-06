@@ -60,6 +60,8 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="@dimen/_25sdp"
                     android:background="@drawable/rounded_mode"
+                    android:drawableLeft="@drawable/ic_baseline_power_settings_new_24"
+                    android:drawablePadding="5dp"
                     android:gravity="center"
                     android:text="Logout" />
 
