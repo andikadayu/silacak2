@@ -14,6 +14,7 @@
         android:layout_marginTop="@dimen/_10sdp"
         android:text="Kirim Pesan Blast"
         android:textFontWeight="900"
+        android:textColor="@color/black"
         android:textSize="@dimen/_14sdp" />
 
     <EditText
@@ -26,7 +27,9 @@
         android:layout_marginRight="@dimen/_10sdp"
         android:height="@dimen/_30sdp"
         android:inputType="text"
-        android:textSize="@dimen/_14sdp" />
+        android:textColor="@color/black"
+        android:textSize="@dimen/_14sdp"
+        android:fontFamily="sans-serif-condensed-medium"/>
 
     <TextView
         android:id="@+id/tengerListAnggota"
@@ -37,6 +40,7 @@
         android:layout_marginTop="@dimen/_10sdp"
         android:text="Pilih Personil"
         android:textFontWeight="900"
+        android:textColor="@color/black"
         android:textSize="@dimen/_14sdp" />
 
     <TextView
@@ -69,6 +73,7 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
         android:layout_marginLeft="@dimen/_20sdp"
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginRight="@dimen/_20sdp"
@@ -78,7 +83,7 @@
         android:drawableLeft="@drawable/ic_send"
         android:drawablePadding="5dp"
         android:text="Kirim Pesan Blast"
-        android:layout_centerHorizontal="true"/>
+        android:fontFamily="sans-serif-condensed-medium"/>
 
 
 </RelativeLayout>

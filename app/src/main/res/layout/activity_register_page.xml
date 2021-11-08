@@ -17,112 +17,123 @@
         android:text="@string/app_name"
         android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="@dimen/_23sdp"
+        android:textSize="@dimen/_18sdp"
         android:textStyle="bold" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="@color/black"
-        android:layout_below="@id/nameAppss">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/linearcamera"
-        android:layout_marginBottom="25dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"
+        android:layout_below="@id/nameAppss"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
-        android:orientation="vertical">
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@color/black">
 
-        <ImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:src="@mipmap/ic_presisi"
-            android:layout_marginBottom="10dp"
-            android:id="@+id/imgregister"
-            android:layout_gravity="center" />
-
-        <EditText
-            android:id="@+id/rg_nama"
+        <LinearLayout
+            android:id="@+id/linearcamera"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/_38sdp"
-            android:background="@drawable/edit_text_style"
-            android:drawableLeft="@drawable/ic_person"
-            android:drawablePadding="@dimen/_5sdp"
-            android:singleLine="true"
-            android:hint="Nama"
-            android:inputType="textEmailAddress"
-            android:textSize="@dimen/_13sdp"/>
-
-        <EditText
-            android:layout_marginTop="8dp"
-            android:id="@+id/rg_email"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_38sdp"
-            android:drawableLeft="@drawable/ic_email"
-            android:drawablePadding="5dp"
-            android:singleLine="true"
-            android:hint="Email"
-            android:background="@drawable/edit_text_style"
-            android:inputType="textEmailAddress"
-            android:textSize="@dimen/_13sdp"/>
-
-        <EditText
-            android:layout_marginTop="8dp"
-            android:id="@+id/rg_username"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_38sdp"
-            android:drawableLeft="@drawable/ic_person"
-            android:drawablePadding="5dp"
-            android:singleLine="true"
-            android:hint="Username"
-            android:background="@drawable/edit_text_style"
-            android:inputType="text"
-            android:textSize="@dimen/_13sdp"/>
-
-        <EditText
-            android:layout_marginTop="8dp"
-            android:id="@+id/rg_password"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/_38sdp"
-            android:drawableLeft="@drawable/ic_key"
-            android:drawablePadding="5dp"
-            android:singleLine="true"
-            android:hint="Password"
-            android:background="@drawable/edit_text_style"
-            android:inputType="textPassword"
-            android:textSize="@dimen/_13sdp"/>
-
-        <Button
-            android:layout_width="190dp"
-            android:layout_height="50dp"
-            android:id="@+id/buttonDaftar"
-            android:background="@drawable/edit_text_style"
-            android:text="Daftar"
-            android:layout_gravity="center"
-            android:textColor="@android:color/white"
-            android:layout_marginTop="10dp"
-            android:textAlignment="center"
-            android:textAllCaps="false"
-            android:textSize="@dimen/_13sdp"
-            android:drawableLeft="@drawable/ic_baseline_app_registration_24"
-            />
-
-        <TextView
-            android:id="@+id/log"
-            android:layout_width="@dimen/_100sdp"
             android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-condensed-medium"
-            android:layout_gravity="center"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:gravity="center"
-            android:text="Login ?"
-            android:textColor="#6495ED"
-            android:textSize="@dimen/_15sdp" />
+            android:layout_marginLeft="25dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginBottom="25dp"
+            android:orientation="vertical">
 
-    </LinearLayout>
+            <ImageView
+                android:id="@+id/imgregister"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"
+                android:src="@mipmap/ic_presisi" />
+
+            <EditText
+                android:id="@+id/rg_nama"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_38sdp"
+                android:background="@drawable/edit_text_style"
+                android:drawableLeft="@drawable/ic_person"
+                android:drawablePadding="@dimen/_5sdp"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:hint="Nama"
+                android:inputType="textEmailAddress"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <EditText
+                android:id="@+id/rg_email"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_38sdp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/edit_text_style"
+                android:drawableLeft="@drawable/ic_email"
+                android:drawablePadding="5dp"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <EditText
+                android:id="@+id/rg_username"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_38sdp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/edit_text_style"
+                android:drawableLeft="@drawable/ic_person"
+                android:drawablePadding="5dp"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:hint="Username"
+                android:inputType="text"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <EditText
+                android:id="@+id/rg_password"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_38sdp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/edit_text_style"
+                android:drawableLeft="@drawable/ic_key"
+                android:drawablePadding="5dp"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:hint="Password"
+                android:inputType="textPassword"
+                android:singleLine="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp" />
+
+            <Button
+                android:id="@+id/buttonDaftar"
+                android:layout_width="190dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/edit_text_style"
+                android:drawableLeft="@drawable/ic_baseline_app_registration_24"
+                android:text="Daftar"
+                android:textAlignment="center"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/_13sdp"
+                android:fontFamily="sans-serif-condensed-medium"/>
+
+            <TextView
+                android:id="@+id/log"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:gravity="center"
+                android:text="Login ?"
+                android:textColor="#6495ED"
+                android:textSize="@dimen/_15sdp" />
+
+        </LinearLayout>
     </androidx.cardview.widget.CardView>
 </RelativeLayout>
