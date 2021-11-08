@@ -165,20 +165,20 @@ public class anggotaLokasi extends AppCompatActivity implements OnMapReadyCallba
         markers = map.addMarker(new MarkerOptions().position(point));
         markers.setIcon(icon);
         markers.setTitle("Nama : "+name);
-        //String tugs;
+        String tugs;
 
-//        if(!tugas.equals("null")){
-//            tugs = tugas;
-//        }else{
-//            tugs = "Tidak Ada Tugas";
-//        }
-//
-//
-//        if(!detail.equals("null")){
-//            markers.setSnippet("Tugas Sekarang:\n"+detail+"\n\nTugas Harian: \n"+tugs);
-//        }else{
-//            markers.setSnippet("Tugas Harian:\n"+tugs);
-//        }
+        if(!tugas.equals("null")){
+            tugs = tugas;
+        }else{
+            tugs = "Tidak Ada Tugas";
+        }
+
+
+        if(!detail.equals("null")){
+            markers.setSnippet("Tugas Sekarang:\n"+detail+"\n\nTugas Harian: \n"+tugs);
+        }else{
+            markers.setSnippet("Tugas Harian:\n"+tugs);
+        }
     }
     private void clearAllMarkers() {
         if (markers != null) {

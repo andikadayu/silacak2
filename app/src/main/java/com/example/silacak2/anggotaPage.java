@@ -119,7 +119,6 @@ public class anggotaPage extends AppCompatActivity implements OnMapReadyCallback
         mapView.getMapAsync(this);
 
         //Set Tugas Button
-        fabTugas.setVisibility(View.GONE);
         fabTugas.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -308,20 +307,20 @@ public class anggotaPage extends AppCompatActivity implements OnMapReadyCallback
         markers.setPosition(point);
         markers.setIcon(icon);
         markers.setTitle("Nama : " + name);
-//        String tugs;
-//
-//        if (!tugas.equals("null")) {
-//            tugs = tugas;
-//        } else {
-//            tugs = "Tidak Ada Tugas";
-//        }
-//
-//
-//        if (!detail.equals("null")) {
-//            markers.setSnippet("Tugas Sekarang:\n" + detail + "\n\nTugas Harian: \n" + tugs);
-//        } else {
-//            markers.setSnippet("Tugas Harian:\n" + tugs);
-//        }
+        String tugs;
+
+        if (!tugas.equals("null")) {
+            tugs = tugas;
+        } else {
+            tugs = "Tidak Ada Tugas";
+        }
+
+
+        if (!detail.equals("null")) {
+            markers.setSnippet("Tugas Sekarang:\n" + detail + "\n\nTugas Harian: \n" + tugs);
+        } else {
+            markers.setSnippet("Tugas Harian:\n" + tugs);
+        }
 
 
     }

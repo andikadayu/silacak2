@@ -236,20 +236,20 @@ public class adminPageNew extends AppCompatActivity implements OnMapReadyCallbac
         markers.setIcon(icon);
         markers.setTitle("Nama : " + name);
 
-//        String tugs;
-//
-//        if (!tugas.equals("null")) {
-//            tugs = tugas;
-//        } else {
-//            tugs = "Tidak Ada Tugas";
-//        }
-//
-//
-//        if (!detail.equals("null")) {
-//            markers.setSnippet("Tugas Sekarang:\n" + detail + "\n\nTugas Harian: \n" + tugs);
-//        } else {
-//            markers.setSnippet("Tugas Harian:\n" + tugs);
-//        }
+        String tugs;
+
+        if (!tugas.equals("null")) {
+            tugs = tugas;
+        } else {
+            tugs = "Tidak Ada Tugas";
+        }
+
+
+        if (!detail.equals("null")) {
+            markers.setSnippet("Tugas Sekarang:\n" + detail + "\n\nTugas Harian: \n" + tugs);
+        } else {
+            markers.setSnippet("Tugas Harian:\n" + tugs);
+        }
     }
 
     private void clearAllMarkers() {
