@@ -384,8 +384,9 @@ public class anggotaPage extends AppCompatActivity implements OnMapReadyCallback
     private void showNotificationPesan(String title, String contents) {
         String channel_id = "my-pesan-notification";
         String nama = sessionManager.getUserDetail().get(SessionManager.NAMA);
-        Intent resultIntent = new Intent(getApplicationContext(),anggotaPesanTampil.class);
-        resultIntent.putExtra("nama", nama);
+        Intent resultIntent = new Intent(getApplicationContext(),anggotaPesan.class);
+        resultIntent.putExtra("nama_user", nama);
+
         resultIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(
                 getApplicationContext(),

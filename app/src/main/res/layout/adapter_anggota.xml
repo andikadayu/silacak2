@@ -42,7 +42,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center"
                 android:text="Buka Blokir"
-                android:drawableLeft="@drawable/ic_baseline_delete_24"
+                android:drawableLeft="@drawable/ic_baseline_lock_open_24"
                 android:textColor="@color/white" />
         </LinearLayout>
 
