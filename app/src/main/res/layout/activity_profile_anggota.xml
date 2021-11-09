@@ -36,8 +36,8 @@
                     android:layout_height="@dimen/_150sdp"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="@dimen/_150sdp"
-                    android:src="@drawable/user1"
-                    android:gravity="center" />
+                    android:gravity="center"
+                    android:src="@drawable/user1" />
 
 
                 <TextView

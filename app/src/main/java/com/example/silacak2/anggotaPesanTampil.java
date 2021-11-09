@@ -61,20 +61,21 @@ public class anggotaPesanTampil extends AppCompatActivity {
 
         edTulisPesan = (EditText) findViewById(R.id.tulisPesan);
         txnamaKontak = (TextView) findViewById(R.id.namaKontak);
-        //imgBack = (ImageView) findViewById(R.id.back);
-        //lSend = (LinearLayout) findViewById(R.id.send);
+        imgBack = (ImageView) findViewById(R.id.back);
+        lSend = (LinearLayout) findViewById(R.id.send);
 
-//        Intent data = getIntent();
-//        namaanggotaPesan = data.getStringExtra("nama");
-//
-//        txnamaKontak.setText(namaanggotaPesan);
-//        imgBack.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(anggotaPesanTampil.this, anggotaPage.class);
-//                startActivity(intent);
-//            }
-//        });
+        Intent data = getIntent();
+        namaanggotaPesan = data.getStringExtra("nama_user");
+        idanggotaPesan = data.getStringExtra("id_user");
+
+        txnamaKontak.setText(namaanggotaPesan);
+        imgBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(anggotaPesanTampil.this, anggotaPesan.class);
+                startActivity(intent);
+            }
+        });
 
         recyclerView = findViewById(R.id.chat_recycler_viewAnggota);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
@@ -84,49 +85,21 @@ public class anggotaPesanTampil extends AppCompatActivity {
 
         adapter = new adapterTampilPesanAnggota(this, dataTampilPesanModelAnggotas);
         recyclerView.setAdapter(adapter);
+        idPengirim = sessionManager.getUserDetail().get(SessionManager.ID_USER);
 
         loadData();
 
-//        lSend.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                kirimPesan();
-//                Intent intent = new Intent(anggotaPesanTampil.this, anggotaPesanTampil.class);
-//                intent.putExtra("id_user", idanggotaPesan);
-//                intent.putExtra("nama_user", namaanggotaPesan);
-//                startActivity(intent);
-//            }
-//        });
-
-        idPengirim = sessionManager.getUserDetail().get(SessionManager.ID_USER);
-
-        BottomNavigationView bottomNavigationView = findViewById(R.id.userNav);
-        bottomNavigationView.setSelectedItemId(R.id.pesanAnggota);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+        lSend.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.profilesAnggota:
-                        startActivity(new Intent(anggotaPesanTampil.this, profileAnggota.class));
-                        overridePendingTransition(0, 0);
-                        finish();
-                        return true;
-                    case R.id.lokasiAnggota:
-                        startActivity(new Intent(anggotaPesanTampil.this, anggotaLokasi.class));
-                        overridePendingTransition(0, 0);
-                        finish();
-                        return true;
-                    case R.id.homesAnggota:
-                        startActivity(new Intent(anggotaPesanTampil.this, anggotaPage.class));
-                        overridePendingTransition(0, 0);
-                        finish();
-                        return true;
-                    case R.id.pesanAnggota:
-                        return true;
-                }
-                return false;
+            public void onClick(View v) {
+                kirimPesan();
+                Intent intent = new Intent(anggotaPesanTampil.this, anggotaPesanTampil.class);
+                intent.putExtra("id_user", idanggotaPesan);
+                intent.putExtra("nama_user", namaanggotaPesan);
+                startActivity(intent);
             }
         });
+
     }
 
     private void movetoLogin() {
@@ -141,7 +114,7 @@ public class anggotaPesanTampil extends AppCompatActivity {
         //String id_pengirim = Constants.getIdUser();
         String id_penerima = data.getStringExtra("id_user");
         AndroidNetworking.post(serv.getPesanTampilAnggota())
-                .addBodyParameter("id_pengirim", "1")
+                .addBodyParameter("id_pengirim", id_penerima)
                 .addBodyParameter("id_penerima", sessionManager.getUserDetail().get(SessionManager.ID_USER))
                 .addBodyParameter("action", "tampil")
                 .setPriority(Priority.MEDIUM)
@@ -180,40 +153,40 @@ public class anggotaPesanTampil extends AppCompatActivity {
 
     }
 
-//    private void kirimPesan(){
-//        String pesan = edTulisPesan.getText().toString();
-//
-//        Intent data = getIntent();
-//        String id_penerima = data.getStringExtra("id_user");
-//        AndroidNetworking.post("https://silacak.pt-ckit.com/kirimPesan.php")
-//                .addBodyParameter("id_pengirim", sessionManager.getUserDetail().get(SessionManager.ID_USER))
-//                .addBodyParameter("id_penerima", id_penerima)
-//                .addBodyParameter("pesan", pesan)
-//                .addBodyParameter("action", "pesan")
-//                .build()
-//                .getAsJSONObject(new JSONObjectRequestListener() {
-//                    @Override
-//                    public void onResponse(JSONObject response) {
-//                        try {
-//                            if (response.getString("pesan").equals("sukses")){
-//                                Toast.makeText(getApplicationContext(), "Pesan Terkirim", Toast.LENGTH_LONG).show();
-//                            } else {
-//                                Toast.makeText(getApplicationContext(), "Pesan Gagal Terkirim", Toast.LENGTH_LONG).show();
-//                            }
-//                        } catch (Exception e) {
-//                            e.printStackTrace();
-//                            Toast.makeText(anggotaPesanTampil.this, "Gagal, Permintaan Waktu Habis", Toast.LENGTH_SHORT).show();
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onError(ANError anError) {
-//                        anError.printStackTrace();
-//                        Toast.makeText(anggotaPesanTampil.this, "Error Time Out", Toast.LENGTH_SHORT).show();
-//                    }
-//                });
-//
-//    }
+    private void kirimPesan(){
+        String pesan = edTulisPesan.getText().toString();
+
+        Intent data = getIntent();
+        String id_penerima = data.getStringExtra("id_user");
+        AndroidNetworking.post("https://silacak.pt-ckit.com/kirimPesan.php")
+                .addBodyParameter("id_pengirim", sessionManager.getUserDetail().get(SessionManager.ID_USER))
+                .addBodyParameter("id_penerima", id_penerima)
+                .addBodyParameter("pesan", pesan)
+                .addBodyParameter("action", "pesan")
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            if (response.getString("pesan").equals("sukses")){
+                                Toast.makeText(getApplicationContext(), "Pesan Terkirim", Toast.LENGTH_LONG).show();
+                            } else {
+                                Toast.makeText(getApplicationContext(), "Pesan Gagal Terkirim", Toast.LENGTH_LONG).show();
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            Toast.makeText(anggotaPesanTampil.this, "Gagal, Permintaan Waktu Habis", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+                        anError.printStackTrace();
+                        Toast.makeText(anggotaPesanTampil.this, "Error Time Out", Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+    }
 
 
 

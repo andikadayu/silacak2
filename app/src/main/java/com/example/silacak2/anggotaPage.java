@@ -101,7 +101,7 @@ public class anggotaPage extends AppCompatActivity implements OnMapReadyCallback
                         overridePendingTransition(0, 0);
                         finish();
                     case R.id.pesanAnggota:
-                        startActivity(new Intent(anggotaPage.this, anggotaPesanTampil.class));
+                        startActivity(new Intent(anggotaPage.this, anggotaPesan.class));
                         overridePendingTransition(0, 0);
                         finish();
                         return true;
@@ -126,7 +126,7 @@ public class anggotaPage extends AppCompatActivity implements OnMapReadyCallback
             }
         });
 
-        //namaPengirim();
+        namaPengirim();
 
 
 
@@ -381,104 +381,104 @@ public class anggotaPage extends AppCompatActivity implements OnMapReadyCallback
 //                });
 //    }
 
-//    private void showNotificationPesan(String title, String contents) {
-//        String channel_id = "my-pesan-notification";
-//        String nama = sessionManager.getUserDetail().get(SessionManager.NAMA);
-//        Intent resultIntent = new Intent(getApplicationContext(),anggotaPesanTampil.class);
-//        resultIntent.putExtra("nama", nama);
-//        resultIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-//        PendingIntent pendingIntent = PendingIntent.getActivity(
-//                getApplicationContext(),
-//                0,
-//                resultIntent,
-//                PendingIntent.FLAG_UPDATE_CURRENT
-//        );
+    private void showNotificationPesan(String title, String contents) {
+        String channel_id = "my-pesan-notification";
+        String nama = sessionManager.getUserDetail().get(SessionManager.NAMA);
+        Intent resultIntent = new Intent(getApplicationContext(),anggotaPesanTampil.class);
+        resultIntent.putExtra("nama", nama);
+        resultIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        PendingIntent pendingIntent = PendingIntent.getActivity(
+                getApplicationContext(),
+                0,
+                resultIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT
+        );
+
+        // Create Custom Notification
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(anggotaPage.this, channel_id);
+        builder.setContentTitle(title);
+        builder.setContentText(contents);
+        builder.setDefaults(NotificationCompat.DEFAULT_ALL);
+        builder.setSmallIcon(R.mipmap.ic_presisi);
+        builder.setPriority(NotificationCompat.PRIORITY_HIGH);
+        builder.setContentIntent(pendingIntent);
+        builder.setAutoCancel(true);
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel channel = new NotificationChannel(channel_id, "my-pesan-request", NotificationManager.IMPORTANCE_HIGH);
+            NotificationManager manager = getSystemService(NotificationManager.class);
+            manager.createNotificationChannel(channel);
+        }
+
+        NotificationManagerCompat managerCompat = NotificationManagerCompat.from(anggotaPage.this);
+        managerCompat.notify(22, builder.build());
+
+        notifyServer2("done", "kosong");
+    }
 //
-//        // Create Custom Notification
-//        NotificationCompat.Builder builder = new NotificationCompat.Builder(anggotaPage.this, channel_id);
-//        builder.setContentTitle(title);
-//        builder.setContentText(contents);
-//        builder.setDefaults(NotificationCompat.DEFAULT_ALL);
-//        builder.setSmallIcon(R.mipmap.ic_presisi);
-//        builder.setPriority(NotificationCompat.PRIORITY_HIGH);
-//        builder.setContentIntent(pendingIntent);
-//        builder.setAutoCancel(true);
+    private void namaPengirim() {
+        String id = sessionManager.getUserDetail().get(SessionManager.ID_USER);
+        AndroidNetworking.post("https://silacak.pt-ckit.com/getNama.php")
+                .addBodyParameter("api_key", api_keys)
+                .addBodyParameter("id_user", id)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            Boolean status = response.getBoolean("status");
+                            String first;
+                            if (status) {
+                                JSONArray ja = response.getJSONArray("result");
+                                for (int i = 0; i < ja.length(); i++) {
+                                    JSONObject jo = ja.getJSONObject(i);
+                                    String pesan = "Ada Pesan Baru Dari " + jo.getString("nama");
+                                    notifyServer2("notify", pesan);
+                                }
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+                        anError.printStackTrace();
+                    }
+                });
+    }
 //
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-//            NotificationChannel channel = new NotificationChannel(channel_id, "my-pesan-request", NotificationManager.IMPORTANCE_HIGH);
-//            NotificationManager manager = getSystemService(NotificationManager.class);
-//            manager.createNotificationChannel(channel);
-//        }
-//
-//        NotificationManagerCompat managerCompat = NotificationManagerCompat.from(anggotaPage.this);
-//        managerCompat.notify(22, builder.build());
-//
-//        notifyServer2("done", "kosong");
-//    }
-//
-//    private void namaPengirim() {
-//        String id = sessionManager.getUserDetail().get(SessionManager.ID_USER);
-//        AndroidNetworking.post("https://silacak.pt-ckit.com/getNama.php")
-//                .addBodyParameter("api_key", api_keys)
-//                .addBodyParameter("id_user", id)
-//                .build()
-//                .getAsJSONObject(new JSONObjectRequestListener() {
-//                    @Override
-//                    public void onResponse(JSONObject response) {
-//                        try {
-//                            Boolean status = response.getBoolean("status");
-//                            String first;
-//                            if (status) {
-//                                JSONArray ja = response.getJSONArray("result");
-//                                for (int i = 0; i < ja.length(); i++) {
-//                                    JSONObject jo = ja.getJSONObject(i);
-//                                    String pesan = "Ada Pesan Baru Dari " + jo.getString("nama");
-//                                    notifyServer2("notify", pesan);
-//                                }
-//                            }
-//                        } catch (Exception e) {
-//                            e.printStackTrace();
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onError(ANError anError) {
-//                        anError.printStackTrace();
-//                    }
-//                });
-//    }
-//
-//    private void notifyServer2(String purpose, String pesan) {
-//        AndroidNetworking.post("https://silacak.pt-ckit.com/getNotifikasi.php")
-//                .addBodyParameter("purpose", purpose)
-//                .addBodyParameter("id_user", sessionManager.getUserDetail().get(SessionManager.ID_USER))
-//                .build()
-//                .getAsJSONObject(new JSONObjectRequestListener() {
-//                    @Override
-//                    public void onResponse(JSONObject response) {
-//                        try {
-//                            boolean status = response.getBoolean("status");
-//                            if (status) {
-//                                if (purpose.equalsIgnoreCase("notify")) {
-//                                    showNotificationPesan(getString(R.string.app_name), pesan);
-//                                    //startAlarmManager();
-//                                } else {
-//                                    return;
-//                                }
-//                            } else {
-//                                return;
-//                            }
-//                        } catch (Exception e) {
-//                            e.printStackTrace();
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onError(ANError anError) {
-//                        anError.printStackTrace();
-//                    }
-//                });
-//    }
+    private void notifyServer2(String purpose, String pesan) {
+        AndroidNetworking.post("https://silacak.pt-ckit.com/getNotifikasi.php")
+                .addBodyParameter("purpose", purpose)
+                .addBodyParameter("id_user", sessionManager.getUserDetail().get(SessionManager.ID_USER))
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            boolean status = response.getBoolean("status");
+                            if (status) {
+                                if (purpose.equalsIgnoreCase("notify")) {
+                                    showNotificationPesan(getString(R.string.app_name), pesan);
+                                    //startAlarmManager();
+                                } else {
+                                    return;
+                                }
+                            } else {
+                                return;
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+                        anError.printStackTrace();
+                    }
+                });
+    }
 
     private void clearAllMarkers() {
         if (markers != null) {
@@ -508,7 +508,7 @@ public class anggotaPage extends AppCompatActivity implements OnMapReadyCallback
                 clearAllMarkers();
                 getAllData();
                 startService(new Intent(getApplicationContext(),AppReceiver.class));
-                //namaPengirim();
+                namaPengirim();
             }
         }, delay);
         handlers.postDelayed(runnables = new Runnable() {

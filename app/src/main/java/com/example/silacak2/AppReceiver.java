@@ -88,7 +88,8 @@ public class AppReceiver extends Service {
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         String nama = sessionManager.getUserDetail().get(SessionManager.NAMA);
         Intent resultIntent = new Intent(getApplicationContext(),anggotaPesanTampil.class);
-        resultIntent.putExtra("nama", nama);
+        resultIntent.putExtra("nama_user", nama);
+        resultIntent.putExtra("id_user","1");
         resultIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(
                 getApplicationContext(),

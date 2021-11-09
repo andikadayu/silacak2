@@ -147,9 +147,6 @@ public class anggotaPesan extends AppCompatActivity {
     }
 
     private void loadData() {
-//        Intent data = getIntent();
-        //String idUser = id;
-        //String id = sessionManager.getUserDetail().get(SessionManager.ID_USER);
         AndroidNetworking.post(serv.getDataAnggota())
                 .addBodyParameter("action", "tampil_anggota")
                 .addBodyParameter("id_user", sessionManager.getUserDetail().get(SessionManager.ID_USER))
@@ -178,7 +175,6 @@ public class anggotaPesan extends AppCompatActivity {
 
                     @Override
                     public void onError(ANError anError) {
-//                        anError.printStackTrace();
                         Toast.makeText(getApplicationContext(), "Terjadi Kesalahan" + anError, Toast.LENGTH_LONG).show();
                     }
                 });
