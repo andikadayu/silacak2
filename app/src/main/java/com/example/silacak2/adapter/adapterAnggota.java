@@ -3,6 +3,7 @@ package com.example.silacak2.adapter;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +20,9 @@ import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.chauthai.swipereveallayout.SwipeRevealLayout;
 import com.chauthai.swipereveallayout.ViewBinderHelper;
+import com.example.silacak2.ConfrimAnggota;
 import com.example.silacak2.R;
+import com.example.silacak2.info_biodata_anggota;
 import com.example.silacak2.model.dataAnggotaModel;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
@@ -102,6 +105,16 @@ public class adapterAnggota extends RecyclerView.Adapter<adapterAnggota.Holder> 
             }
         });
 
+        holder.layoutBiodata.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent kirimData = new Intent(activity, info_biodata_anggota.class);
+                kirimData.putExtra("id_user", model.getMId_user_anggota());
+                activity.startActivity(kirimData);
+            }
+        });
+
+
         holder.model = model;
     }
 
@@ -116,6 +129,7 @@ public class adapterAnggota extends RecyclerView.Adapter<adapterAnggota.Holder> 
         private SwipeRevealLayout swipeRevealLayout;
         private LinearLayout layoutBlokir;
         private LinearLayout layoutDelete;
+        private LinearLayout layoutBiodata;
 
         public Holder(@NonNull View v) {
             super(v);
@@ -126,6 +140,7 @@ public class adapterAnggota extends RecyclerView.Adapter<adapterAnggota.Holder> 
             swipeRevealLayout = v.findViewById(R.id.swiperlayoutAnggota);
             layoutBlokir = v.findViewById(R.id.layoutBlokirAnggota);
             layoutDelete = v.findViewById(R.id.layoutdeleteAnggota);
+            layoutBiodata = v.findViewById(R.id.layoutBiodataAnggota);
         }
 
         private void hapusAnggota() {

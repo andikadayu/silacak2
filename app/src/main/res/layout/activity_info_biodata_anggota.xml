@@ -4,18 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
-    tools:context=".profileAdmin">
+    tools:context=".info_biodata_anggota">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/adminNav">
+        android:layout_height="wrap_content">
         <LinearLayout
             android:id="@+id/contentall"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+
             android:orientation="vertical">
+
+            <Button
+                android:id="@+id/btnBackBio"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:background="@color/green_accent"
+                android:drawableLeft="@drawable/ic_back"
+                android:padding="0dp"
+                android:text="Back"
+                android:textSize="@dimen/_10sdp" />
+
+
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -88,21 +101,21 @@
                                     android:orientation="horizontal"
                                     android:layout_marginTop="@dimen/_10sdp">
                                     <Button
-                                        android:id="@+id/btneditfoto"
+                                        android:id="@+id/btnInfoBio"
                                         android:layout_width="@dimen/_40sdp"
                                         android:layout_height="@dimen/_30sdp"
                                         android:padding="@dimen/_10sdp"
                                         android:backgroundTint="@android:color/holo_blue_light"
-                                        android:drawableLeft="@drawable/ic_baseline_edit_24"
+                                        android:drawableLeft="@drawable/ic_baseline_person_search_24"
                                         />
                                     <Button
-                                        android:id="@+id/btnlogoutsAnggota"
+                                        android:id="@+id/btnDialBio"
                                         android:layout_width="@dimen/_40sdp"
                                         android:layout_height="@dimen/_30sdp"
                                         android:padding="@dimen/_10sdp"
-                                        android:backgroundTint="@android:color/holo_red_dark"
-                                        android:drawableLeft="@drawable/ic_baseline_power_settings_new_24"
-                                        android:layout_marginLeft="@dimen/_10sdp"
+                                        android:backgroundTint="@android:color/darker_gray"
+                                        android:layout_marginLeft="10dp"
+                                        android:drawableLeft="@drawable/ic_baseline_verified_user_24"
                                         />
                                 </LinearLayout>
 
@@ -141,16 +154,6 @@
                             android:textSize="@dimen/_14sdp"
                             android:layout_marginLeft="@dimen/_10sdp"
                             android:textStyle="bold"/>
-                        <Button
-                            android:id="@+id/btneditbiodata"
-                            android:layout_width="@dimen/_40sdp"
-                            android:layout_height="@dimen/_30sdp"
-                            android:padding="@dimen/_10sdp"
-                            android:backgroundTint="@color/green"
-                            android:drawableLeft="@drawable/ic_baseline_person_search_24"
-                            android:layout_marginLeft="@dimen/_10sdp"
-                            android:layout_marginTop="@dimen/_5sdp"
-                            />
 
                     </LinearLayout>
 
@@ -158,15 +161,15 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingBottom="@dimen/_10sdp">
+
                         <HorizontalScrollView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content">
-
                         <TableLayout
-                            android:layout_width="match_parent"
+                            android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:stretchColumns="2"
-                            android:padding="10dp">
+                            android:padding="10dp" >
 
                             <TableRow>
                                 <TextView
@@ -306,13 +309,5 @@
 
         </LinearLayout>
     </ScrollView>
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/adminNav"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        app:menu="@menu/menu_admin" />
-
-
 
 </RelativeLayout>

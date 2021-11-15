@@ -46,6 +46,23 @@
                 android:textColor="@color/white" />
         </LinearLayout>
 
+        <LinearLayout
+            android:id="@+id/layoutBiodataAnggota"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@android:color/holo_blue_light"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="70dp"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Informasi"
+                android:drawableLeft="@drawable/ic_baseline_person_search_24"
+                android:textColor="@color/white" />
+        </LinearLayout>
+
     </LinearLayout>
 
     <RelativeLayout

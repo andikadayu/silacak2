@@ -86,11 +86,11 @@
                     android:background="@drawable/edit_text_style"
                     android:drawableLeft="@drawable/ic_key"
                     android:drawablePadding="5dp"
+                    android:fontFamily="sans-serif-condensed-medium"
                     android:hint="Password"
                     android:inputType="textPassword"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/_13sdp"
-                    android:fontFamily="sans-serif-condensed-medium"/>
+                    android:textSize="@dimen/_13sdp" />
 
                 <EditText
                     android:id="@+id/textOTP"

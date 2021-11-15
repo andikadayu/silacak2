@@ -87,6 +87,27 @@
                 android:textColor="@color/black"
                 android:layout_marginBottom="@dimen/_10sdp" />
 
+            <EditText
+                android:id="@+id/cfrm_nrp"
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:background="@drawable/edit_text_style"
+                android:drawableLeft="@drawable/ic_baseline_verified_user_24"
+                android:drawablePadding="@dimen/_5sdp"
+                android:singleLine="true"
+                android:inputType="number"
+                android:hint="NRP"
+                android:textSize="@dimen/_13sdp"
+                android:textColor="@color/black"
+                android:layout_marginBottom="@dimen/_10sdp" />
+
+            <Spinner
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:id="@+id/cfrm_pangkat"
+                android:background="@drawable/edit_text_style"
+                />
+
             <Button
                 android:layout_width="220dp"
                 android:layout_height="50dp"

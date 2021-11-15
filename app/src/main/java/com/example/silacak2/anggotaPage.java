@@ -199,8 +199,9 @@ public class anggotaPage extends AppCompatActivity implements OnMapReadyCallback
                                     LatLng latLng = new LatLng(lat, lng);
                                     String tugas = jo.getString("tugas");
                                     String detail = jo.getString("detail_perintah");
+                                    String pangkat = jo.getString("pangkat");
 
-                                    addMarkers(latLng, name, role, tugas, detail);
+                                    addMarkers(latLng, name, role, tugas, detail,pangkat);
 
 
                                 }
@@ -294,7 +295,7 @@ public class anggotaPage extends AppCompatActivity implements OnMapReadyCallback
         perintahMarkers.setSnippet("Location : " + latt + "\nDetail Tugas:\n" + detail);
     }
 
-    private void addMarkers(LatLng point, String name, String role, String tugas, String detail) {
+    private void addMarkers(LatLng point, String name, String role, String tugas, String detail,String pangkat) {
         IconFactory iconFactory = IconFactory.getInstance(anggotaPage.this);
         Icon icon;
 //        if (role.equalsIgnoreCase("admin")) {
@@ -306,7 +307,13 @@ public class anggotaPage extends AppCompatActivity implements OnMapReadyCallback
         markers = map.addMarker(new MarkerOptions().position(point));
         markers.setPosition(point);
         markers.setIcon(icon);
-        markers.setTitle("Nama : " + name);
+
+        if(pangkat.equalsIgnoreCase("null")){
+            markers.setTitle("Nama : " + name);
+        }else{
+            markers.setTitle(pangkat + " " + name);
+        }
+
         String tugs;
 
         if (!tugas.equals("null")) {

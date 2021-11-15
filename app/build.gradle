@@ -86,4 +86,7 @@ dependencies {
 
     implementation 'com.chauthai.swipereveallayout:swipe-reveal-layout:1.4.1'
 
+    // additional library
+    implementation 'androidmads.library.qrgenearator:QRGenearator:1.0.3'
+
 }

@@ -23,7 +23,7 @@ public class URLServer {
         return server + "/getAllLokasi.php";
     }
 
-    public String getAnggotaLokasi() {
+    public String   getAnggotaLokasi() {
         return server + "/getAnggotaLokasi.php";
     }
 

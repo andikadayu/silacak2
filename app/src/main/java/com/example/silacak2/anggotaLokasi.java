@@ -137,8 +137,9 @@ public class anggotaLokasi extends AppCompatActivity implements OnMapReadyCallba
                                     LatLng latLng = new LatLng(lat, lng);
                                     String tugas = jo.getString("tugas");
                                     String detail = jo.getString("detail_perintah");
+                                    String pangkat = jo.getString("pangkat");
 
-                                    addMarkers(latLng, name, role,tugas,detail);
+                                    addMarkers(latLng, name, role,tugas,detail,pangkat);
                                 }
                             }
                         } catch (Exception e) {
@@ -152,7 +153,7 @@ public class anggotaLokasi extends AppCompatActivity implements OnMapReadyCallba
                     }
                 });
     }
-    private void addMarkers(LatLng point, String name, String role,String tugas,String detail) {
+    private void addMarkers(LatLng point, String name, String role,String tugas,String detail,String pangkat) {
         IconFactory iconFactory = IconFactory.getInstance(anggotaLokasi.this);
         Icon icon;
         if (role.equalsIgnoreCase("anggota")) {
@@ -164,7 +165,13 @@ public class anggotaLokasi extends AppCompatActivity implements OnMapReadyCallba
 
         markers = map.addMarker(new MarkerOptions().position(point));
         markers.setIcon(icon);
-        markers.setTitle("Nama : "+name);
+
+        if(pangkat.equalsIgnoreCase("null")){
+            markers.setTitle("Nama : " + name);
+        }else{
+            markers.setTitle(pangkat + " " + name);
+        }
+
         String tugs;
 
         if(!tugas.equals("null")){

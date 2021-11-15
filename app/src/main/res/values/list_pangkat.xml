@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="pangkat_array">
+        <item>--Pilih Pangkat--</item>
+<!--        Golongan I (Tamtama)-->
+        <item>Abripol</item>
+        <item>Abriptu</item>
+        <item>Abripda</item>
+        <item>Bharaka</item>
+        <item>Bharatu</item>
+        <item>Bharada</item>
+<!--        Golongan II (Bintara)-->
+        <item>Aiptu</item>
+        <item>Aipda</item>
+        <item>Bripka</item>
+        <item>Brigadir</item>
+        <item>Briptu</item>
+        <item>Bripda</item>
+<!--        Golongan III (Perwira Pertama atau Pama)-->
+        <item>AKP</item>
+        <item>Iptu</item>
+        <item>Ipda</item>
+<!--        Golongan IV (Perwira Menengah dan Perwira Tinggi)-->
+        <item>Kombes</item>
+        <item>AKBP</item>
+        <item>Kompol</item>
+        <item>Jenderal Polisi</item>
+        <item>Komjen</item>
+        <item>Irjen</item>
+        <item>Brigjen</item>
+<!--        End Pangkat-->
+    </string-array>
+</resources>
