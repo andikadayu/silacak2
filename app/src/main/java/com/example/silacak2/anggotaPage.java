@@ -308,11 +308,8 @@ public class anggotaPage extends AppCompatActivity implements OnMapReadyCallback
         markers.setPosition(point);
         markers.setIcon(icon);
 
-        if(pangkat.equalsIgnoreCase("null")){
-            markers.setTitle("Nama : " + name);
-        }else{
-            markers.setTitle(pangkat + " " + name);
-        }
+
+        markers.setTitle(pangkat + " " + name);
 
         String tugs;
 

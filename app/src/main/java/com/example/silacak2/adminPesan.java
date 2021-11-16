@@ -122,6 +122,9 @@ public class adminPesan extends AppCompatActivity {
         if (item.getItemId() == R.id.oLokasiUser) {
             startActivity(new Intent(this, adminLokasiAll.class));
         }
+        if(item.getItemId() == R.id.oScanQR){
+            startActivity(new Intent(this, scan_qrcode.class));
+        }
         return true;
     }
 

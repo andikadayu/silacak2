@@ -20,6 +20,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Silacak2">
         <activity
+            android:name=".scan_qrcode"
+            android:exported="false" />
+        <activity
+            android:name=".info_bio_nrp"
+            android:exported="false" />
+        <activity
             android:name=".info_biodata_anggota"
             android:exported="false" />
         <activity

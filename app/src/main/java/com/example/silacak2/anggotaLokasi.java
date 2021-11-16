@@ -166,11 +166,9 @@ public class anggotaLokasi extends AppCompatActivity implements OnMapReadyCallba
         markers = map.addMarker(new MarkerOptions().position(point));
         markers.setIcon(icon);
 
-        if(pangkat.equalsIgnoreCase("null")){
-            markers.setTitle("Nama : " + name);
-        }else{
-            markers.setTitle(pangkat + " " + name);
-        }
+
+        markers.setTitle(pangkat + " " + name);
+
 
         String tugs;
 

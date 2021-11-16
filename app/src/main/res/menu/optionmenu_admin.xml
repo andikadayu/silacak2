@@ -2,6 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
+        android:id="@+id/oScanQR"
+        android:icon="@drawable/ic_location_on_24"
+        android:title="Scan QR Code"
+        app:showAsAction="never" />
+
+    <item
         android:id="@+id/oLokasiUser"
         android:icon="@drawable/ic_location_on_24"
         android:title="Lokasi Semua User"

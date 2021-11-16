@@ -43,7 +43,7 @@ import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-public class adminPageNew extends AppCompatActivity implements OnMapReadyCallback {
+public class adminPageNew extends AppCompatActivity implements OnMapReadyCallback, MapboxMap.OnMarkerClickListener {
 
     final String api_keys = "pv2A0M0C6NbfoQNF0lQ0QRyNRuTnWVQK";
     SessionManager sessionManager;
@@ -52,7 +52,7 @@ public class adminPageNew extends AppCompatActivity implements OnMapReadyCallbac
     Handler handler = new Handler();
     Runnable runnable;
     int delay = 3000;
-    FloatingActionButton fab;
+    FloatingActionButton fab,fabBio;
     EditText ePerintah;
     boolean isRequest = true;
     private MapView mapView;
@@ -62,6 +62,7 @@ public class adminPageNew extends AppCompatActivity implements OnMapReadyCallbac
     private com.mapbox.mapboxsdk.annotations.Marker destinationMarker;
     private Point originPosition, destinationPosition, waypointPosition;
     private Location originLocation;
+    private String nrps;
 
 
     @Override
@@ -75,7 +76,10 @@ public class adminPageNew extends AppCompatActivity implements OnMapReadyCallbac
         locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
 
         fab = (FloatingActionButton) findViewById(R.id.fab);
+        fabBio = (FloatingActionButton) findViewById(R.id.fabBio);
+
         fab.setVisibility(View.GONE);
+        fabBio.setVisibility(View.GONE);
 
         serv = new URLServer();
         //Nav Bottom
@@ -129,6 +133,15 @@ public class adminPageNew extends AppCompatActivity implements OnMapReadyCallbac
         mapView.getMapAsync(this);
 
         //getAllData();
+        fabBio.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent kirimData = new Intent(adminPageNew.this, info_bio_nrp.class);
+                kirimData.putExtra("nrp", nrps);
+                kirimData.putExtra("from_menu", "home");
+                startActivity(kirimData);
+            }
+        });
     }
 
     @Override
@@ -147,6 +160,10 @@ public class adminPageNew extends AppCompatActivity implements OnMapReadyCallbac
 //        }
         if (item.getItemId() == R.id.oLokasiUser) {
             startActivity(new Intent(this, adminLokasiAll.class));
+        }
+
+        if(item.getItemId() == R.id.oScanQR){
+            startActivity(new Intent(this, scan_qrcode.class));
         }
         return true;
     }
@@ -180,8 +197,9 @@ public class adminPageNew extends AppCompatActivity implements OnMapReadyCallbac
                                     String tugas = jo.getString("tugas");
                                     String detail = jo.getString("detail_perintah");
                                     String pangkat = jo.getString("pangkat");
+                                    String nrp = jo.getString("nrp");
 
-                                    addMarkers(latLng, name, role, tugas, detail,pangkat);
+                                    addMarkers(latLng, name, role, tugas, detail,pangkat,nrp);
 
                                 }
                             }
@@ -214,6 +232,7 @@ public class adminPageNew extends AppCompatActivity implements OnMapReadyCallbac
         }else{
             map.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(-7.983908, 112.621391),13));
         }
+        map.setOnMarkerClickListener(this);
     }
 
     private void openDialog() {
@@ -223,7 +242,7 @@ public class adminPageNew extends AppCompatActivity implements OnMapReadyCallbac
         startActivity(new Intent(this, detail_of_perintah.class));
     }
 
-    private void addMarkers(LatLng point, String name, String role, String tugas, String detail, String pangkat) {
+    private void addMarkers(LatLng point, String name, String role, String tugas, String detail, String pangkat,String nrp) {
         IconFactory iconFactory = IconFactory.getInstance(adminPageNew.this);
         Icon icon;
         if (role.equalsIgnoreCase("admin")) {
@@ -235,11 +254,8 @@ public class adminPageNew extends AppCompatActivity implements OnMapReadyCallbac
         markers = map.addMarker(new MarkerOptions().position(point));
         markers.setPosition(point);
         markers.setIcon(icon);
-        if(pangkat.equalsIgnoreCase("null")){
-            markers.setTitle("Nama : " + name);
-        }else{
-            markers.setTitle(pangkat + " " + name);
-        }
+
+        markers.setTitle(nrp+" | "+pangkat + " " + name);
 
         String tugs;
 
@@ -365,5 +381,14 @@ public class adminPageNew extends AppCompatActivity implements OnMapReadyCallbac
                 });
     }
 
+    @Override
+    public boolean onMarkerClick(@NonNull Marker marker) {
+        marker.showInfoWindow(map,mapView);
+        String title = marker.getTitle().toString();
+        String[] titsplit = title.split(" | ");
+        nrps = titsplit[0];
+        fabBio.setVisibility(View.VISIBLE);
 
+        return true;
+    }
 }
