@@ -160,7 +160,8 @@ public class adminListAnggota extends AppCompatActivity {
                                         data.getString("id_user"),
                                         data.getString("nama"),
                                         data.getString("email"),
-                                        data.getString("status")
+                                        data.getString("status"),
+                                        data.getString("foto")
                                 );
 
                                 dataAnggotaModels.add(item);

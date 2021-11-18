@@ -1,12 +1,12 @@
 package com.example.silacak2;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.SparseBooleanArray;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.CheckedTextView;
@@ -14,8 +14,6 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
@@ -31,20 +29,20 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class detail_of_perintah extends AppCompatActivity {
+public class detail_of_blast extends AppCompatActivity {
 
     ListView lvlistanggota;
     Button btnOke;
     EditText editDetail;
     ArrayList<ListAnggotaModel> userList;
-    URLServer serv;;
+    URLServer serv;
     TextView tvClear;
     BaseAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail_of_perintah);
+        setContentView(R.layout.activity_detail_of_blast);
 
         serv = new URLServer();
 
@@ -96,18 +94,12 @@ public class detail_of_perintah extends AppCompatActivity {
 //                lvlistanggota.clearChoices();
             }
         });
-
-
-
-
     }
 
     private void initListViewData() {
         String lat = String.valueOf(perintahModel.getLatitudePerintah());
         String lng = String.valueOf(perintahModel.getLongitudePerintah());
-        AndroidNetworking.post(serv.getAllListAnggota())
-                .addBodyParameter("latitude", lat)
-                .addBodyParameter("longitude", lng)
+        AndroidNetworking.post(serv.server + "/distance/getAllAnggota.php")
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
@@ -158,19 +150,19 @@ public class detail_of_perintah extends AppCompatActivity {
                     aah.add(s);
                 }
             }
-                String ids = aah.toString();
-                String id_lokasi = ids.replace("[", "").replace("]", "");
+            String ids = aah.toString();
+            String id_lokasi = ids.replace("[", "").replace("]", "");
             if (!detail_perintah.equals("") && !id_lokasi.isEmpty()) {
 //                sendToServer(lat, lng, id_lokasi, detail_perintah);
                 sendToServer(id_lokasi, detail_perintah);
             } else {
 
-                Toast.makeText(detail_of_perintah.this, "Complete the form", Toast.LENGTH_SHORT).show();
+                Toast.makeText(detail_of_blast.this, "Complete the form", Toast.LENGTH_SHORT).show();
             }
 
 
         } else {
-            Toast.makeText(detail_of_perintah.this, "Complete the form", Toast.LENGTH_SHORT).show();
+            Toast.makeText(detail_of_blast.this, "Complete the form", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -193,12 +185,12 @@ public class detail_of_perintah extends AppCompatActivity {
                         try {
                             boolean status = response.getBoolean("status");
                             if (status) {
-                                Toast.makeText(detail_of_perintah.this, "Pesan Terkirim !!!", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(detail_of_blast.this, "Pesan Terkirim !!!", Toast.LENGTH_SHORT).show();
                                 perintahModel.clearPosPerintah();
-                                startActivity(new Intent(detail_of_perintah.this, adminPageNew.class));
+                                startActivity(new Intent(detail_of_blast.this, adminPageNew.class));
                                 finish();
                             } else {
-                                Toast.makeText(detail_of_perintah.this, "Terjadi Kesalahan", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(detail_of_blast.this, "Terjadi Kesalahan", Toast.LENGTH_SHORT).show();
                             }
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -212,35 +204,4 @@ public class detail_of_perintah extends AppCompatActivity {
                 });
     }
 
-//    private void sendToServer(String lat, String lng, String id_lokasi, String detail_perintah) {
-//        AndroidNetworking.post(serv.setPerintahNew())
-//                .addBodyParameter("lat", lat)
-//                .addBodyParameter("lng", lng)
-//                .addBodyParameter("id_lokasi", id_lokasi)
-//                .addBodyParameter("detail_perintah", detail_perintah)
-//                .build()
-//                .getAsJSONObject(new JSONObjectRequestListener() {
-//                    @Override
-//                    public void onResponse(JSONObject response) {
-//                        try {
-//                            boolean status = response.getBoolean("status");
-//                            if (status) {
-//                                Toast.makeText(detail_of_perintah.this, "Menambah Perintah Berhasil", Toast.LENGTH_SHORT).show();
-//                                perintahModel.clearPosPerintah();
-//                                startActivity(new Intent(detail_of_perintah.this, adminPageNew.class));
-//                                finish();
-//                            } else {
-//                                Toast.makeText(detail_of_perintah.this, "Terjadi Kesalahan", Toast.LENGTH_SHORT).show();
-//                            }
-//                        } catch (Exception e) {
-//                            e.printStackTrace();
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onError(ANError anError) {
-//                        anError.printStackTrace();
-//                    }
-//                });
-//    }
 }

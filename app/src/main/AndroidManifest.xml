@@ -20,6 +20,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Silacak2">
         <activity
+            android:name=".detail_of_blast"
+            android:exported="false" />
+        <activity
             android:name=".scan_qrcode"
             android:exported="false" />
         <activity

@@ -5,10 +5,12 @@ import java.io.Serializable;
 public class ListAnggotaModel implements Serializable {
     private String name;
     private String id;
+    private String foto;
 
-    public ListAnggotaModel(String name, String id) {
+    public ListAnggotaModel(String name, String id,String foto) {
         this.name = name;
         this.id = id;
+        this.foto = foto;
     }
 
     public String getName() {
@@ -25,6 +27,14 @@ public class ListAnggotaModel implements Serializable {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getFoto() {
+        return foto;
+    }
+
+    public void setFoto(String foto) {
+        this.foto = foto;
     }
 
     @Override

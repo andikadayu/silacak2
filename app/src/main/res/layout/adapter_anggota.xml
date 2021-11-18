@@ -70,42 +70,66 @@
         android:layout_height="wrap_content"
         android:padding="10dp">
 
-        <TextView
-            android:id="@+id/namaAnggota"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Nama"
-            android:textStyle="bold" />
+            android:orientation="horizontal">
 
-        <TextView
-            android:id="@+id/emailAnggota"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/namaAnggota"
-            android:text="Email"
-            android:textStyle="bold" />
+            <LinearLayout
+                android:layout_marginTop="5dp"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/statusAnggota"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/emailAnggota"
-            android:text="Email"
-            android:textColor="@color/mapbox_navigation_route_layer_congestion_red"
-            android:textStyle="italic" />
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/listViewPhotoAnggota"
+                    android:src="@drawable/policeman"/>
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            </LinearLayout>
 
-            <ImageView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_marginTop="10dp"
-                android:src="@drawable/ic_baseline_chevron_right_24" />
+                android:orientation="vertical"
+                android:layout_marginLeft="5dp">
 
-        </RelativeLayout>
+                <TextView
+                    android:id="@+id/namaAnggota"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nama"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/emailAnggota"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/namaAnggota"
+                    android:text="Email"
+                    android:textStyle="bold"
+                    android:textColor="@color/black"/>
+
+                <TextView
+                    android:id="@+id/statusAnggota"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/emailAnggota"
+                    android:text="Email"
+                    android:textColor="@color/mapbox_navigation_route_layer_congestion_red"
+                    android:textStyle="italic" />
+
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+
     </RelativeLayout>
 
 

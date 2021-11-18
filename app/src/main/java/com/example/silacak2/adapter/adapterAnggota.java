@@ -4,9 +4,13 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -36,6 +40,7 @@ public class adapterAnggota extends RecyclerView.Adapter<adapterAnggota.Holder> 
     private Activity activity;
     private ViewBinderHelper viewBinderHelper = new ViewBinderHelper();
     private ProgressDialog progressDialog;
+    private ImageView imgFoto;
 
     public adapterAnggota(Activity activity, ArrayList<dataAnggotaModel> dataModel) {
         this.dataModel = dataModel;
@@ -50,12 +55,24 @@ public class adapterAnggota extends RecyclerView.Adapter<adapterAnggota.Holder> 
         return holder;
     }
 
+    private void setImageProfile(String foto){
+        if (!foto.equalsIgnoreCase("null")){
+            byte[] decodedString = Base64.decode(foto, Base64.DEFAULT);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(decodedString,0,decodedString.length);
+
+            imgFoto.setImageBitmap(bitmap);
+        }
+    }
+
+
     @Override
     public void onBindViewHolder(@NonNull Holder holder, int position) {
         dataAnggotaModel model = dataModel.get(position);
         holder.tvnama_anggota.setText(model.getMNama_anggota());
         holder.tvemail_anggota.setText(model.getMEmail_anggota());
         holder.tvstatus_anggota.setText(model.getMStatus_anggota());
+
+        setImageProfile(model.getMFoto_anggota());
 
         viewBinderHelper.bind(holder.swipeRevealLayout, model.MId_user_anggota);
 
@@ -141,6 +158,7 @@ public class adapterAnggota extends RecyclerView.Adapter<adapterAnggota.Holder> 
             layoutBlokir = v.findViewById(R.id.layoutBlokirAnggota);
             layoutDelete = v.findViewById(R.id.layoutdeleteAnggota);
             layoutBiodata = v.findViewById(R.id.layoutBiodataAnggota);
+            imgFoto = v.findViewById(R.id.listViewPhotoAnggota);
         }
 
         private void hapusAnggota() {

@@ -52,7 +52,7 @@ public class adminPageNew extends AppCompatActivity implements OnMapReadyCallbac
     Handler handler = new Handler();
     Runnable runnable;
     int delay = 3000;
-    FloatingActionButton fab,fabBio;
+    FloatingActionButton fab,fabBio,fabBlast;
     EditText ePerintah;
     boolean isRequest = true;
     private MapView mapView;
@@ -77,6 +77,7 @@ public class adminPageNew extends AppCompatActivity implements OnMapReadyCallbac
 
         fab = (FloatingActionButton) findViewById(R.id.fab);
         fabBio = (FloatingActionButton) findViewById(R.id.fabBio);
+        fabBlast = (FloatingActionButton) findViewById(R.id.fabBlast);
 
         fab.setVisibility(View.GONE);
         fabBio.setVisibility(View.GONE);
@@ -140,6 +141,13 @@ public class adminPageNew extends AppCompatActivity implements OnMapReadyCallbac
                 kirimData.putExtra("nrp", nrps);
                 kirimData.putExtra("from_menu", "home");
                 startActivity(kirimData);
+            }
+        });
+
+        fabBlast.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(adminPageNew.this,detail_of_blast.class));
             }
         });
     }

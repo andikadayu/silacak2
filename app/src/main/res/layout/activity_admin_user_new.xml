@@ -4,41 +4,22 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:gravity="center"
     tools:context=".adminUserNew">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="vertical">
 
                 <com.google.android.material.bottomnavigation.BottomNavigationView
                     android:id="@+id/adminNav"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
-                    app:menu="@menu/menu_admin" />
+                    app:menu="@menu/menu_admin"
+                    android:layout_above="@id/adminNav"/>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recyNewUser"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical" />
-            </RelativeLayout>
 
-        </LinearLayout>
-
-    </LinearLayout>
 
 </RelativeLayout>

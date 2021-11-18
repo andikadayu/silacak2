@@ -60,6 +60,18 @@
                     android:src="@drawable/ic_baseline_person_24"
                     android:backgroundTint="@color/green"
                     />
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/fabBlast"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginBottom="@dimen/_10sdp"
+                    android:backgroundTint="@color/green"
+                    android:layout_above="@id/fabBio"
+                    android:src="@drawable/ic_baseline_announcement_24" />
+
+
             </RelativeLayout>
 
         </LinearLayout>

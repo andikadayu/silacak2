@@ -1,14 +1,15 @@
 package com.example.silacak2.model;
 
 public class dataAnggotaModel {
-    public String MId_anggota, MId_user_anggota, MNama_anggota, MEmail_anggota, MStatus_anggota;
+    public String MId_anggota, MId_user_anggota, MNama_anggota, MEmail_anggota, MStatus_anggota,MFoto_anggota;
 
-    public dataAnggotaModel(String MId_anggota, String MId_user_anggota, String MNama_anggota, String MEmail_anggota, String MStatus_anggota) {
+    public dataAnggotaModel(String MId_anggota, String MId_user_anggota, String MNama_anggota, String MEmail_anggota, String MStatus_anggota, String foto) {
         this.MId_anggota = MId_anggota;
         this.MNama_anggota = MNama_anggota;
         this.MEmail_anggota = MEmail_anggota;
         this.MStatus_anggota = MStatus_anggota;
         this.MId_user_anggota = MId_user_anggota;
+        this.MFoto_anggota = foto;
     }
 
     public String getMId_anggota() {
@@ -49,5 +50,13 @@ public class dataAnggotaModel {
 
     public void setMStatus_anggota(String MStatus_anggota) {
         this.MStatus_anggota = MStatus_anggota;
+    }
+
+    public String getMFoto_anggota() {
+        return MFoto_anggota;
+    }
+
+    public void setMFoto_anggota(String MFoto_anggota) {
+        this.MFoto_anggota = MFoto_anggota;
     }
 }
