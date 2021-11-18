@@ -99,6 +99,24 @@ public class adminPesan extends AppCompatActivity {
             }
         });
 
+        BottomNavigationView bottomNavigationView2 = findViewById(R.id.adminNav2);
+        bottomNavigationView2.setSelectedItemId(R.id.person);
+        bottomNavigationView2.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.person:
+                        return true;
+                    case R.id.groub:
+                        startActivity(new Intent(adminPesan.this, adminPesanGroub.class));
+                        overridePendingTransition(0, 0);
+                        finish();
+                        return true;
+                }
+                return false;
+            }
+        });
+
         sessionManager = new SessionManager(adminPesan.this);
         if (!sessionManager.isLoggedIn()) {
             movetoLogin();

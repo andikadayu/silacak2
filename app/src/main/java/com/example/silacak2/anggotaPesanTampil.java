@@ -73,10 +73,10 @@ public class anggotaPesanTampil extends AppCompatActivity {
         idanggotaPesan = data.getStringExtra("id_user");
         fotoanggotaPesan = data.getStringExtra("foto");
 
-        Toast.makeText(this,fotoanggotaPesan,Toast.LENGTH_SHORT).show();
+        //Toast.makeText(this,fotoanggotaPesan,Toast.LENGTH_SHORT).show();
 
         txnamaKontak.setText(namaanggotaPesan);
-        //setImageProfile(fotoanggotaPesan);
+        setImageProfile(fotoanggotaPesan);
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
