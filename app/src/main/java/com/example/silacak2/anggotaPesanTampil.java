@@ -8,7 +8,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
@@ -34,9 +37,9 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 public class anggotaPesanTampil extends AppCompatActivity {
-    String idanggotaPesan, namaanggotaPesan, idPengirim;
+    String idanggotaPesan, namaanggotaPesan, idPengirim, fotoanggotaPesan;
     TextView txnamaKontak;
-    ImageView imgBack;
+    ImageView imgBack, imgFoto;
     EditText edTulisPesan;
     LinearLayout lSend;
     URLServer serv;
@@ -63,12 +66,17 @@ public class anggotaPesanTampil extends AppCompatActivity {
         txnamaKontak = (TextView) findViewById(R.id.namaKontak);
         imgBack = (ImageView) findViewById(R.id.back);
         lSend = (LinearLayout) findViewById(R.id.send);
+        imgFoto = (ImageView) findViewById(R.id.imageView3);
 
         Intent data = getIntent();
         namaanggotaPesan = data.getStringExtra("nama_user");
         idanggotaPesan = data.getStringExtra("id_user");
+        fotoanggotaPesan = data.getStringExtra("foto");
+
+        Toast.makeText(this,fotoanggotaPesan,Toast.LENGTH_SHORT).show();
 
         txnamaKontak.setText(namaanggotaPesan);
+        //setImageProfile(fotoanggotaPesan);
         imgBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -100,6 +108,20 @@ public class anggotaPesanTampil extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void setImageProfile(String foto){
+        try {
+            if (!foto.equalsIgnoreCase("null")){
+                byte[] decodedString = Base64.decode(foto, Base64.DEFAULT);
+                Bitmap bitmap = BitmapFactory.decodeByteArray(decodedString,0,decodedString.length);
+
+                imgFoto.setImageBitmap(bitmap);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            Toast.makeText(getApplicationContext(), "Failed", Toast.LENGTH_LONG).show();
+        }
     }
 
     private void movetoLogin() {

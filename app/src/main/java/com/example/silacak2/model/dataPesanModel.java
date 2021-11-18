@@ -1,13 +1,14 @@
 package com.example.silacak2.model;
 
 public class dataPesanModel {
-    public String MId_anggotaPesan, MNama_anggotaPesan, MEmail_anggotaPesan, MId_user;
+    public String MId_anggotaPesan, MNama_anggotaPesan, MEmail_anggotaPesan, MId_user, MFoto;
 
-    public dataPesanModel(String MId_anggotaPesan, String MId_user, String MNama_anggotaPesan, String MEmail_anggotaPesan) {
+    public dataPesanModel(String MId_anggotaPesan, String MId_user, String MNama_anggotaPesan, String MEmail_anggotaPesan, String MFoto) {
         this.MId_anggotaPesan = MId_anggotaPesan;
         this.MId_user = MId_user;
         this.MNama_anggotaPesan = MNama_anggotaPesan;
         this.MEmail_anggotaPesan = MEmail_anggotaPesan;
+        this.MFoto = MFoto;
 
     }
 
@@ -17,6 +18,10 @@ public class dataPesanModel {
 
     public void setMId_anggotaPesan(String MId_anggotaPesan) {
         this.MId_anggotaPesan = MId_anggotaPesan;
+    }
+
+    public String getMFoto(){
+        return MFoto;
     }
 
     public String getMId_user() {
