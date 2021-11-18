@@ -163,7 +163,8 @@ public class anggotaPesan extends AppCompatActivity {
                                         data.getString("id_user"),
                                         data.getString("id_anggota"),
                                         data.getString("nama"),
-                                        data.getString("email")
+                                        data.getString("email"),
+                                        data.getString("foto")
                                 );
                                 dataPesanAnggotaModels.add(item);
                             }
@@ -194,7 +195,8 @@ public class anggotaPesan extends AppCompatActivity {
                                 JSONObject data = jsonArray.getJSONObject(i);
                                 dataPesanModelAnggota2 item = new dataPesanModelAnggota2(
                                         data.getString("id_user"),
-                                        data.getString("nama")
+                                        data.getString("nama"),
+                                        data.getString("foto")
                                 );
                                 dataPesanAnggotaModels2.add(item);
                                 //notifyServer("notify");

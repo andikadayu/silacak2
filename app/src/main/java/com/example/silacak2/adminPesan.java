@@ -156,7 +156,8 @@ public class adminPesan extends AppCompatActivity {
                                         data.getString("id_anggota"),
                                         data.getString("id_user"),
                                         data.getString("nama"),
-                                        data.getString("email")
+                                        data.getString("email"),
+                                        data.getString("foto")
                                 );
                                 dataPesanModels.add(item);
                                 progressDialog.dismiss();
