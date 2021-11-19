@@ -5,17 +5,23 @@ import android.app.AlertDialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -45,7 +51,7 @@ import org.json.JSONObject;
 
 import java.util.Calendar;
 
-public class anggotaPage extends AppCompatActivity implements OnMapReadyCallback {
+public class anggotaPage extends AppCompatActivity implements OnMapReadyCallback,MapboxMap.OnMarkerClickListener {
     final String api_keys = "pv2A0M0C6NbfoQNF0lQ0QRyNRuTnWVQK";
     SessionManager sessionManager;
     LocationManager locationManager;
@@ -65,6 +71,8 @@ public class anggotaPage extends AppCompatActivity implements OnMapReadyCallback
     //set interval notifikasi 10 detik
     private int interval_seconds = 1;
     private int NOTIFICATION_ID = 1;
+
+    private String nrps,nama,foto,pangkat,tugass;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -137,6 +145,7 @@ public class anggotaPage extends AppCompatActivity implements OnMapReadyCallback
         map = mapboxMap;
         getAllData();
         getPerintah();
+        map.setOnMarkerClickListener(this);
     }
 
     private void movetoLogin() {
@@ -200,8 +209,9 @@ public class anggotaPage extends AppCompatActivity implements OnMapReadyCallback
                                     String tugas = jo.getString("tugas");
                                     String detail = jo.getString("detail_perintah");
                                     String pangkat = jo.getString("pangkat");
+                                    String nrp = jo.getString("nrp");
 
-                                    addMarkers(latLng, name, role, tugas, detail,pangkat);
+                                    addMarkers(latLng, name, role, tugas, detail,pangkat,nrp);
 
 
                                 }
@@ -295,7 +305,7 @@ public class anggotaPage extends AppCompatActivity implements OnMapReadyCallback
         perintahMarkers.setSnippet("Location : " + latt + "\nDetail Tugas:\n" + detail);
     }
 
-    private void addMarkers(LatLng point, String name, String role, String tugas, String detail,String pangkat) {
+    private void addMarkers(LatLng point, String name, String role, String tugas, String detail,String pangkat,String nrp) {
         IconFactory iconFactory = IconFactory.getInstance(anggotaPage.this);
         Icon icon;
 //        if (role.equalsIgnoreCase("admin")) {
@@ -309,7 +319,7 @@ public class anggotaPage extends AppCompatActivity implements OnMapReadyCallback
         markers.setIcon(icon);
 
 
-        markers.setTitle(pangkat + " " + name);
+        markers.setTitle(nrp+" | "+pangkat + " " + name);
 
         String tugs;
 
@@ -321,9 +331,9 @@ public class anggotaPage extends AppCompatActivity implements OnMapReadyCallback
 
 
         if (!detail.equals("null")) {
-            markers.setSnippet("Tugas Sekarang:\n" + detail + "\n\nTugas Harian: \n" + tugs);
+            markers.setSnippet("Tugas Sekarang:" + detail + "\n\nTugas Harian:" + tugs);
         } else {
-            markers.setSnippet("Tugas Harian:\n" + tugs);
+            markers.setSnippet("Tugas Harian:" + tugs);
         }
 
 
@@ -552,7 +562,6 @@ public class anggotaPage extends AppCompatActivity implements OnMapReadyCallback
         super.onDestroy();
         mapView.onDestroy();
     }
-
 //    public void startAlarmManager() {
 //        //set alarm manager dengan memasukkan waktu yang telah dikonversi menjadi milliseconds
 //        Calendar cal = Calendar.getInstance();
@@ -561,4 +570,90 @@ public class anggotaPage extends AppCompatActivity implements OnMapReadyCallback
 //        manager.set(AlarmManager.RTC_WAKEUP, cal.getTimeInMillis(), pendingIntent);
 //        Toast.makeText(this, "AlarmManager Start.", Toast.LENGTH_SHORT).show();
 //    }
+
+    @Override
+    public boolean onMarkerClick(@NonNull Marker marker) {
+        marker.showInfoWindow(map,mapView);
+        String title = marker.getTitle().toString();
+        String tus = marker.getSnippet();
+        String[] tusplit = tus.split(":");
+        String[] titsplit = title.split(" | ");
+        nrps = titsplit[0];
+        tugass = tusplit[1];
+        openDialogInfo();
+        return true;
+    }
+
+    private void openDialogInfo(){
+        ProgressDialog pdg = new ProgressDialog(anggotaPage.this);
+        pdg.show();
+        AndroidNetworking.post(serv.server+"/profile/getNrpDetailProfile.php")
+                .addBodyParameter("nrp",nrps)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            nama = response.getString("nama");
+                            foto = response.getString("foto");
+                            pangkat = response.getString("pangkat");
+
+                            setImageProfile();
+                            pdg.dismiss();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            Toast.makeText(anggotaPage.this, "Terjadi Kesalahan", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+                        anError.printStackTrace();
+                    }
+                });
+    }
+
+    private void setImageProfile(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(anggotaPage.this);
+
+        LayoutInflater inflater = (LayoutInflater) getApplicationContext().getSystemService(anggotaPage.this.LAYOUT_INFLATER_SERVICE);
+        View view = inflater.inflate(R.layout.detail_marker, null);
+        final TextView txtnama,txtpangkat,txtnrp,txttugas;
+        final ImageView imgView;
+
+        txtnama = view.findViewById(R.id.namaMarkDetail);
+        txtpangkat = view.findViewById(R.id.jabatanMarkDetail);
+        txtnrp = view.findViewById(R.id.nrpMarkDetail);
+        txttugas = view.findViewById(R.id.tugasMarkDetail);
+        imgView = view.findViewById(R.id.imgMarkDetail);
+
+        txtnama.setText("Nama: "+nama);
+        txtpangkat.setText("Jabatan: "+pangkat);
+        txtnrp.setText("NRP: "+nrps);
+        txttugas.setText(tugass);
+
+
+        if(!foto.equals("null")){
+            byte[] decodedString = Base64.decode(foto, Base64.DEFAULT);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(decodedString,0,decodedString.length);
+
+            imgView.setImageBitmap(bitmap);
+        }
+        builder.setView(view)
+                .setTitle("Detail Personil")
+                .setIcon(R.mipmap.ic_presisi)
+                .setPositiveButton("Close", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                });
+
+        AlertDialog ald = builder.create();
+        ald.show();
+
+    }
+
+
+
 }

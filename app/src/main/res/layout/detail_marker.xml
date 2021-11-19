@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="5dp"
+                android:id="@+id/imgMarkDetail"
+                android:src="@drawable/policeman"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/namaMarkDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nama Saya Sih"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp"
+                />
+
+            <TextView
+                android:id="@+id/nrpMarkDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="NRP Saya Sih"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp"
+                />
+
+            <TextView
+                android:id="@+id/jabatanMarkDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Jabatan Saya Sih"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_13sdp"
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="5dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tugas"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:textSize="@dimen/_14sdp"
+            />
+
+        <TextView
+            android:id="@+id/tugasMarkDetail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Menjaga Lalu Lintas"
+            android:textColor="#050505"
+            android:layout_marginTop="3dp"
+            android:textSize="@dimen/_12sdp"
+            />
+
+    </LinearLayout>
+
+
+</LinearLayout>

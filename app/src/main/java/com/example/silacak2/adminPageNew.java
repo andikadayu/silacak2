@@ -5,20 +5,30 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
+import android.app.AlertDialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.Layout;
+import android.util.Base64;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
@@ -62,7 +72,7 @@ public class adminPageNew extends AppCompatActivity implements OnMapReadyCallbac
     private com.mapbox.mapboxsdk.annotations.Marker destinationMarker;
     private Point originPosition, destinationPosition, waypointPosition;
     private Location originLocation;
-    private String nrps;
+    private String nrps,nama,foto,pangkat,tugass;
 
 
     @Override
@@ -275,9 +285,9 @@ public class adminPageNew extends AppCompatActivity implements OnMapReadyCallbac
 
 
         if (!detail.equals("null")) {
-            markers.setSnippet("Tugas Sekarang:\n" + detail + "\n\nTugas Harian: \n" + tugs);
+            markers.setSnippet("Tugas Sekarang:" + detail + "\n\nTugas Harian:" + tugs);
         } else {
-            markers.setSnippet("Tugas Harian:\n" + tugs);
+            markers.setSnippet("Tugas Harian:" + tugs);
         }
     }
 
@@ -393,10 +403,83 @@ public class adminPageNew extends AppCompatActivity implements OnMapReadyCallbac
     public boolean onMarkerClick(@NonNull Marker marker) {
         marker.showInfoWindow(map,mapView);
         String title = marker.getTitle().toString();
+        String tus = marker.getSnippet();
+        String[] tusplit = tus.split(":");
         String[] titsplit = title.split(" | ");
         nrps = titsplit[0];
+        tugass = tusplit[1];
         fabBio.setVisibility(View.VISIBLE);
-
+        openDialogInfo();
         return true;
+    }
+
+    private void openDialogInfo(){
+        ProgressDialog pdg = new ProgressDialog(adminPageNew.this);
+        pdg.show();
+        AndroidNetworking.post(serv.server+"/profile/getNrpDetailProfile.php")
+                .addBodyParameter("nrp",nrps)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            nama = response.getString("nama");
+                            foto = response.getString("foto");
+                            pangkat = response.getString("pangkat");
+
+                            setImageProfile();
+                            pdg.dismiss();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            Toast.makeText(adminPageNew.this, "Terjadi Kesalahan", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+                        anError.printStackTrace();
+                    }
+                });
+    }
+
+    private void setImageProfile(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(adminPageNew.this);
+
+        LayoutInflater inflater = (LayoutInflater) getApplicationContext().getSystemService(adminPageNew.this.LAYOUT_INFLATER_SERVICE);
+        View view = inflater.inflate(R.layout.detail_marker, null);
+        final TextView txtnama,txtpangkat,txtnrp,txttugas;
+        final ImageView imgView;
+
+        txtnama = view.findViewById(R.id.namaMarkDetail);
+        txtpangkat = view.findViewById(R.id.jabatanMarkDetail);
+        txtnrp = view.findViewById(R.id.nrpMarkDetail);
+        txttugas = view.findViewById(R.id.tugasMarkDetail);
+        imgView = view.findViewById(R.id.imgMarkDetail);
+
+        txtnama.setText("Nama: "+nama);
+        txtpangkat.setText("Jabatan: "+pangkat);
+        txtnrp.setText("NRP: "+nrps);
+        txttugas.setText(tugass);
+
+
+        if(!foto.equals("null")){
+            byte[] decodedString = Base64.decode(foto, Base64.DEFAULT);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(decodedString,0,decodedString.length);
+
+            imgView.setImageBitmap(bitmap);
+        }
+        builder.setView(view)
+                .setTitle("Detail Personil")
+                .setIcon(R.mipmap.ic_presisi)
+                .setPositiveButton("Close", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                });
+
+        AlertDialog ald = builder.create();
+        ald.show();
+
     }
 }

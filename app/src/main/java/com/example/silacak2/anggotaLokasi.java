@@ -3,12 +3,22 @@ package com.example.silacak2;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Base64;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
@@ -42,7 +52,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
-public class anggotaLokasi extends AppCompatActivity implements OnMapReadyCallback{
+public class anggotaLokasi extends AppCompatActivity implements OnMapReadyCallback,MapboxMap.OnMarkerClickListener{
     final String api_keys = "pv2A0M0C6NbfoQNF0lQ0QRyNRuTnWVQK";
     SessionManager sessionManager;
     LocationManager locationManager;
@@ -53,6 +63,8 @@ public class anggotaLokasi extends AppCompatActivity implements OnMapReadyCallba
     private MapView mapView;
     private MapboxMap map;
     private Marker markers;
+    private String nrps,nama,foto,pangkat,tugass;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -107,6 +119,7 @@ public class anggotaLokasi extends AppCompatActivity implements OnMapReadyCallba
     @Override
     public void onMapReady(MapboxMap mapboxMap) {
         map = mapboxMap;
+        map.setOnMarkerClickListener(this);
     }
 
     private void movetoLogin() {
@@ -138,8 +151,9 @@ public class anggotaLokasi extends AppCompatActivity implements OnMapReadyCallba
                                     String tugas = jo.getString("tugas");
                                     String detail = jo.getString("detail_perintah");
                                     String pangkat = jo.getString("pangkat");
+                                    String nrp = jo.getString("nrp");
 
-                                    addMarkers(latLng, name, role,tugas,detail,pangkat);
+                                    addMarkers(latLng, name, role,tugas,detail,pangkat,nrp);
                                 }
                             }
                         } catch (Exception e) {
@@ -153,7 +167,7 @@ public class anggotaLokasi extends AppCompatActivity implements OnMapReadyCallba
                     }
                 });
     }
-    private void addMarkers(LatLng point, String name, String role,String tugas,String detail,String pangkat) {
+    private void addMarkers(LatLng point, String name, String role,String tugas,String detail,String pangkat,String nrp) {
         IconFactory iconFactory = IconFactory.getInstance(anggotaLokasi.this);
         Icon icon;
         if (role.equalsIgnoreCase("anggota")) {
@@ -167,7 +181,7 @@ public class anggotaLokasi extends AppCompatActivity implements OnMapReadyCallba
         markers.setIcon(icon);
 
 
-        markers.setTitle(pangkat + " " + name);
+        markers.setTitle(nrp+" | "+pangkat + " " + name);
 
 
         String tugs;
@@ -179,10 +193,10 @@ public class anggotaLokasi extends AppCompatActivity implements OnMapReadyCallba
         }
 
 
-        if(!detail.equals("null")){
-            markers.setSnippet("Tugas Sekarang:\n"+detail+"\n\nTugas Harian: \n"+tugs);
-        }else{
-            markers.setSnippet("Tugas Harian:\n"+tugs);
+        if (!detail.equals("null")) {
+            markers.setSnippet("Tugas Sekarang:" + detail + "\n\nTugas Harian:" + tugs);
+        } else {
+            markers.setSnippet("Tugas Harian:" + tugs);
         }
     }
     private void clearAllMarkers() {
@@ -236,6 +250,89 @@ public class anggotaLokasi extends AppCompatActivity implements OnMapReadyCallba
     protected void onDestroy() {
         super.onDestroy();
         mapView.onDestroy();
+    }
+
+    @Override
+    public boolean onMarkerClick(@NonNull Marker marker) {
+        marker.showInfoWindow(map,mapView);
+        String title = marker.getTitle().toString();
+        String tus = marker.getSnippet();
+        String[] tusplit = tus.split(":");
+        String[] titsplit = title.split(" | ");
+        nrps = titsplit[0];
+        tugass = tusplit[1];
+        openDialogInfo();
+        return true;
+    }
+
+    private void openDialogInfo(){
+        ProgressDialog pdg = new ProgressDialog(anggotaLokasi.this);
+        pdg.show();
+        AndroidNetworking.post(serv.server+"/profile/getNrpDetailProfile.php")
+                .addBodyParameter("nrp",nrps)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try {
+                            nama = response.getString("nama");
+                            foto = response.getString("foto");
+                            pangkat = response.getString("pangkat");
+
+                            setImageProfile();
+                            pdg.dismiss();
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                            Toast.makeText(anggotaLokasi.this, "Terjadi Kesalahan", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+                        anError.printStackTrace();
+                    }
+                });
+    }
+
+    private void setImageProfile(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(anggotaLokasi.this);
+
+        LayoutInflater inflater = (LayoutInflater) getApplicationContext().getSystemService(anggotaLokasi.this.LAYOUT_INFLATER_SERVICE);
+        View view = inflater.inflate(R.layout.detail_marker, null);
+        final TextView txtnama,txtpangkat,txtnrp,txttugas;
+        final ImageView imgView;
+
+        txtnama = view.findViewById(R.id.namaMarkDetail);
+        txtpangkat = view.findViewById(R.id.jabatanMarkDetail);
+        txtnrp = view.findViewById(R.id.nrpMarkDetail);
+        txttugas = view.findViewById(R.id.tugasMarkDetail);
+        imgView = view.findViewById(R.id.imgMarkDetail);
+
+        txtnama.setText("Nama: "+nama);
+        txtpangkat.setText("Jabatan: "+pangkat);
+        txtnrp.setText("NRP: "+nrps);
+        txttugas.setText(tugass);
+
+
+        if(!foto.equals("null")){
+            byte[] decodedString = Base64.decode(foto, Base64.DEFAULT);
+            Bitmap bitmap = BitmapFactory.decodeByteArray(decodedString,0,decodedString.length);
+
+            imgView.setImageBitmap(bitmap);
+        }
+        builder.setView(view)
+                .setTitle("Detail Personil")
+                .setIcon(R.mipmap.ic_presisi)
+                .setPositiveButton("Close", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                });
+
+        AlertDialog ald = builder.create();
+        ald.show();
+
     }
 
 }
