@@ -1,5 +1,6 @@
 package com.example.silacak2;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
@@ -39,7 +40,8 @@ public class detail_of_perintah extends AppCompatActivity {
     ArrayList<ListAnggotaModel> userList;
     URLServer serv;;
     TextView tvClear;
-    BaseAdapter adapter;
+    ArrayAdapter<ListAnggotaModel> adapter;
+    ArrayAdapter<ListAnggotaModel> arrayAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,21 +68,16 @@ public class detail_of_perintah extends AppCompatActivity {
 
         initListViewData();
 
-        adapter = new adapterListAnggotaCoba(this,userList);
-        lvlistanggota.setAdapter(adapter);
-
         lvlistanggota.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                CheckedTextView v = (CheckedTextView) view;
-                boolean currentCheck = v.isChecked();
-//                ListAnggotaModel user = (ListAnggotaModel) lvlistanggota.getItemAtPosition(v.get);
+                CheckedTextView v = (CheckedTextView) view.findViewById(R.id.listAnggotadetails);
 
                 if (lvlistanggota.isItemChecked(0)) {
                     for (int a = 0; a < userList.size(); a++) {
                         lvlistanggota.setItemChecked(a, true);
                     }
-
+                    Toast.makeText(detail_of_perintah.this,"Menyetel Ke Seluruh Anggota dalam List",Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -93,6 +90,9 @@ public class detail_of_perintah extends AppCompatActivity {
                 for (int a = 0; a < userList.size(); a++) {
                     lvlistanggota.setItemChecked(a, false);
                 }
+                Toast.makeText(detail_of_perintah.this,"Menghapus Semua Centang dalam List",Toast.LENGTH_SHORT).show();
+                adapter.clear();
+                initListViewData();
 //                lvlistanggota.clearChoices();
             }
         });
@@ -103,6 +103,8 @@ public class detail_of_perintah extends AppCompatActivity {
     }
 
     private void initListViewData() {
+        ProgressDialog pgb = new ProgressDialog(detail_of_perintah.this);
+        pgb.show();
         String lat = String.valueOf(perintahModel.getLatitudePerintah());
         String lng = String.valueOf(perintahModel.getLongitudePerintah());
         AndroidNetworking.post(serv.getAllListAnggota())
@@ -127,7 +129,10 @@ public class detail_of_perintah extends AppCompatActivity {
                                 userList.add(userss);
 
                             }
-                            adapter.notifyDataSetChanged();
+
+                            adapter = new adapterListAnggotaCoba(detail_of_perintah.this,userList);
+                            lvlistanggota.setAdapter(adapter);
+                            pgb.dismiss();
 
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -149,12 +154,13 @@ public class detail_of_perintah extends AppCompatActivity {
         String lat = String.valueOf(perintahModel.getLatitudePerintah());
         String lng = String.valueOf(perintahModel.getLongitudePerintah());
         String detail_perintah = editDetail.getText().toString();
+
         if (sp.size() > 0) {
             for (int i = 1; i < sp.size(); i++) {
                 if (sp.valueAt(i) == true) {
                     ListAnggotaModel user = (ListAnggotaModel) lvlistanggota.getItemAtPosition(i);
 
-                    String s = user.getId();
+                    String s = user.getId().toString();
                     aah.add(s);
                 }
             }

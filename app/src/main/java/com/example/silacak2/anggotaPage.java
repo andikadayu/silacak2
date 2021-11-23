@@ -627,9 +627,9 @@ public class anggotaPage extends AppCompatActivity implements OnMapReadyCallback
         txttugas = view.findViewById(R.id.tugasMarkDetail);
         imgView = view.findViewById(R.id.imgMarkDetail);
 
-        txtnama.setText("Nama: "+nama);
-        txtpangkat.setText("Jabatan: "+pangkat);
-        txtnrp.setText("NRP: "+nrps);
+        txtnama.setText(nama);
+        txtpangkat.setText(pangkat);
+        txtnrp.setText(nrps);
         txttugas.setText(tugass);
 
 

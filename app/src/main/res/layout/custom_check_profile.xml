@@ -1,24 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="horizontal">
 
-    <ImageView
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/linearCheck">
+
+    <de.hdodenhof.circleimageview.CircleImageView
         android:layout_width="50dp"
         android:layout_height="50dp"
-        android:padding="3dp"
         android:id="@+id/listanggotafotodetails"
-        android:src="@drawable/policeman"/>
+        android:src="@drawable/policeman"
+        app:civ_border_width="2dp"
+        app:civ_border_color="#FF000000"
+        />
 
-<CheckedTextView
-    android:id="@+id/listAnggotadetails"
-    android:layout_width="match_parent"
-    android:layout_height="?android:attr/listPreferredItemHeightSmall"
-    android:textAppearance="?android:attr/textAppearanceListItemSmall"
-    android:gravity="center_vertical"
-    android:checkMark="?android:attr/textCheckMark"
-    android:paddingStart="?android:attr/listPreferredItemPaddingStart"
-    android:drawablePadding="5dp"
-    android:paddingEnd="?android:attr/listPreferredItemPaddingEnd"/>
+
+    <CheckedTextView
+        android:id="@+id/listAnggotadetails"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/listPreferredItemHeightSmall"
+        android:textAppearance="?android:attr/textAppearanceListItemSmall"
+        android:gravity="center_vertical"
+        android:checkMark="?android:attr/textCheckMark"
+        android:paddingStart="?android:attr/listPreferredItemPaddingStart"
+        android:drawablePadding="5dp"
+        android:paddingEnd="?android:attr/listPreferredItemPaddingEnd">
+
+
+    </CheckedTextView>
+
 </LinearLayout>
+
+
+

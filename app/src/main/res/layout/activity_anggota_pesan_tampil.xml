@@ -108,13 +108,14 @@
             app:tint="@android:color/white"
             tools:ignore="VectorDrawableCompat" />
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imageView3"
             android:layout_width="30dp"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:layout_marginLeft="10dp"
-            android:adjustViewBounds="true"
-            app:srcCompat="@drawable/user1" />
+            android:src="@drawable/user1"
+            app:civ_border_width="2dp"
+            app:civ_border_color="#FF000000"/>
 
         <TextView
             android:id="@+id/namaKontak"

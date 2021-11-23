@@ -2,16 +2,20 @@ package com.example.silacak2;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.SparseBooleanArray;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.CheckedTextView;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,7 +41,8 @@ public class detail_of_blast extends AppCompatActivity {
     ArrayList<ListAnggotaModel> userList;
     URLServer serv;
     TextView tvClear;
-    BaseAdapter adapter;
+    ArrayAdapter<ListAnggotaModel> adapter;
+    ArrayAdapter<ListAnggotaModel> arrayAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,21 +69,16 @@ public class detail_of_blast extends AppCompatActivity {
 
         initListViewData();
 
-        adapter = new adapterListAnggotaCoba(this,userList);
-        lvlistanggota.setAdapter(adapter);
-
         lvlistanggota.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                CheckedTextView v = (CheckedTextView) view;
-                boolean currentCheck = v.isChecked();
-//                ListAnggotaModel user = (ListAnggotaModel) lvlistanggota.getItemAtPosition(v.get);
+                CheckedTextView v = (CheckedTextView) view.findViewById(R.id.listAnggotadetails);
 
                 if (lvlistanggota.isItemChecked(0)) {
                     for (int a = 0; a < userList.size(); a++) {
                         lvlistanggota.setItemChecked(a, true);
                     }
-
+                    Toast.makeText(detail_of_blast.this,"Menyetel Ke Seluruh Anggota dalam List",Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -91,14 +91,17 @@ public class detail_of_blast extends AppCompatActivity {
                 for (int a = 0; a < userList.size(); a++) {
                     lvlistanggota.setItemChecked(a, false);
                 }
+                Toast.makeText(detail_of_blast.this,"Menghapus Semua Centang dalam List",Toast.LENGTH_SHORT).show();
+                adapter.clear();
+                initListViewData();
 //                lvlistanggota.clearChoices();
             }
         });
     }
 
     private void initListViewData() {
-        String lat = String.valueOf(perintahModel.getLatitudePerintah());
-        String lng = String.valueOf(perintahModel.getLongitudePerintah());
+        ProgressDialog pgb = new ProgressDialog(detail_of_blast.this);
+        pgb.show();
         AndroidNetworking.post(serv.server + "/distance/getAllAnggota.php")
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
@@ -119,7 +122,9 @@ public class detail_of_blast extends AppCompatActivity {
                                 userList.add(userss);
 
                             }
-                            adapter.notifyDataSetChanged();
+                            adapter = new adapterListAnggotaCoba(detail_of_blast.this,userList);
+                            lvlistanggota.setAdapter(adapter);
+                            pgb.dismiss();
 
                         } catch (Exception e) {
                             e.printStackTrace();
@@ -145,7 +150,8 @@ public class detail_of_blast extends AppCompatActivity {
             for (int i = 1; i < sp.size(); i++) {
                 if (sp.valueAt(i) == true) {
                     ListAnggotaModel user = (ListAnggotaModel) lvlistanggota.getItemAtPosition(i);
-
+//                    ListAnggotaModel so = (ListAnggotaModel) lvlistanggota.getItemAtPosition(i);
+                    Log.d("TES",user.toString());
                     String s = user.getId();
                     aah.add(s);
                 }
