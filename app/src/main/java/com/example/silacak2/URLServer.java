@@ -1,7 +1,7 @@
 package com.example.silacak2;
 
 public class URLServer {
-    String server = "https://silacak.pt-ckit.com/"; //Server Domain Https Recommended
+    public String server = "https://silacak.pt-ckit.com/"; //Server Domain Https Recommended
 
     public String getLogin() {
         return server + "/login.php";
@@ -86,7 +86,7 @@ public class URLServer {
     public String getPesanTampil2() {
         return server + "/getPesanTampil2.php";
     }
-
+    
     public String getDeleteUser() {
         return server + "/get_deleteuser.php";
     }

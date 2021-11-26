@@ -143,9 +143,13 @@
         <entry key="..\:/test/Android Project/app2/app/src/main/res/menu/optionmenu_admin.xml" value="0.27291666666666664" />
         <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/drawable/border_rectangle.xml" value="0.2388888888888889" />
         <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/drawable/edit_text_style.xml" value="0.2890625" />
+        <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/drawable/ic_baseline_check_24.xml" value="0.15520833333333334" />
         <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/activity_admin_list_anggota.xml" value="0.13272543059777103" />
+        <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/activity_admin_list_laporan.xml" value="0.26721014492753625" />
+        <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/activity_admin_list_perintah.xml" value="0.13272543059777103" />
         <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/activity_admin_page_new.xml" value="0.17255434782608695" />
         <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/activity_admin_pesan_tampil.xml" value="0.27291666666666664" />
+        <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/activity_anggota_page.xml" value="0.26721014492753625" />
         <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/activity_anggota_pesan.xml" value="0.27291666666666664" />
         <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/activity_anggota_pesan_tampil.xml" value="0.27291666666666664" />
         <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/activity_confrim_anggota.xml" value="0.19882246376811594" />
@@ -153,6 +157,7 @@
         <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/activity_detail_of_blast.xml" value="0.1" />
         <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/activity_info_bio_nrp.xml" value="0.17255434782608695" />
         <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/activity_info_biodata_anggota.xml" value="0.18614130434782608" />
+        <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/activity_info_detail_laporan.xml" value="0.25" />
         <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/activity_main.xml" value="0.19882246376811594" />
         <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/activity_profile_admin.xml" value="0.19882246376811594" />
         <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/activity_profile_anggota.xml" value="0.19882246376811594" />
@@ -160,7 +165,9 @@
         <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/activity_setting_admin_profile.xml" value="0.18614130434782608" />
         <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/activity_setting_profile_anggota.xml" value="0.192481884057971" />
         <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/activity_upload_image_profile.xml" value="0.192481884057971" />
+        <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/activity_user_page.xml" value="0.26721014492753625" />
         <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/adapter_anggota.xml" value="0.19882246376811594" />
+        <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/adapter_list_laporan.xml" value="0.26268115942028986" />
         <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/adapter_pesan_admin.xml" value="0.27291666666666664" />
         <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/adapter_pesan_anggota.xml" value="0.27291666666666664" />
         <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/adapter_pesan_anggota2.xml" value="0.27291666666666664" />
@@ -169,6 +176,8 @@
         <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/adapter_user_baru.xml" value="0.13272543059777103" />
         <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/custom_check_profile.xml" value="0.1" />
         <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/detail_marker.xml" value="0.27291666666666664" />
+        <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/dialog_lapor.xml" value="0.26721014492753625" />
+        <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/dialog_perintah.xml" value="0.26721014492753625" />
         <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/editbioinfo.xml" value="0.18614130434782608" />
         <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/set_tugas.xml" value="0.18614130434782608" />
         <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/viewphoto.xml" value="0.18614130434782608" />

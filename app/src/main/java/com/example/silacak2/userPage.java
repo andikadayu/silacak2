@@ -1,14 +1,20 @@
 package com.example.silacak2;
 
+import android.app.AlertDialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +25,7 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.mapbox.mapboxsdk.Mapbox;
 import com.mapbox.mapboxsdk.annotations.Icon;
 import com.mapbox.mapboxsdk.annotations.IconFactory;
@@ -40,10 +47,11 @@ public class userPage extends AppCompatActivity implements OnMapReadyCallback {
     URLServer serv;
     Handler handler = new Handler();
     Runnable runnable;
-    int delay = 1000;
+    int delay = 3000;
     private MapView mapView;
     private MapboxMap map;
     private Marker markers;
+    FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +60,7 @@ public class userPage extends AppCompatActivity implements OnMapReadyCallback {
 
         Mapbox.getInstance(this, getString(R.string.access_token));
         mapView = findViewById(R.id.mapPengguna);
+        fab = findViewById(R.id.btnLapor);
 
         locationManager = (LocationManager) this.getSystemService(Context.LOCATION_SERVICE);
 
@@ -91,6 +100,13 @@ public class userPage extends AppCompatActivity implements OnMapReadyCallback {
         mapView.getMapAsync(this);
 
         namaPengirim();
+
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openDialog();
+            }
+        });
     }
 
     @Override
@@ -126,8 +142,9 @@ public class userPage extends AppCompatActivity implements OnMapReadyCallback {
                                     Double lat = Double.parseDouble(jo.getString("latitude"));
                                     Double lng = Double.parseDouble(jo.getString("longitude"));
                                     LatLng latLng = new LatLng(lat, lng);
+                                    String laporan = jo.getString("detail_laporan");
 
-                                    addMarkers(latLng, name, role);
+                                    addMarkers(latLng, name, role,laporan);
                                 }
                             }
                         } catch (Exception e) {
@@ -229,7 +246,7 @@ public class userPage extends AppCompatActivity implements OnMapReadyCallback {
                 });
     }
 
-    private void addMarkers(LatLng point, String name, String role) {
+    private void addMarkers(LatLng point, String name, String role,String laporan) {
         IconFactory iconFactory = IconFactory.getInstance(userPage.this);
         Icon icon;
 
@@ -238,12 +255,77 @@ public class userPage extends AppCompatActivity implements OnMapReadyCallback {
         markers = map.addMarker(new MarkerOptions().position(point));
         markers.setIcon(icon);
         markers.setTitle(name);
+        if(!laporan.equals("null")){
+            markers.setSnippet("Mengirim Laporan:\n"+laporan);
+        }
     }
 
     private void clearAllMarkers() {
         if (markers != null) {
             map.removeMarker(markers);
         }
+    }
+
+    private void openDialog(){
+        AlertDialog.Builder builder = new AlertDialog.Builder(userPage.this);
+
+        LayoutInflater inflater = (LayoutInflater) getApplicationContext().getSystemService(userPage.this.LAYOUT_INFLATER_SERVICE);
+        View view = inflater.inflate(R.layout.dialog_lapor,null);
+        final EditText txtLapor = view.findViewById(R.id.txtLapor);
+
+        builder.setView(view)
+                .setTitle("Menyetel Laporan Masalah yang Terjadi")
+                .setIcon(R.drawable.ic_baseline_report_problem_24)
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.cancel();
+                    }
+                })
+                .setPositiveButton("Laporkan Masalah", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        String laporan  = txtLapor.getText().toString();
+                        String id_masyarakat = sessionManager.getUserDetail().get(SessionManager.ID_USER);
+                        if(laporan.equals("") || id_masyarakat.equals("")){
+                            Toast.makeText(userPage.this, "Complete the Form", Toast.LENGTH_SHORT).show();
+                        }else{
+                            // TODO Post to server
+                            setLaporan(laporan,id_masyarakat);
+                        }
+                    }
+                });
+
+        AlertDialog ald = builder.create();
+        ald.show();
+    }
+
+    private void setLaporan(String laporan,String id_masyarakat){
+        AndroidNetworking.post(serv.server + "/laporan/setLaporan.php")
+                .addBodyParameter("id_masyarakat",id_masyarakat)
+                .addBodyParameter("detail_laporan",laporan)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try{
+                            boolean status = response.getBoolean("status");
+                            if(status){
+                                Toast.makeText(userPage.this, "Berhasil Melaporankan Masalah", Toast.LENGTH_SHORT).show();
+                            }else{
+                                Toast.makeText(userPage.this, "Tidak Bisa Melaporankan Masalah", Toast.LENGTH_SHORT).show();
+                            }
+                        }catch (Exception e){
+                            e.printStackTrace();
+                            Toast.makeText(userPage.this, "Terjadi Kesalahan", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+                        anError.printStackTrace();
+                    }
+                });
     }
 
     @Override

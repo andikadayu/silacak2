@@ -18,10 +18,9 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
-import com.example.silacak2.adapter.adapterAnggota;
-import com.example.silacak2.adapter.adapterUser;
-import com.example.silacak2.model.dataAnggotaModel;
-import com.example.silacak2.model.dataUserModel;
+import com.example.silacak2.adapter.adapterDataPerintah;
+import com.example.silacak2.adapter.adapterLaporan;
+import com.example.silacak2.model.dataLaporanModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.jetbrains.annotations.NotNull;
@@ -30,70 +29,74 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class adminListAnggota extends AppCompatActivity {
-    SessionManager sessionManager;
+public class adminListLaporan extends AppCompatActivity {
+
     URLServer serv;
-    private final static String STATUS = "Data User";
-    public ArrayList<dataAnggotaModel> dataAnggotaModels;
-    public RecyclerView recyclerView;
-    public RecyclerView.Adapter adapter;
-    public RecyclerView.LayoutManager layoutManager;
+    SessionManager sessionManager;
+
+    public ArrayList<dataLaporanModel> dataLaporanModels;
+    RecyclerView recyclerView;
+    RecyclerView.Adapter adapter;
+    RecyclerView.LayoutManager layoutManager;
     private ProgressDialog progressDialog;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_list_anggota);
+        setContentView(R.layout.activity_admin_list_laporan);
+
 
         serv = new URLServer();
 
-        getSupportActionBar().setTitle("Data Anggota");
+        getSupportActionBar().setTitle("List Laporan Masyakat");
 
-        recyclerView = findViewById(R.id.recyAnggota);
+        recyclerView = findViewById(R.id.recyLaporan);
         recyclerView.setHasFixedSize(true);
-        dataAnggotaModels = new ArrayList<>();
+        dataLaporanModels = new ArrayList<>();
         AndroidNetworking.initialize(getApplicationContext());
 
         loadData();
 
-        layoutManager = new LinearLayoutManager(adminListAnggota.this, RecyclerView.VERTICAL, false);
+        layoutManager = new LinearLayoutManager(this,RecyclerView.VERTICAL,false);
         recyclerView.setLayoutManager(layoutManager);
 
-        recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
+        recyclerView.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
 
-        adapter = new adapterAnggota(this, dataAnggotaModels);
+        adapter = new adapterLaporan(dataLaporanModels,this);
         recyclerView.setAdapter(adapter);
 
-        //Nav Bottom
         BottomNavigationView bottomNavigationView = findViewById(R.id.adminNav);
-        bottomNavigationView.setSelectedItemId(R.id.listanggota);
+        bottomNavigationView.setSelectedItemId(R.id.listuser);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull @NotNull MenuItem item) {
                 switch (item.getItemId()) {
-                    case R.id.listanggota:
+                    case R.id.listuser:
+
                         return true;
 //                    case R.id.profiles:
-//                        startActivity(new Intent(adminListAnggota.this, profileAdmin.class));
+//                        startActivity(new Intent(adminListPerintah.this, profileAdmin.class));
 //                        overridePendingTransition(0, 0);
 //                        finish();
 //                        return true;
-                    case R.id.listuser:
-                        startActivity(new Intent(adminListAnggota.this, adminListUser.class));
+                    case R.id.homes:
+                        startActivity(new Intent(adminListLaporan.this, adminPageNew.class));
                         overridePendingTransition(0, 0);
                         finish();
                         return true;
-                    case R.id.homes:
-                        startActivity(new Intent(adminListAnggota.this, adminPageNew.class));
+                    case R.id.listanggota:
+                        startActivity(new Intent(adminListLaporan.this, adminListAnggota.class));
                         overridePendingTransition(0, 0);
                         finish();
                         return true;
                     case R.id.newUser:
-                        startActivity(new Intent(adminListAnggota.this, adminUserNew.class));
+                        startActivity(new Intent(adminListLaporan.this, adminUserNew.class));
                         overridePendingTransition(0, 0);
                         finish();
                         return true;
                     case R.id.pesan:
-                        startActivity(new Intent(adminListAnggota.this, adminPesan.class));
+                        startActivity(new Intent(adminListLaporan.this, adminPesan.class));
                         overridePendingTransition(0, 0);
                         finish();
                         return true;
@@ -101,11 +104,7 @@ public class adminListAnggota extends AppCompatActivity {
                 return false;
             }
         });
-
-        sessionManager = new SessionManager(adminListAnggota.this);
-        if (!sessionManager.isLoggedIn()) {
-            movetoLogin();
-        }
+        sessionManager = new SessionManager(adminListLaporan.this);
     }
 
     @Override
@@ -134,44 +133,40 @@ public class adminListAnggota extends AppCompatActivity {
         return true;
     }
 
-    private void movetoLogin() {
-        Intent i = new Intent(adminListAnggota.this, MainActivity.class);
-        i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NO_HISTORY);
-        startActivity(i);
-        finish();
-    }
-
-    private void loadData() {
+    private  void loadData(){
         progressDialog = new ProgressDialog(this);
         progressDialog.setCancelable(false);
         progressDialog.setMessage("Memuat Data...");
         progressDialog.show();
-
-        AndroidNetworking.post(serv.getAnggotaData())
-                .addBodyParameter("action", "tampil_anggota")
+        AndroidNetworking.post(serv.server+"/laporan/getAll.php")
                 .setPriority(Priority.MEDIUM)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        try {
-                            JSONArray jsonArray = response.getJSONArray("DataAnggota");
-                            for (int i = 0; i < jsonArray.length(); i ++){
-                                JSONObject data = jsonArray.getJSONObject(i);
-                                dataAnggotaModel item = new dataAnggotaModel(
-                                        data.getString("id_anggota"),
-                                        data.getString("id_user"),
-                                        data.getString("nama"),
-                                        data.getString("email"),
-                                        data.getString("status"),
-                                        data.getString("foto")
-                                );
-
-                                dataAnggotaModels.add(item);
-                                progressDialog.dismiss();
+                        try{
+                            JSONArray ja = response.getJSONArray("result");
+                            for(int i=0;i<ja.length();i++){
+                                JSONObject jo = ja.getJSONObject(i);
+                                String status;
+                                if(jo.getString("is_active").equals("1")){
+                                    status = "Belum Selesai";
+                                }else{
+                                    status = "Selesai";
+                                }
+                                dataLaporanModel data = new dataLaporanModel(
+                                        jo.getString("id_laporan"),
+                                        jo.getString("detail_laporan"),
+                                        status,
+                                        jo.getString("nama"),
+                                        jo.getString("tgl_laporan")
+                                        );
+                                dataLaporanModels.add(data);
                             }
-                        } catch (Exception e) {
+                            progressDialog.dismiss();
+                        }catch (Exception e){
                             e.printStackTrace();
+                            Toast.makeText(adminListLaporan.this, "Terjadi Kesalahan", Toast.LENGTH_SHORT).show();
                             progressDialog.dismiss();
                         }
                         adapter.notifyDataSetChanged();
@@ -179,8 +174,9 @@ public class adminListAnggota extends AppCompatActivity {
 
                     @Override
                     public void onError(ANError anError) {
-//                        anError.printStackTrace();
-                        Toast.makeText(getApplicationContext(), "Terjadi Kesalahan" + anError, Toast.LENGTH_LONG).show();
+                        anError.printStackTrace();
+                        Toast.makeText(adminListLaporan.this, "Tidak Ada Data", Toast.LENGTH_SHORT).show();
+                        progressDialog.dismiss();
                     }
                 });
     }

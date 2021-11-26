@@ -140,6 +140,7 @@ public class adminPageNew extends AppCompatActivity implements OnMapReadyCallbac
         Constants.setIdGps(sessionManager.getUserDetail().get(SessionManager.ID_GPS));
         startService(new Intent(getApplicationContext(), LocationServer.class));
         startService(new Intent(getApplicationContext(), NotificationBerkumpul.class));
+        startService(new Intent(getApplicationContext(),NotificationLaporan.class));
 
         mapView.getMapAsync(this);
 
@@ -170,6 +171,7 @@ public class adminPageNew extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
+
         if (item.getItemId() == R.id.oProfileAdmin) {
             startActivity(new Intent(this, profileAdmin.class));
         }
@@ -183,6 +185,11 @@ public class adminPageNew extends AppCompatActivity implements OnMapReadyCallbac
         if(item.getItemId() == R.id.oScanQR){
             startActivity(new Intent(this, scan_qrcode.class));
         }
+
+        if(item.getItemId() == R.id.oLaporan){
+            startActivity(new Intent(this,adminListLaporan.class));
+        }
+
         return true;
     }
 

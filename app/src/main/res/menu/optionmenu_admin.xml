@@ -17,10 +17,18 @@
 <!--        android:icon="@drawable/ic_baseline_assignment_24"-->
 <!--        android:title="List Perintah"-->
 <!--        app:showAsAction="never" />-->
+
+    <item
+        android:id="@+id/oLaporan"
+        android:icon="@drawable/ic_baseline_report_problem_24"
+        android:title="Laporan"
+        app:showAsAction="never" />
+
     <item
         android:id="@+id/oProfileAdmin"
         android:icon="@drawable/ic_person"
         android:title="Profile"
         app:showAsAction="never" />
+
 
 </menu>

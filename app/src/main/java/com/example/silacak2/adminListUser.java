@@ -185,6 +185,9 @@ public class adminListUser extends AppCompatActivity {
         if(item.getItemId() == R.id.oScanQR){
             startActivity(new Intent(this, scan_qrcode.class));
         }
+        if(item.getItemId() == R.id.oLaporan){
+            startActivity(new Intent(this,adminListLaporan.class));
+        }
         return true;
     }
 
