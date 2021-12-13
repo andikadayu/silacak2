@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -22,6 +23,8 @@ import org.json.JSONObject;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+
+import timber.log.Timber;
 
 public class AbsensiActivity extends AppCompatActivity {
 
@@ -54,9 +57,9 @@ public class AbsensiActivity extends AppCompatActivity {
         if (day == Calendar.FRIDAY) {
 
             String today = (String) DateFormat.format(
-                    "hh:mm:ss", new Date());
+                    "HH:mm:ss", new Date());
 
-            SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss");
+            @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
             try {
                 Date afternoons = sdf.parse(afternoon);
 
@@ -67,14 +70,22 @@ public class AbsensiActivity extends AppCompatActivity {
                 Date Kexpired = sdf.parse(exp_jam_keluar_friday);
 
                 assert todays != null;
-                if (afternoons.before(todays)) {
-                    absen = "in";
-
-                    condtiotionScan = todays.after(befores) && todays.before(expireds);
-                    goScan();
-                } else {
+                assert afternoons != null;
+                if(todays.after(afternoons)){
                     absen = "out";
-                    condtiotionScan = todays.after(Kbefores) && todays.before(Kexpired);
+                    if(todays.after(Kbefores)){
+                        if(todays.before(Kexpired)){
+                            condtiotionScan = true;
+                        }
+                    }
+                    goScan();
+                }else{
+                    absen = "in";
+                    if(todays.after(befores)){
+                        if(todays.before(expireds)){
+                            condtiotionScan = true;
+                        }
+                    }
                     goScan();
                 }
 
@@ -93,9 +104,9 @@ public class AbsensiActivity extends AppCompatActivity {
         } else {
 
             String today = (String) DateFormat.format(
-                    "hh:mm:ss", new Date());
+                    "HH:mm:ss", new Date());
 
-            SimpleDateFormat sdf = new SimpleDateFormat("hh:mm:ss");
+            @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
             try {
                 Date afternoons = sdf.parse(afternoon);
 
@@ -106,17 +117,25 @@ public class AbsensiActivity extends AppCompatActivity {
                 Date Kexpired = sdf.parse(exp_jam_keluar);
 
                 assert todays != null;
-                if (afternoons.before(todays)) {
-                    absen = "in";
+                assert afternoons != null;
 
-                    condtiotionScan = todays.after(befores) && todays.before(expireds);
-                    goScan();
-                } else {
+                if(todays.after(afternoons)){
                     absen = "out";
-                    condtiotionScan = todays.after(Kbefores) && todays.before(Kexpired);
+                    if(todays.after(Kbefores)){
+                        if(todays.before(Kexpired)){
+                            condtiotionScan = true;
+                        }
+                    }
+                    goScan();
+                }else{
+                    absen = "in";
+                    if(todays.after(befores)){
+                        if(todays.before(expireds)){
+                            condtiotionScan = true;
+                        }
+                    }
                     goScan();
                 }
-
 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -150,12 +169,13 @@ public class AbsensiActivity extends AppCompatActivity {
                             exp_jam_masuk = response.getString("exp_jam_masuk");
                             exp_jam_keluar = response.getString("exp_jam_keluar");
                             exp_jam_keluar_friday = response.getString("exp_jam_keluar_friday");
-
+                            pdg.dismiss();
                             initializeApps();
 
                         } catch (Exception e) {
                             e.printStackTrace();
                             Toast.makeText(AbsensiActivity.this, "Error Response", Toast.LENGTH_SHORT).show();
+                            pdg.dismiss();
                             if (role.equalsIgnoreCase("admin")) {
                                 startActivity(new Intent(AbsensiActivity.this, adminPageNew.class));
                             } else {
@@ -168,8 +188,13 @@ public class AbsensiActivity extends AppCompatActivity {
                     @Override
                     public void onError(ANError anError) {
                         anError.printStackTrace();
+                        pdg.dismiss();
                         Toast.makeText(AbsensiActivity.this, "Error Connection", Toast.LENGTH_SHORT).show();
-                        startActivity(new Intent(AbsensiActivity.this, anggotaPage.class));
+                        if (role.equalsIgnoreCase("admin")) {
+                            startActivity(new Intent(AbsensiActivity.this, adminPageNew.class));
+                        } else {
+                            startActivity(new Intent(AbsensiActivity.this, anggotaPage.class));
+                        }
                         finish();
                     }
                 });
