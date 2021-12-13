@@ -1,36 +1,27 @@
 package com.example.silacak2;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.location.LocationManager;
-import android.os.Build;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
-import com.example.silacak2.adapter.adapterPesanAdmin;
 import com.example.silacak2.adapter.adapterPesanAnggota;
 import com.example.silacak2.adapter.adapterPesanAnggota2;
-import com.example.silacak2.model.dataPesanModel;
 import com.example.silacak2.model.dataPesanModelAnggota;
 import com.example.silacak2.model.dataPesanModelAnggota2;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.mapbox.mapboxsdk.geometry.LatLng;
 
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
@@ -114,6 +105,13 @@ public class anggotaPesan extends AppCompatActivity {
                         finish();
                         return true;
                     case R.id.pesanAnggota:
+                        return true;
+
+
+                    case R.id.absenAnggota:
+                        startActivity(new Intent(anggotaPesan.this, AbsensiActivity.class));
+                        overridePendingTransition(0, 0);
+                        finish();
                         return true;
                 }
                 return false;

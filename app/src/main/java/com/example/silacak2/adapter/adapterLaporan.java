@@ -31,7 +31,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class adapterLaporan extends RecyclerView.Adapter<adapterLaporan.Holder>{
 

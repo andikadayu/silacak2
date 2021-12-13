@@ -1,10 +1,5 @@
 package com.example.silacak2;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -14,6 +9,11 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
@@ -99,6 +99,12 @@ public class anggotaPesanGroub extends AppCompatActivity {
                         finish();
                         return true;
                     case R.id.pesanAnggota:
+                        return true;
+
+                    case R.id.absenAnggota:
+                        startActivity(new Intent(anggotaPesanGroub.this, AbsensiActivity.class));
+                        overridePendingTransition(0, 0);
+                        finish();
                         return true;
                 }
                 return false;

@@ -1,18 +1,17 @@
 package com.example.silacak2;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
@@ -140,6 +139,7 @@ public class settingAdminProfile extends AppCompatActivity {
         initializing();
 
     }
+
 
     private void initializing(){
         id_user = sessionManager.getUserDetail().get(SessionManager.ID_USER);

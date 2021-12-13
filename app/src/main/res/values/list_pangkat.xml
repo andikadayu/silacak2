@@ -3,50 +3,56 @@
     <string-array name="pangkat_array">
         <item>--Pilih Struktur Organisasi--</item>
 <!--        UNSUR PIMPINAN-->
-        <item>DANKORBRIMOB</item>
-        <item>WADANKORBRIMOB</item>
-<!--        UNSUR PEMBANTU PIMPINAN DAN PELAKSANA STAF-->
-        <item>SIKEU</item>
-        <item>TAUD</item>
-        <item>SUBBAG JIANSTRA</item>
-        <item>SUBBAG PROGAR</item>
-        <item>SUBBAG MONEV</item>
-        <item>SUBBAG BINOPS</item>
-        <item>SUBBAG DALOPS</item>
-        <item>SUBBAG LATOPS</item>
-        <item>SUBBAG HUMAS</item>
-        <item>SUBBAG WARPERS</item>
-        <item>SUBBAG BINKAR</item>
-        <item>SUBBAG DALPRES</item>
-        <item>SUBBAG PAL</item>
-        <item>SUBBAG BEKUM</item>
-        <item>SUBBAG KONBANG</item>
-        <item>SUBBAG ADA</item>
-<!--        UNSUR PENGAWAS DAN PELAYANAN-->
-        <item>SUBBID PAMINAL</item>
-        <item>SUBBID PROVOS</item>
-        <item>SUBBID WABPROF</item>
-        <item>SUBBID DOKPOL</item>
-        <item>SUBBID KESPOL</item>
-        <item>SUBBID RUMKIT</item>
-        <item>SUBBID YANKOM</item>
-        <item>SUBBID SISKOM</item>
-        <item>SUBBID TEKINFO</item>
-        <item>SUBBID YANUM</item>
-        <item>SUBBID ANG</item>
-        <item>SUBBID WALPROT</item>
-        <item>SUBBID KORSIK</item>
-<!--        UNSUR PELAKSANA UTAMA-->
-        <item>GEGANA SAT WANTEROR</item>
-        <item>GEGANA SAT JIBOM</item>
-        <item>GEGANA SAT KBR</item>
-        <item>GEGANA SAT BANTEK</item>
-        <item>SATLAT BRIMOB</item>
-        <item>SAT INTEL BRIMOB</item>
-        <item>PELOPOR RESIMEN I</item>
-        <item>PELOPOR RESIMEN II</item>
-        <item>PELOPOR RESIMEN III</item>
-        <item>PELOPOR RESIMEN IV</item>
+        <item>DANDENGEGANA</item>
+        <item>WADANDEN</item>
+        <item>URTU GEGANA</item>
+        <item>SIMIN GEGANA</item>
+        <item>SIOPS GEGANA</item>
+        <item>SILOG GEGANA</item>
+        <item>SIYANMA GEGANA</item>
+        <item>SIPROVOS GEGANA</item>
+        <item>SUBDEN 1</item>
+        <item>SUBDEN 2</item>
+        <item>SUBDEN 3</item>
+        <item>SUBDEN 4</item>
+        <item>DANSATBRIMOB</item>
+        <item>SUBBAGMINOPS</item>
+        <item>SUBBAGBINLAPTOPS</item>
+        <item>SUBBAGDALOPS</item>
+        <item>URREN</item>
+        <item>URMINTU</item>
+        <item>URKEU</item>
+        <item>SUBSIPALANG</item>
+        <item>SUBSIBEKUM</item>
+        <item>SUBSIHARTIB</item>
+        <item>SUBSIRIKSA</item>
+        <item>SUBSIYANKOM</item>
+        <item>SUBSISKOM</item>
+        <item>SUBSIYANUM</item>
+        <item>SUBSIPROTOKOL</item>
+        <item>SUBSIDUKKESLAP</item>
+        <item>SUBSIBINJAS</item>
+        <item>POLOKLINIK</item>
+        <item>SUBSIPRODOK</item>
+        <item>SUBSIOPSNAL</item>
+        <item>SUBSIANALIS</item>
+        <item>DENGEGANA</item>
+        <item>YON A</item>
+        <item>YON B</item>
+        <item>YON C</item>
+        <item>YON D</item>
+        <item>DANYONPELOPOR</item>
+        <item>WADANYON</item>
+        <item>URTU GEGANA</item>
+        <item>SIMIN PELOPOR</item>
+        <item>SIOPS PELOPOR</item>
+        <item>SILOG PELOPOR</item>
+        <item>SIYANMA PELOPOR</item>
+        <item>KOMPI 1</item>
+        <item>KOMPI 2</item>
+        <item>KOMPI 3</item>
+        <item>KOMPI 4</item>
+        <item>WADAN</item>
 
 <!--        End Pangkat-->
     </string-array>

@@ -1,26 +1,20 @@
 package com.example.silacak2;
 
+import android.app.ProgressDialog;
+import android.content.Intent;
+import android.os.Bundle;
+import android.os.Handler;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.ListView;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.os.Handler;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
@@ -29,11 +23,8 @@ import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.example.silacak2.adapter.adapterUser;
 import com.example.silacak2.model.dataUserModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.gson.JsonArray;
-import com.mapbox.mapboxsdk.geometry.LatLng;
 
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -187,6 +178,9 @@ public class adminListUser extends AppCompatActivity {
         }
         if(item.getItemId() == R.id.oLaporan){
             startActivity(new Intent(this,adminListLaporan.class));
+        }
+        if(item.getItemId() == R.id.oAbsensi){
+            startActivity(new Intent(this,AbsensiActivity.class));
         }
         return true;
     }

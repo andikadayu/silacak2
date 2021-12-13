@@ -9,7 +9,6 @@ import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -131,6 +130,9 @@ public class adminLokasiAll extends AppCompatActivity implements OnMapReadyCallb
         }
         if(item.getItemId() == R.id.oLaporan){
             startActivity(new Intent(this,adminListLaporan.class));
+        }
+        if(item.getItemId() == R.id.oAbsensi){
+            startActivity(new Intent(this,AbsensiActivity.class));
         }
         return true;
     }

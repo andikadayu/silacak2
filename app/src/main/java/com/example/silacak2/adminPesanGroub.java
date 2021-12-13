@@ -1,10 +1,5 @@
 package com.example.silacak2;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -14,10 +9,13 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
@@ -26,7 +24,6 @@ import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.example.silacak2.adapter.adapterPesanGroub;
 import com.example.silacak2.adapter.adapterTampilPesanAdmin;
 import com.example.silacak2.model.dataPesanGroubModelAdmin;
-import com.example.silacak2.model.dataTampilPesanModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.jetbrains.annotations.NotNull;
@@ -164,6 +161,10 @@ public class adminPesanGroub extends AppCompatActivity {
         }
         if(item.getItemId() == R.id.oLaporan){
             startActivity(new Intent(this,adminListLaporan.class));
+        }
+
+        if(item.getItemId() == R.id.oAbsensi){
+            startActivity(new Intent(this,AbsensiActivity.class));
         }
         return true;
     }

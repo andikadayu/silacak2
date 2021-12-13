@@ -1,6 +1,5 @@
 package com.example.silacak2;
 
-import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -48,8 +47,6 @@ import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.Calendar;
 
 public class anggotaPage extends AppCompatActivity implements OnMapReadyCallback,MapboxMap.OnMarkerClickListener {
     final String api_keys = "pv2A0M0C6NbfoQNF0lQ0QRyNRuTnWVQK";
@@ -114,6 +111,12 @@ public class anggotaPage extends AppCompatActivity implements OnMapReadyCallback
                         finish();
                         return true;
                     case R.id.homesAnggota:
+                        return true;
+
+                    case R.id.absenAnggota:
+                        startActivity(new Intent(anggotaPage.this, AbsensiActivity.class));
+                        overridePendingTransition(0, 0);
+                        finish();
                         return true;
                 }
                 return false;

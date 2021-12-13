@@ -1,10 +1,5 @@
 package com.example.silacak2;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.NotificationCompat;
-import androidx.core.app.NotificationManagerCompat;
-
 import android.app.AlertDialog;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -19,7 +14,6 @@ import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.text.Layout;
 import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -30,6 +24,11 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
@@ -188,6 +187,10 @@ public class adminPageNew extends AppCompatActivity implements OnMapReadyCallbac
 
         if(item.getItemId() == R.id.oLaporan){
             startActivity(new Intent(this,adminListLaporan.class));
+        }
+
+        if(item.getItemId() == R.id.oAbsensi){
+            startActivity(new Intent(this,AbsensiActivity.class));
         }
 
         return true;

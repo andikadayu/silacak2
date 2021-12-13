@@ -4,16 +4,12 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.text.Layout;
 import android.util.Base64;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.BaseAdapter;
 import android.widget.CheckedTextView;
 import android.widget.ImageView;
 
@@ -23,7 +19,6 @@ import com.example.silacak2.R;
 import com.example.silacak2.model.ListAnggotaModel;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class adapterListAnggotaCoba extends ArrayAdapter<ListAnggotaModel> {
     ArrayList<ListAnggotaModel> dataModel;

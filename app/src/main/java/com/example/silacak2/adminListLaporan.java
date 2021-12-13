@@ -1,11 +1,5 @@
 package com.example.silacak2;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,11 +8,16 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
-import com.example.silacak2.adapter.adapterDataPerintah;
 import com.example.silacak2.adapter.adapterLaporan;
 import com.example.silacak2.model.dataLaporanModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -129,6 +128,9 @@ public class adminListLaporan extends AppCompatActivity {
         }
         if(item.getItemId() == R.id.oLaporan){
             startActivity(new Intent(this,adminListLaporan.class));
+        }
+        if(item.getItemId() == R.id.oAbsensi){
+            startActivity(new Intent(this,AbsensiActivity.class));
         }
         return true;
     }

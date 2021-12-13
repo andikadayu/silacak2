@@ -24,7 +24,6 @@ import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.chauthai.swipereveallayout.SwipeRevealLayout;
 import com.chauthai.swipereveallayout.ViewBinderHelper;
-import com.example.silacak2.ConfrimAnggota;
 import com.example.silacak2.R;
 import com.example.silacak2.info_biodata_anggota;
 import com.example.silacak2.model.dataAnggotaModel;

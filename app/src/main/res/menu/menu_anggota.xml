@@ -8,6 +8,12 @@
         android:id="@+id/lokasiAnggota"
         android:icon="@drawable/ic_location_on_24"
         android:title="Lokasi Anggota" />
+
+    <item
+        android:id="@+id/absenAnggota"
+        android:icon="@drawable/ic_baseline_qr_code_scanner_24"
+        android:title="Absensi"/>
+
     <item
         android:id="@+id/pesanAnggota"
         android:icon="@drawable/ic_message"

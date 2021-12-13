@@ -20,6 +20,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Silacak2">
         <activity
+            android:name=".AbsensiActivity"
+            android:exported="false" />
+        <activity
             android:name=".infoDetailLaporan"
             android:exported="false" />
         <activity
@@ -182,12 +185,11 @@
             android:name=".NotificationPesan"
             android:enabled="true"
             android:exported="false" />
-
-        <service android:name=".NotificationLaporan"
+        <service
+            android:name=".NotificationLaporan"
             android:enabled="true"
-            android:exported="false"/>
+            android:exported="false" />
         <service android:name=".AppReceiver" />
-
     </application>
 
 </manifest>

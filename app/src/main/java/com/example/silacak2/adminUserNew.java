@@ -131,6 +131,10 @@ public class adminUserNew extends AppCompatActivity {
         if(item.getItemId() == R.id.oLaporan){
             startActivity(new Intent(this,adminListLaporan.class));
         }
+
+        if(item.getItemId() == R.id.oAbsensi){
+            startActivity(new Intent(this,AbsensiActivity.class));
+        }
         return true;
     }
 

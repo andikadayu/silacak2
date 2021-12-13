@@ -87,6 +87,12 @@ public class profileAnggota extends AppCompatActivity {
                         overridePendingTransition(0, 0);
                         finish();
                         return true;
+
+                    case R.id.absenAnggota:
+                        startActivity(new Intent(profileAnggota.this, AbsensiActivity.class));
+                        overridePendingTransition(0, 0);
+                        finish();
+                        return true;
                 }
                 return false;
             }
