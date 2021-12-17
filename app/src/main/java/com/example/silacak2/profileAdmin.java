@@ -37,7 +37,7 @@ import androidmads.library.qrgenearator.QRGEncoder;
 public class profileAdmin extends AppCompatActivity {
     SessionManager sessionManager;
     URLServer serv;
-    TextView txnama,txtnrp,lblnama,lbljenis,lblemail,lblttl,lblalamat,lblnrp;
+    TextView txnama,txtnrp,lblnama,lbljenis,lblemail,lblttl,lblalamat,lblnrp,tvTidakHadir,tvHadir;
     Button btLogout, btnfoto,btnedit;
     ImageView imgqr,imgprofile;
     String nama,nrp,jenis,email,ttl,alamat,id_user,foto,pangkat;
@@ -62,6 +62,9 @@ public class profileAdmin extends AppCompatActivity {
         lblttl = findViewById(R.id.lblTTLBio);
         lblalamat = findViewById(R.id.lblAlamatBio);
         lblnrp = findViewById(R.id.lblNRPBio);
+
+        tvTidakHadir = findViewById(R.id.tvTidakHadir);
+        tvHadir = findViewById(R.id.tvHadir);
 
         imgqr = findViewById(R.id.imgQR);
         imgprofile = findViewById(R.id.imgprofileanggota);
@@ -137,7 +140,32 @@ public class profileAdmin extends AppCompatActivity {
             }
         });
 
+        initializeHadir();
+    }
 
+    private void initializeHadir(){
+        id_user = sessionManager.getUserDetail().get(SessionManager.ID_USER);
+        AndroidNetworking.post(serv.server+"/absensi/getOnceHadir.php")
+                .addBodyParameter("id_user",id_user)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try{
+
+                            tvHadir.setText(response.getString("hadir"));
+                            tvTidakHadir.setText(response.getString("tidak_hadir"));
+
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+                        anError.printStackTrace();
+                    }
+                });
     }
 
     @Override
@@ -167,6 +195,11 @@ public class profileAdmin extends AppCompatActivity {
         if(item.getItemId() == R.id.oAbsensi){
             startActivity(new Intent(this,AbsensiActivity.class));
         }
+
+        if(item.getItemId() == R.id.oRekap){
+            startActivity(new Intent(this,RekapAbsensi.class));
+        }
+
         return true;
     }
     private void movetoLogin() {

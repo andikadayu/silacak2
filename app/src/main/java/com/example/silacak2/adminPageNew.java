@@ -140,6 +140,7 @@ public class adminPageNew extends AppCompatActivity implements OnMapReadyCallbac
         startService(new Intent(getApplicationContext(), LocationServer.class));
         startService(new Intent(getApplicationContext(), NotificationBerkumpul.class));
         startService(new Intent(getApplicationContext(),NotificationLaporan.class));
+        startService(new Intent(getApplicationContext(),ReminderYesterday.class));
 
         mapView.getMapAsync(this);
 
@@ -191,6 +192,10 @@ public class adminPageNew extends AppCompatActivity implements OnMapReadyCallbac
 
         if(item.getItemId() == R.id.oAbsensi){
             startActivity(new Intent(this,AbsensiActivity.class));
+        }
+
+        if(item.getItemId() == R.id.oRekap){
+            startActivity(new Intent(this,RekapAbsensi.class));
         }
 
         return true;

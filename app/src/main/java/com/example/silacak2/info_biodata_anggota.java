@@ -29,7 +29,11 @@ import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.google.zxing.WriterException;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 import androidmads.library.qrgenearator.QRGContents;
 import androidmads.library.qrgenearator.QRGEncoder;
@@ -44,6 +48,7 @@ public class info_biodata_anggota extends AppCompatActivity {
     QRGEncoder qrgEncoder;
     Spinner spnpangkat;
     EditText editnrp;
+    ArrayList<CharSequence> listPangkat;
     ArrayAdapter<CharSequence> adapter;
 
     @Override
@@ -229,19 +234,9 @@ public class info_biodata_anggota extends AppCompatActivity {
         editnrp = view.findViewById(R.id.txtBioNrp);
 
         // Spinner Pangkat
-        adapter = ArrayAdapter.createFromResource(this,
-                R.array.pangkat_array, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spnpangkat.setAdapter(adapter);
+        initializePangkat();
 
         editnrp.setText(nrp);
-
-        if(!pangkat.equals("null")){
-            int spinnerSelection = adapter.getPosition(pangkat);
-            spnpangkat.setSelection(spinnerSelection);
-        }else{
-            spnpangkat.setSelection(0);
-        }
 
         builder.setView(view)
                 .setTitle("Merubah Info")
@@ -267,6 +262,41 @@ public class info_biodata_anggota extends AppCompatActivity {
 
         AlertDialog ald = builder.create();
         ald.show();
+    }
+
+    private void initializePangkat(){
+        listPangkat = new ArrayList<>();
+        AndroidNetworking.post(serv.server+"/struktur/getStruktur.php")
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try{
+                            JSONArray ja = response.getJSONArray("data");
+                            for(int i=0;i<ja.length();i++){
+                                listPangkat.add(ja.getString(i));
+                            }
+                            adapter = new ArrayAdapter(info_biodata_anggota.this,android.R.layout.simple_spinner_dropdown_item,listPangkat);
+                            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            spnpangkat.setAdapter(adapter);
+
+                            if(!pangkat.equals("null")){
+                                int spinnerSelection = adapter.getPosition(pangkat);
+                                spnpangkat.setSelection(spinnerSelection);
+                            }else{
+                                spnpangkat.setSelection(0);
+                            }
+
+                        }catch (JSONException e){
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+                        anError.printStackTrace();
+                    }
+                });
     }
 
     private void setUpdateInfo(String nrp,String pangkat){

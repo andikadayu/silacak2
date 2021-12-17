@@ -14,4 +14,5 @@
     <color name="green">#6ecb63</color>
     <color name="green_accent">#6fb867</color>
 <!--    <color name="green_accent">#63B4B8</color>-->
+    <color name="red">#FF1700</color>
 </resources>

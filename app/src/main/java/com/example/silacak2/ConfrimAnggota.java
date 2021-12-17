@@ -16,8 +16,11 @@ import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
 
 public class ConfrimAnggota extends AppCompatActivity {
     String iduser, namauser, emailuser;
@@ -25,6 +28,9 @@ public class ConfrimAnggota extends AppCompatActivity {
     Spinner spnPangkat;
     Button btnUpdate, btnBlokirUser;
     URLServer serv;
+    ArrayList<CharSequence> listPangkat;
+    ArrayAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,10 +54,7 @@ public class ConfrimAnggota extends AppCompatActivity {
         txtemail.setText(emailuser);
 
         // Spinner Pangkat Set
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.pangkat_array, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spnPangkat.setAdapter(adapter);
+        initializePangkat();
 
         txtid.setEnabled(false);
 
@@ -71,6 +74,34 @@ public class ConfrimAnggota extends AppCompatActivity {
                 bukaBlokir();
             }
         });
+    }
+
+    private void initializePangkat(){
+        listPangkat = new ArrayList<>();
+        AndroidNetworking.post(serv.server+"/struktur/getStruktur.php")
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try{
+                            JSONArray ja = response.getJSONArray("data");
+                            for(int i=0;i<ja.length();i++){
+                                listPangkat.add(ja.getString(i));
+                            }
+                            adapter = new ArrayAdapter(ConfrimAnggota.this,android.R.layout.simple_spinner_dropdown_item,listPangkat);
+                            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            spnPangkat.setAdapter(adapter);
+
+                        }catch (JSONException e){
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+                        anError.printStackTrace();
+                    }
+                });
     }
 
     public void confirm(){

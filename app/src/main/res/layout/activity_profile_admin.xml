@@ -118,6 +118,79 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_margin="8dp"
+                android:background="@color/black">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp">
+
+                    <LinearLayout
+                        android:id="@+id/layAbsen"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentStart="true"
+                        android:layout_marginStart="25dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Jumlah Hadir"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvHadir"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textSize="20sp"
+                            android:textColor="@color/green"
+                            android:textStyle="bold"
+                            android:layout_marginTop="20dp"
+                            android:layout_gravity="center"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/layNotAbsen"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginEnd="25dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Jumlah Tidak Hadir"
+                            android:textColor="@color/black"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvTidakHadir"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="20dp"
+                            android:text="0"
+                            android:textColor="@color/red"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:background="@color/black"
@@ -175,12 +248,14 @@
                                     android:padding="3dip"
                                     android:layout_width="150dp"
                                     android:textSize="@dimen/_10sdp"
+                                    android:textColor="@color/black"
                                     />
                                 <TextView
                                     android:text="Name"
                                     android:padding="3dip"
                                     android:textSize="@dimen/_10sdp"
                                     android:id="@+id/lblNamaBio"
+                                    android:textColor="@color/black"
                                     />
                             </TableRow>
 
@@ -191,12 +266,14 @@
                                     android:padding="3dip"
                                     android:layout_width="150dp"
                                     android:textSize="@dimen/_10sdp"
+                                    android:textColor="@color/black"
                                     />
                                 <TextView
                                     android:text="Name"
                                     android:padding="3dip"
                                     android:textSize="@dimen/_10sdp"
                                     android:id="@+id/lblJenisBio"
+                                    android:textColor="@color/black"
                                     />
                             </TableRow>
 
@@ -207,12 +284,14 @@
                                     android:padding="3dip"
                                     android:layout_width="150dp"
                                     android:textSize="@dimen/_10sdp"
+                                    android:textColor="@color/black"
                                     />
                                 <TextView
                                     android:text="Name"
                                     android:padding="3dip"
                                     android:textSize="@dimen/_10sdp"
                                     android:id="@+id/lblEmailBio"
+                                    android:textColor="@color/black"
                                     />
                             </TableRow>
 
@@ -224,12 +303,14 @@
                                     android:padding="3dip"
                                     android:layout_width="150dp"
                                     android:textSize="@dimen/_10sdp"
+                                    android:textColor="@color/black"
                                     />
                                 <TextView
                                     android:text="Name"
                                     android:padding="3dip"
                                     android:textSize="@dimen/_10sdp"
                                     android:id="@+id/lblTTLBio"
+                                    android:textColor="@color/black"
                                     />
                             </TableRow>
 
@@ -240,12 +321,14 @@
                                     android:padding="3dip"
                                     android:layout_width="150dp"
                                     android:textSize="@dimen/_10sdp"
+                                    android:textColor="@color/black"
                                     />
                                 <TextView
                                     android:text="Name"
                                     android:padding="3dip"
                                     android:textSize="@dimen/_10sdp"
                                     android:id="@+id/lblAlamatBio"
+                                    android:textColor="@color/black"
                                     />
                             </TableRow>
 

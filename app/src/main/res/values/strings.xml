@@ -18,7 +18,7 @@
 
     <string name="access_token">pk.eyJ1Ijoic21hcnRyYWNraW5ndGVzdCIsImEiOiJja3c0bDRhYTNib2gwMm5xMXV6NGRrYWFrIn0.don5PH2hVkYTWNSOZrCG3w</string>
 
-<!--    Untuk Masuk Keluar-->
+    <!--    Untuk Masuk Keluar-->
     <string name="afternoon">12:00:00</string>
 
     <string name="jam_masuk">08:00:00</string>

@@ -178,12 +178,14 @@
                                     android:padding="3dip"
                                     android:layout_width="150dp"
                                     android:textSize="@dimen/_10sdp"
+                                    android:textColor="@color/black"
                                     />
                                 <TextView
                                     android:text="Name"
                                     android:padding="3dip"
                                     android:textSize="@dimen/_10sdp"
                                     android:id="@+id/lblNamaBio"
+                                    android:textColor="@color/black"
                                     />
                             </TableRow>
 
@@ -194,12 +196,14 @@
                                     android:padding="3dip"
                                     android:layout_width="150dp"
                                     android:textSize="@dimen/_10sdp"
+                                    android:textColor="@color/black"
                                     />
                                 <TextView
                                     android:text="Name"
                                     android:padding="3dip"
                                     android:textSize="@dimen/_10sdp"
                                     android:id="@+id/lblJenisBio"
+                                    android:textColor="@color/black"
                                     />
                             </TableRow>
 
@@ -210,12 +214,14 @@
                                     android:padding="3dip"
                                     android:layout_width="150dp"
                                     android:textSize="@dimen/_10sdp"
+                                    android:textColor="@color/black"
                                     />
                                 <TextView
                                     android:text="Name"
                                     android:padding="3dip"
                                     android:textSize="@dimen/_10sdp"
                                     android:id="@+id/lblEmailBio"
+                                    android:textColor="@color/black"
                                     />
                             </TableRow>
 
@@ -227,12 +233,14 @@
                                     android:padding="3dip"
                                     android:layout_width="150dp"
                                     android:textSize="@dimen/_10sdp"
+                                    android:textColor="@color/black"
                                     />
                                 <TextView
                                     android:text="Name"
                                     android:padding="3dip"
                                     android:textSize="@dimen/_10sdp"
                                     android:id="@+id/lblTTLBio"
+                                    android:textColor="@color/black"
                                     />
                             </TableRow>
 
@@ -243,12 +251,14 @@
                                     android:padding="3dip"
                                     android:layout_width="150dp"
                                     android:textSize="@dimen/_10sdp"
+                                    android:textColor="@color/black"
                                     />
                                 <TextView
                                     android:text="Name"
                                     android:padding="3dip"
                                     android:textSize="@dimen/_10sdp"
                                     android:id="@+id/lblAlamatBio"
+                                    android:textColor="@color/black"
                                     />
                             </TableRow>
 

@@ -5,7 +5,6 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.format.DateFormat;
-import android.util.Log;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -24,21 +23,21 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-import timber.log.Timber;
-
 public class AbsensiActivity extends AppCompatActivity {
 
     URLServer serv = new URLServer();
-    String absen, id_user, role;
+    String absen, id_user, role = null;
     boolean condtiotionScan = false;
     SessionManager sessionManager;
-    String afternoon, jam_masuk, jam_keluar, jam_keluar_friday, exp_jam_masuk, exp_jam_keluar, exp_jam_keluar_friday;
+    String afternoon, jam_masuk, jam_keluar, jam_keluar_friday, exp_jam_masuk, exp_jam_keluar, exp_jam_keluar_friday = null;
     private IntentIntegrator intentIntegrator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_absensi);
+
+        clearInitialize();
 
         sessionManager = new SessionManager(AbsensiActivity.this);
         id_user = sessionManager.getUserDetail().get(SessionManager.ID_USER);
@@ -47,6 +46,20 @@ public class AbsensiActivity extends AppCompatActivity {
         AndroidNetworking.initialize(AbsensiActivity.this);
 
         initializeTime();
+
+    }
+
+    private void clearInitialize(){
+        absen  = null;
+        id_user = null;
+        role = null;
+        afternoon = null;
+        jam_masuk = null;
+        jam_keluar = null;
+        jam_keluar_friday = null;
+        exp_jam_masuk = null;
+        exp_jam_keluar = null;
+        exp_jam_keluar_friday = null;
 
     }
 

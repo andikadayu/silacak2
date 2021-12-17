@@ -33,6 +33,13 @@
         app:showAsAction="never" />
 
     <item
+        android:id="@+id/oRekap"
+        android:icon="@drawable/ic_baseline_content_paste_search_24"
+        android:title="Rekap Absensi"
+        app:showAsAction="never"
+        />
+
+    <item
         android:id="@+id/oProfileAdmin"
         android:icon="@drawable/ic_person"
         android:title="Profile"

@@ -17,9 +17,12 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
 
@@ -32,7 +35,9 @@ public class settingAdminProfile extends AppCompatActivity {
     EditText txtnama,txtemail,txttempatlahir,txttanggallahir,txtalamat,txtoldpass,txtnewpass,txtcfrpass,txtnrp;
     String nama,jenis,email,tptlahir,tgllahir,alamat,id_user,nrp,pangkat;
     final Calendar myCalendar = Calendar.getInstance();
-    ArrayAdapter<CharSequence> adapters,adapter;
+    ArrayAdapter<CharSequence> adapter;
+    ArrayList<CharSequence> listPangkat;
+    ArrayAdapter adapters;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,10 +72,9 @@ public class settingAdminProfile extends AppCompatActivity {
         spnJK.setAdapter(adapter);
 
         // Spinner Pangkat
-        adapters = ArrayAdapter.createFromResource(this,
-                R.array.pangkat_array, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spnPangkat.setAdapter(adapters);
+
+
+        initializePangkat();
 
         DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener(){
 
@@ -138,6 +142,34 @@ public class settingAdminProfile extends AppCompatActivity {
 
         initializing();
 
+    }
+
+    private void initializePangkat(){
+        listPangkat = new ArrayList<>();
+        AndroidNetworking.post(serv.server+"/struktur/getStruktur.php")
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try{
+                            JSONArray ja = response.getJSONArray("data");
+                            for(int i=0;i<ja.length();i++){
+                                listPangkat.add(ja.getString(i));
+                            }
+                            adapters = new ArrayAdapter(settingAdminProfile.this,android.R.layout.simple_spinner_dropdown_item,listPangkat);
+                            adapters.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                            spnPangkat.setAdapter(adapters);
+
+                        }catch (JSONException e){
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+                        anError.printStackTrace();
+                    }
+                });
     }
 
 

@@ -35,7 +35,7 @@ import androidmads.library.qrgenearator.QRGEncoder;
 public class profileAnggota extends AppCompatActivity {
     SessionManager sessionManager;
     URLServer serv;
-    TextView txnama,txtnrp,lblnama,lbljenis,lblemail,lblttl,lblalamat,lblnrp;
+    TextView txnama,txtnrp,lblnama,lbljenis,lblemail,lblttl,lblalamat,lblnrp,tvTidakHadir,tvHadir;
     Button btLogouta, btnfoto,btnedit;
     ImageView imgqr,imgprofile;
     String nama,nrp,jenis,email,ttl,alamat,id_user,foto,pangkat;
@@ -60,6 +60,9 @@ public class profileAnggota extends AppCompatActivity {
         lblttl = findViewById(R.id.lblTTLBio);
         lblalamat = findViewById(R.id.lblAlamatBio);
         lblnrp = findViewById(R.id.lblNRPBio);
+
+        tvTidakHadir = findViewById(R.id.tvTidakHadir);
+        tvHadir = findViewById(R.id.tvHadir);
 
         imgqr = findViewById(R.id.imgQR);
         imgprofile = findViewById(R.id.imgprofileanggota);
@@ -131,12 +134,39 @@ public class profileAnggota extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        initializeHadir();
     }
     private void movetoLogin() {
         Intent i = new Intent(profileAnggota.this, MainActivity.class);
         i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NO_HISTORY);
         startActivity(i);
         finish();
+    }
+
+    private void initializeHadir(){
+        id_user = sessionManager.getUserDetail().get(SessionManager.ID_USER);
+        AndroidNetworking.post(serv.server+"/absensi/getOnceHadir.php")
+                .addBodyParameter("id_user",id_user)
+                .build()
+                .getAsJSONObject(new JSONObjectRequestListener() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+                        try{
+
+                            tvHadir.setText(response.getString("hadir"));
+                            tvTidakHadir.setText(response.getString("tidak_hadir"));
+
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onError(ANError anError) {
+                        anError.printStackTrace();
+                    }
+                });
     }
 
     private void initializeProfile(){

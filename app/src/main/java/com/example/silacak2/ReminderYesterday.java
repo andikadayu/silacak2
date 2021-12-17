@@ -1,5 +1,6 @@
 package com.example.silacak2;
 
+import android.annotation.SuppressLint;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -8,6 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.IBinder;
+import android.text.format.DateFormat;
 
 import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
@@ -16,27 +18,49 @@ import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.error.ANError;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
-public class NotificationLaporan extends Service {
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
-    URLServer serv = new URLServer();
-    private static int count = 20000;
+public class ReminderYesterday extends Service{
+    URLServer server = new URLServer();
+    private static final String channel_id = "no-absen-notify";
 
-    private void getLaporan(){
-        AndroidNetworking.post(serv.server+"/laporan/getNotified.php")
+    private void isShown(){
+            String today = (String) DateFormat.format(
+                    "HH:mm:ss", new Date());
+
+            @SuppressLint("SimpleDateFormat") SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+        try{
+            Date todays = sdf.parse(today);
+            Date befores = sdf.parse("06:00:00");
+            Date expireds = sdf.parse("09:00:00");
+            assert todays != null;
+            if(todays.after(befores)){
+                if(todays.before(expireds)){
+                    getReminder();
+                }
+            }
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+    }
+
+    private void getReminder(){
+        AndroidNetworking.post(server.server+"/absensi/getReminder.php")
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
                     public void onResponse(JSONObject response) {
                         try{
-                            boolean status = response.getBoolean("status");
-                            if(status){
-                                create_notif(response.getString("counts"));
-                            }else{
-                                getLaporan();
-                            }
-                        }catch (Exception e){
+                            String msg = response.getString("msg");
+                            createNotification(msg);
+                        }catch (JSONException e){
                             e.printStackTrace();
                         }
                     }
@@ -48,10 +72,9 @@ public class NotificationLaporan extends Service {
                 });
     }
 
-    private void create_notif(String jumlah){
-        String channel_id = "laporan_notification_channel";
+    private void createNotification(String msg){
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-        Intent resultIntent = new Intent(getApplicationContext(),adminListLaporan.class);
+        Intent resultIntent = new Intent(getApplicationContext(),RekapAbsensi.class);
         resultIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pendingIntent = PendingIntent.getActivity(
                 getApplicationContext(),
@@ -59,35 +82,30 @@ public class NotificationLaporan extends Service {
                 resultIntent,
                 PendingIntent.FLAG_UPDATE_CURRENT
         );
-
         NotificationCompat.Builder builder = new NotificationCompat.Builder(
                 getApplicationContext(),
                 channel_id
         );
-
         builder.setSmallIcon(R.mipmap.ic_presisi);
-        builder.setContentTitle("Danger");
+        builder.setContentTitle("Pemberitahuan Rekap Absensi Kemarin");
+        builder.setContentText(msg);
         builder.setDefaults(NotificationCompat.DEFAULT_ALL);
-        builder.setContentText("Ada Laporan Bahaya Sebanyak "+jumlah);
         builder.setAutoCancel(true);
         builder.setPriority(NotificationCompat.PRIORITY_DEFAULT);
         builder.setContentIntent(pendingIntent);
-        builder.addAction(R.drawable.ic_baseline_report_problem_24,"Lihat Laporan",pendingIntent);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             if (notificationManager != null && notificationManager.getNotificationChannel(channel_id) == null) {
                 NotificationChannel notificationChannel = new NotificationChannel(
                         channel_id,
-                        "notification-laporan",
+                        "Absen Notification Service",
                         NotificationManager.IMPORTANCE_HIGH
                 );
                 notificationChannel.setDescription("This Channel is used by Notification service");
                 notificationManager.createNotificationChannel(notificationChannel);
             }
         }
-
-        notificationManager.notify(count, builder.build());
-        count++;
+        notificationManager.notify(66666,builder.build());
     }
 
     @Nullable
@@ -98,12 +116,7 @@ public class NotificationLaporan extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        getLaporan();
+        isShown();
         return super.onStartCommand(intent, flags, startId);
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
     }
 }

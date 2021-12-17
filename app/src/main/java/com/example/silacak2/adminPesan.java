@@ -150,6 +150,10 @@ public class adminPesan extends AppCompatActivity {
         if(item.getItemId() == R.id.oAbsensi){
             startActivity(new Intent(this,AbsensiActivity.class));
         }
+
+        if(item.getItemId() == R.id.oRekap){
+            startActivity(new Intent(this,RekapAbsensi.class));
+        }
         return true;
     }
 
