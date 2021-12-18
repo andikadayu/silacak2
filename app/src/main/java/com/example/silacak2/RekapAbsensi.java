@@ -14,6 +14,7 @@ import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.androidnetworking.AndroidNetworking;
@@ -29,13 +30,15 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class RekapAbsensi extends AppCompatActivity {
 
     TextView availYesterday,titleYesterday;
     RecyclerView recyYesterday,recyAbsensi;
     public RecyclerView.Adapter adapter,adapters;
-    public RecyclerView.LayoutManager layoutManager,layoutManagers;
+    public LinearLayoutManager layoutManager,layoutManagers;
     ArrayList<YesterdayModel> yesterdayList;
     ArrayList<AbsensiModel> absensiList;
     URLServer server = new URLServer();
@@ -126,20 +129,6 @@ public class RekapAbsensi extends AppCompatActivity {
                             titleYesterday.setText("Tidak Hadir Kemarin ("+counts+")");
                             if(status){
                                 JSONArray ja = response.getJSONArray("data");
-                                for(int i=0;i<ja.length();i++){
-                                    JSONObject jo = ja.getJSONObject(i);
-
-                                    yesterdayList.add(
-                                            new YesterdayModel(
-                                                    jo.getString("id_anggota"),
-                                                    jo.getString("foto"),
-                                                    jo.getString("nama"),
-                                                    jo.getString("nrp")
-                                            )
-                                    );
-
-                                }
-
                                 availYesterday.setVisibility(View.GONE);
                                 recyYesterday.setVisibility(View.VISIBLE);
 
@@ -150,6 +139,38 @@ public class RekapAbsensi extends AppCompatActivity {
 
                                 adapter = new adapterYesterday(RekapAbsensi.this,yesterdayList);
                                 recyYesterday.setAdapter(adapter);
+                                for(int i=0;i<ja.length();i++){
+                                    JSONObject jo = ja.getJSONObject(i);
+
+                                    yesterdayList.add(
+                                            new YesterdayModel(
+                                                    jo.getString("id_anggota"),
+                                                    jo.getString("foto"),
+                                                    jo.getString("nama"),
+                                                    jo.getString("nrp")
+                                            )
+
+                                    );
+
+                                    adapter.notifyDataSetChanged();
+
+                                }
+
+                                LinearSnapHelper linearSnapHelper = new LinearSnapHelper();
+                                linearSnapHelper.attachToRecyclerView(recyYesterday);
+                                Timer timer = new Timer();
+                                timer.schedule(new TimerTask() {
+                                    @Override
+                                    public void run() {
+                                        if(layoutManager.findLastCompletelyVisibleItemPosition() < (adapter.getItemCount() - 1)){
+                                            layoutManager.smoothScrollToPosition(recyYesterday,new RecyclerView.State(),layoutManager.findLastCompletelyVisibleItemPosition() + 1);
+                                        }else{
+                                            layoutManager.smoothScrollToPosition(recyYesterday,new RecyclerView.State(), 0);
+                                        }
+                                    }
+                                },0,3000);
+
+
 
                             }
                         }catch (JSONException e){
@@ -176,7 +197,15 @@ public class RekapAbsensi extends AppCompatActivity {
                     @Override
                     public void onResponse(JSONObject response) {
                         try{
+                            progressDialog.dismiss();
                             JSONArray ja = response.getJSONArray("data");
+                            layoutManagers = new LinearLayoutManager(RekapAbsensi.this, RecyclerView.VERTICAL, false);
+                            recyAbsensi.setLayoutManager(layoutManagers);
+
+                            recyAbsensi.addItemDecoration(new DividerItemDecoration(RekapAbsensi.this, DividerItemDecoration.VERTICAL));
+
+                            adapters = new adapterAbsensi(RekapAbsensi.this,absensiList);
+                            recyAbsensi.setAdapter(adapters);
                             for(int i=0;i<ja.length();i++){
                                 JSONObject jo = ja.getJSONObject(i);
 
@@ -187,16 +216,11 @@ public class RekapAbsensi extends AppCompatActivity {
                                         jo.getString("hadir"),
                                         jo.getString("tidak_hadir")
                                 ));
+                                adapters.notifyDataSetChanged();
+
                             }
 
-                            layoutManagers = new LinearLayoutManager(RekapAbsensi.this, RecyclerView.VERTICAL, false);
-                            recyAbsensi.setLayoutManager(layoutManagers);
 
-                            recyAbsensi.addItemDecoration(new DividerItemDecoration(RekapAbsensi.this, DividerItemDecoration.VERTICAL));
-
-                            adapters = new adapterAbsensi(RekapAbsensi.this,absensiList);
-                            recyAbsensi.setAdapter(adapters);
-                            progressDialog.dismiss();
 
 
                         }catch (JSONException e){
