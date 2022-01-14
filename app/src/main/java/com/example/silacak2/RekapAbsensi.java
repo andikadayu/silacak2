@@ -63,7 +63,6 @@ public class RekapAbsensi extends AppCompatActivity {
 
         actionBar.setDisplayHomeAsUpEnabled(true);
 
-
         AndroidNetworking.initialize(RekapAbsensi.this);
 
         yesterdayList = new ArrayList<YesterdayModel>();

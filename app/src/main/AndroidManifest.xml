@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.silacak2">
 
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
@@ -11,6 +12,11 @@
         android:maxSdkVersion="31" />
     <uses-permission android:name="android.permission.READ_PHONE_NUMBERS" />
     <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
 
     <application
         android:allowBackup="true"
@@ -18,195 +24,202 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:requestLegacyExternalStorage="true"
         android:theme="@style/Theme.Silacak2">
         <activity
+            android:name=".AddIzinActivity"
+            android:exported="false" />
+        <activity
+            android:name=".IzinActivity"
+            android:exported="false" />
+        <activity
             android:name=".RekapAbsensi"
-            android:exported="false"
-            android:configChanges="orientation|screenSize"/>
+            android:configChanges="orientation|screenSize"
+            android:exported="false" />
         <activity
             android:name=".AbsensiActivity"
-            android:exported="false"
-            android:configChanges="orientation|screenSize"/>
+            android:configChanges="orientation|screenSize"
+            android:exported="false" />
         <activity
             android:name=".infoDetailLaporan"
-            android:exported="false"
-            android:configChanges="orientation|screenSize"/>
+            android:configChanges="orientation|screenSize"
+            android:exported="false" />
         <activity
             android:name=".adminListLaporan"
-            android:exported="false"
-            android:configChanges="orientation|screenSize"/>
+            android:configChanges="orientation|screenSize"
+            android:exported="false" />
         <activity
             android:name=".detail_of_blast"
-            android:exported="false"
-            android:configChanges="orientation|screenSize"/>
+            android:configChanges="orientation|screenSize"
+            android:exported="false" />
         <activity
             android:name=".scan_qrcode"
-            android:exported="false"
-            android:configChanges="orientation|screenSize"/>
+            android:configChanges="orientation|screenSize"
+            android:exported="false" />
         <activity
             android:name=".info_bio_nrp"
-            android:exported="false"
-            android:configChanges="orientation|screenSize"/>
+            android:configChanges="orientation|screenSize"
+            android:exported="false" />
         <activity
             android:name=".info_biodata_anggota"
-            android:exported="false"
-            android:configChanges="orientation|screenSize"/>
+            android:configChanges="orientation|screenSize"
+            android:exported="false" />
         <activity
             android:name=".settingAdminProfile"
-            android:exported="false"
-            android:configChanges="orientation|screenSize"/>
+            android:configChanges="orientation|screenSize"
+            android:exported="false" />
         <activity
             android:name=".uploadImageProfile"
-            android:exported="false"
-            android:configChanges="orientation|screenSize"/>
+            android:configChanges="orientation|screenSize"
+            android:exported="false" />
         <activity
             android:name=".settingProfileAnggota"
-            android:exported="false"
-            android:configChanges="orientation|screenSize"/>
+            android:configChanges="orientation|screenSize"
+            android:exported="false" />
         <activity
             android:name=".adminPageNew"
+            android:configChanges="orientation|screenSize"
             android:exported="false"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|screenSize"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".adminLokasiAll"
+            android:configChanges="orientation|screenSize"
             android:exported="true"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|screenSize"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".anggotaPesanGroub"
+            android:configChanges="orientation|screenSize"
             android:exported="true"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|screenSize"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".adminPesanGroub"
-            android:exported="true"
-            android:configChanges="orientation|screenSize"/>
+            android:configChanges="orientation|screenSize"
+            android:exported="true" />
         <activity
             android:name=".userPesanTampil"
+            android:configChanges="orientation|screenSize"
             android:exported="true"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|screenSize"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".userPesan"
+            android:configChanges="orientation|screenSize"
             android:exported="true"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|screenSize"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".anggotaPesanTampil"
+            android:configChanges="orientation|screenSize"
             android:exported="true"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|screenSize"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".anggotaPesan"
+            android:configChanges="orientation|screenSize"
             android:exported="true"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|screenSize"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".adminPesanTampil"
+            android:configChanges="orientation|screenSize"
             android:exported="true"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|screenSize"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".adminPesan"
+            android:configChanges="orientation|screenSize"
             android:exported="true"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|screenSize"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".profilUser"
+            android:configChanges="orientation|screenSize"
             android:exported="true"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|screenSize"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".anggotaLokasi"
+            android:configChanges="orientation|screenSize"
             android:exported="true"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|screenSize"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".notConfirmPage"
+            android:configChanges="orientation|screenSize"
             android:exported="true"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|screenSize"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ConfrimUser"
+            android:configChanges="orientation|screenSize"
             android:exported="true"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|screenSize"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".adminUserNew"
+            android:configChanges="orientation|screenSize"
             android:exported="true"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|screenSize"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".adminListAnggota"
+            android:configChanges="orientation|screenSize"
             android:exported="true"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|screenSize"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".ConfrimAnggota"
+            android:configChanges="orientation|screenSize"
             android:exported="true"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|screenSize"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".read_user"
+            android:configChanges="orientation|screenSize"
             android:exported="true"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|screenSize"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".adminListUser"
+            android:configChanges="orientation|screenSize"
             android:exported="true"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|screenSize"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".profileAnggota"
+            android:configChanges="orientation|screenSize"
             android:exported="true"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|screenSize"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".profileAdmin"
+            android:configChanges="orientation|screenSize"
             android:exported="true"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|screenSize"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".adminAbout"
+            android:configChanges="orientation|screenSize"
             android:exported="true"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|screenSize"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".detail_feature"
+            android:configChanges="orientation|screenSize"
             android:exported="true"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|screenSize"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".registerPage"
+            android:configChanges="orientation|screenSize"
             android:exported="true"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|screenSize"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".userPage"
+            android:configChanges="orientation|screenSize"
             android:exported="true"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|screenSize"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".anggotaPage"
+            android:configChanges="orientation|screenSize"
             android:exported="true"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|screenSize"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".adminListPerintah"
+            android:configChanges="orientation|screenSize"
             android:exported="false"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|screenSize"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".detail_of_perintah"
+            android:configChanges="orientation|screenSize"
             android:exported="false"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|screenSize"/>
+            android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"
+            android:configChanges="orientation|screenSize"
             android:exported="true"
-            android:screenOrientation="portrait"
-            android:configChanges="orientation|screenSize">
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -236,7 +249,7 @@
         <service
             android:name=".ReminderYesterday"
             android:enabled="true"
-            android:exported="false"/>
+            android:exported="false" />
     </application>
 
 </manifest>

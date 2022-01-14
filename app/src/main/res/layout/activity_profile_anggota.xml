@@ -14,10 +14,7 @@
             android:id="@+id/contentall"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-
             android:orientation="vertical">
-
-
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
@@ -120,7 +117,7 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="150dp"
                 android:layout_margin="8dp"
                 android:background="@color/black">
 
@@ -130,19 +127,47 @@
                     android:layout_marginTop="10dp">
 
                     <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:id="@+id/linars">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Kehadiran"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_14sdp"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:textStyle="bold"/>
+                        <Button
+                            android:id="@+id/btnPermission"
+                            android:layout_width="@dimen/_40sdp"
+                            android:layout_height="@dimen/_30sdp"
+                            android:padding="@dimen/_10sdp"
+                            android:backgroundTint="#FFC900"
+                            android:drawableLeft="@drawable/ic_baseline_free_cancellation_24"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            />
+
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:id="@+id/layAbsen"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_alignParentStart="true"
                         android:layout_marginStart="25dp"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:layout_below="@id/linars">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Jumlah Hadir"
                             android:textColor="@color/black"
-                            android:textSize="18sp"
+                            android:textSize="20sp"
                             android:textStyle="bold" />
 
                         <TextView
@@ -164,14 +189,15 @@
                         android:layout_height="match_parent"
                         android:layout_alignParentEnd="true"
                         android:layout_marginEnd="25dp"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:layout_below="@id/linars">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Jumlah Tidak Hadir"
                             android:textColor="@color/black"
-                            android:textSize="18sp"
+                            android:textSize="20sp"
                             android:textStyle="bold" />
 
                         <TextView

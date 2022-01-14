@@ -144,6 +144,7 @@
         <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/drawable/border_rectangle.xml" value="0.2388888888888889" />
         <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/drawable/edit_text_style.xml" value="0.2890625" />
         <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/drawable/ic_baseline_check_24.xml" value="0.15520833333333334" />
+        <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/activity_add_izin.xml" value="0.25885416666666666" />
         <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/activity_admin_list_anggota.xml" value="0.13272543059777103" />
         <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/activity_admin_list_laporan.xml" value="0.26721014492753625" />
         <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/activity_admin_list_perintah.xml" value="0.13272543059777103" />
@@ -158,6 +159,7 @@
         <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/activity_info_bio_nrp.xml" value="0.17255434782608695" />
         <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/activity_info_biodata_anggota.xml" value="0.18614130434782608" />
         <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/activity_info_detail_laporan.xml" value="0.25" />
+        <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/activity_izin.xml" value="0.25" />
         <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/activity_main.xml" value="0.19882246376811594" />
         <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/activity_profile_admin.xml" value="0.19882246376811594" />
         <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/activity_profile_anggota.xml" value="0.19882246376811594" />
@@ -169,6 +171,7 @@
         <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/activity_user_page.xml" value="0.26721014492753625" />
         <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/adapter_absensi.xml" value="0.27291666666666664" />
         <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/adapter_anggota.xml" value="0.19882246376811594" />
+        <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/adapter_izin_custom.xml" value="0.27291666666666664" />
         <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/adapter_list_laporan.xml" value="0.26268115942028986" />
         <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/adapter_pesan_admin.xml" value="0.27291666666666664" />
         <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/adapter_pesan_anggota.xml" value="0.27291666666666664" />
@@ -182,6 +185,7 @@
         <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/dialog_lapor.xml" value="0.26721014492753625" />
         <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/dialog_perintah.xml" value="0.26721014492753625" />
         <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/editbioinfo.xml" value="0.18614130434782608" />
+        <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/list_items.xml" value="0.27291666666666664" />
         <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/set_tugas.xml" value="0.18614130434782608" />
         <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/layout/viewphoto.xml" value="0.18614130434782608" />
         <entry key="..\:/test/Android Project/update/smartracking/app/src/main/res/menu/menu_admin.xml" value="0.27291666666666664" />

@@ -29,4 +29,11 @@
     <string name="exp_jam_keluar">16:00:00</string>
     <string name="exp_jam_keluar_friday">16:30:00</string>
 
+    <string-array name="perihal">
+        <item>Izin</item>
+        <item>Sakit</item>
+        <item>Cuti</item>
+        <item>Tugas</item>
+    </string-array>
+
 </resources>

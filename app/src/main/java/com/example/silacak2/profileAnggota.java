@@ -36,7 +36,7 @@ public class profileAnggota extends AppCompatActivity {
     SessionManager sessionManager;
     URLServer serv;
     TextView txnama,txtnrp,lblnama,lbljenis,lblemail,lblttl,lblalamat,lblnrp,tvTidakHadir,tvHadir;
-    Button btLogouta, btnfoto,btnedit;
+    Button btLogouta, btnfoto,btnedit,btnPermission;
     ImageView imgqr,imgprofile;
     String nama,nrp,jenis,email,ttl,alamat,id_user,foto,pangkat;
     Bitmap bitmap;
@@ -53,6 +53,7 @@ public class profileAnggota extends AppCompatActivity {
         btLogouta = (Button) findViewById(R.id.btnlogoutsAnggota);
         btnedit = findViewById(R.id.btneditbiodata);
         btnfoto = findViewById(R.id.btneditfoto);
+        btnPermission = findViewById(R.id.btnPermission);
 
         lblnama = findViewById(R.id.lblNamaBio);
         lbljenis = findViewById(R.id.lblJenisBio);
@@ -133,6 +134,10 @@ public class profileAnggota extends AppCompatActivity {
                 Intent i = new Intent(profileAnggota.this, uploadImageProfile.class);
                 startActivity(i);
             }
+        });
+
+        btnPermission.setOnClickListener((view)->{
+            startActivity(new Intent(profileAnggota.this,IzinActivity.class));
         });
 
         initializeHadir();
